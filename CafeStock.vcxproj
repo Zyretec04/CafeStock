@@ -121,10 +121,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Dashboard.cpp" />
+    <ClCompile Include="HistoryControll.cpp" />
+    <ClCompile Include="InventoryMenu.cpp" />
     <ClCompile Include="MainLogin.cpp" />
     <ClCompile Include="Menumain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Dashboard.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
+    <ClInclude Include="HistoryControll.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
+    <ClInclude Include="InventoryMenu.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
     <ClInclude Include="MainLogin.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -133,6 +145,15 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Dashboard.resx">
+      <DependentUpon>Dashboard.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistoryControll.resx">
+      <DependentUpon>HistoryControll.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryMenu.resx">
+      <DependentUpon>InventoryMenu.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainLogin.resx">
       <DependentUpon>MainLogin.h</DependentUpon>
     </EmbeddedResource>

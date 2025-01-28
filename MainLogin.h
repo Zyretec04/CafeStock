@@ -1,5 +1,6 @@
 #pragma once
 #include "Menumain.h"
+#include "Menumain.h"
 
 
 namespace CafeStock {
@@ -24,6 +25,7 @@ namespace CafeStock {
 			//TODO: Add the constructor code here
 			//
 			this->passTxt->PasswordChar = '*';
+		
 		}
 
 	protected:
@@ -93,6 +95,7 @@ namespace CafeStock {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
+		System::Windows::Forms::Button^ button1;
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
@@ -136,10 +139,9 @@ namespace CafeStock {
 			button1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			button1->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			button1->Location = System::Drawing::Point(216, 508);
-			button1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			button1->Location = System::Drawing::Point(162, 413);
 			button1->Name = L"button1";
-			button1->Size = System::Drawing::Size(259, 78);
+			button1->Size = System::Drawing::Size(194, 63);
 			button1->TabIndex = 6;
 			button1->Text = L"Login";
 			button1->UseVisualStyleBackColor = false;
@@ -155,19 +157,17 @@ namespace CafeStock {
 			this->panel1->Controls->Add(this->label1);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel1->Location = System::Drawing::Point(0, 0);
-			this->panel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(1300, 716);
+			this->panel1->Size = System::Drawing::Size(975, 582);
 			this->panel1->TabIndex = 1;
 			// 
 			// pictureBox2
 			// 
 			this->pictureBox2->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(139, 166);
-			this->pictureBox2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox2->Location = System::Drawing::Point(104, 135);
 			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(308, 206);
+			this->pictureBox2->Size = System::Drawing::Size(231, 167);
 			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox2->TabIndex = 4;
 			this->pictureBox2->TabStop = false;
@@ -189,10 +189,9 @@ namespace CafeStock {
 			this->panel2->Controls->Add(this->label3);
 			this->panel2->Controls->Add(this->pictureBox1);
 			this->panel2->Dock = System::Windows::Forms::DockStyle::Right;
-			this->panel2->Location = System::Drawing::Point(601, 0);
-			this->panel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->panel2->Location = System::Drawing::Point(451, 0);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(699, 716);
+			this->panel2->Size = System::Drawing::Size(524, 582);
 			this->panel2->TabIndex = 3;
 			this->panel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MainLogin::panel2_Paint_1);
 			// 
@@ -200,10 +199,9 @@ namespace CafeStock {
 			// 
 			this->pictureBox4->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.Image")));
-			this->pictureBox4->Location = System::Drawing::Point(81, 423);
-			this->pictureBox4->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox4->Location = System::Drawing::Point(61, 344);
 			this->pictureBox4->Name = L"pictureBox4";
-			this->pictureBox4->Size = System::Drawing::Size(51, 48);
+			this->pictureBox4->Size = System::Drawing::Size(38, 39);
 			this->pictureBox4->TabIndex = 9;
 			this->pictureBox4->TabStop = false;
 			// 
@@ -211,10 +209,9 @@ namespace CafeStock {
 			// 
 			this->pictureBox3->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
-			this->pictureBox3->Location = System::Drawing::Point(81, 324);
-			this->pictureBox3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox3->Location = System::Drawing::Point(61, 263);
 			this->pictureBox3->Name = L"pictureBox3";
-			this->pictureBox3->Size = System::Drawing::Size(51, 48);
+			this->pictureBox3->Size = System::Drawing::Size(38, 39);
 			this->pictureBox3->TabIndex = 8;
 			this->pictureBox3->TabStop = false;
 			// 
@@ -223,10 +220,10 @@ namespace CafeStock {
 			this->button2->BackColor = System::Drawing::Color::Transparent;
 			this->button2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button2.BackgroundImage")));
 			this->button2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->button2->Location = System::Drawing::Point(620, 14);
-			this->button2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button2->Location = System::Drawing::Point(465, 11);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(61, 59);
+			this->button2->Size = System::Drawing::Size(46, 48);
 			this->button2->TabIndex = 7;
 			this->button2->UseVisualStyleBackColor = false;
 			this->button2->Click += gcnew System::EventHandler(this, &MainLogin::button2_Click);
@@ -236,11 +233,10 @@ namespace CafeStock {
 			this->passTxt->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->passTxt->Font = (gcnew System::Drawing::Font(L"Segoe UI", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->passTxt->Location = System::Drawing::Point(151, 437);
-			this->passTxt->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->passTxt->Location = System::Drawing::Point(113, 355);
 			this->passTxt->Multiline = true;
 			this->passTxt->Name = L"passTxt";
-			this->passTxt->Size = System::Drawing::Size(392, 39);
+			this->passTxt->Size = System::Drawing::Size(294, 32);
 			this->passTxt->TabIndex = 5;
 			this->passTxt->TextChanged += gcnew System::EventHandler(this, &MainLogin::passTxt_TextChanged);
 			// 
@@ -249,11 +245,10 @@ namespace CafeStock {
 			this->uNameTxt->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->uNameTxt->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->uNameTxt->Location = System::Drawing::Point(151, 340);
-			this->uNameTxt->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->uNameTxt->Location = System::Drawing::Point(113, 276);
 			this->uNameTxt->Multiline = true;
 			this->uNameTxt->Name = L"uNameTxt";
-			this->uNameTxt->Size = System::Drawing::Size(392, 39);
+			this->uNameTxt->Size = System::Drawing::Size(294, 32);
 			this->uNameTxt->TabIndex = 4;
 			this->uNameTxt->TextChanged += gcnew System::EventHandler(this, &MainLogin::uNameTxt_TextChanged);
 			// 
@@ -263,8 +258,7 @@ namespace CafeStock {
 			this->label6->BackColor = System::Drawing::Color::Transparent;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Segoe MDL2 Assets", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(149, 406);
-			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label6->Location = System::Drawing::Point(112, 330);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(85, 21);
 			this->label6->TabIndex = 3;
@@ -277,8 +271,7 @@ namespace CafeStock {
 			this->label5->BackColor = System::Drawing::Color::Transparent;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Segoe MDL2 Assets", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(147, 305);
-			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label5->Location = System::Drawing::Point(110, 248);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(87, 21);
 			this->label5->TabIndex = 2;
@@ -290,8 +283,7 @@ namespace CafeStock {
 			this->label4->BackColor = System::Drawing::Color::Transparent;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Segoe MDL2 Assets", 18, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(93, 263);
-			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label4->Location = System::Drawing::Point(70, 214);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(115, 24);
 			this->label4->TabIndex = 1;
@@ -302,10 +294,9 @@ namespace CafeStock {
 			this->label3->BackColor = System::Drawing::Color::Transparent;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Segoe MDL2 Assets", 27.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(-520, 279);
-			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label3->Location = System::Drawing::Point(-390, 227);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(483, 48);
+			this->label3->Size = System::Drawing::Size(362, 39);
 			this->label3->TabIndex = 0;
 			this->label3->Text = L"Login";
 			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -316,10 +307,9 @@ namespace CafeStock {
 			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(248, 62);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox1->Location = System::Drawing::Point(186, 50);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(200, 169);
+			this->pictureBox1->Size = System::Drawing::Size(150, 137);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 0;
 			this->pictureBox1->TabStop = false;
@@ -331,8 +321,7 @@ namespace CafeStock {
 			this->label2->Font = (gcnew System::Drawing::Font(L"Monospac821 BT", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->ForeColor = System::Drawing::SystemColors::Control;
-			this->label2->Location = System::Drawing::Point(152, 441);
-			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label2->Location = System::Drawing::Point(114, 358);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(220, 25);
 			this->label2->TabIndex = 2;
@@ -345,8 +334,7 @@ namespace CafeStock {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Monospac821 BT", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::SystemColors::Control;
-			this->label1->Location = System::Drawing::Point(188, 377);
-			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label1->Location = System::Drawing::Point(141, 306);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(158, 32);
 			this->label1->TabIndex = 1;
@@ -354,12 +342,11 @@ namespace CafeStock {
 			// 
 			// MainLogin
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1300, 716);
+			this->ClientSize = System::Drawing::Size(975, 582);
 			this->Controls->Add(this->panel1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->MaximizeBox = false;
 			this->Name = L"MainLogin";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
