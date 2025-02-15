@@ -2,7 +2,7 @@
 #include "Dashboard.h"
 #include "InventoryMenu.h"
 #include "HistoryControll.h" 
-
+ref class MainLogin;
 namespace CafeStock {
 
 	using namespace System;
@@ -50,8 +50,7 @@ namespace CafeStock {
 	protected:
 	private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
-
-
+	private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e);
 
 
 
@@ -82,6 +81,8 @@ namespace CafeStock {
 	private: System::Windows::Forms::Button^ button7;
 	private: System::Windows::Forms::Panel^ panel8;
 	private: System::Windows::Forms::Button^ button8;
+
+
 	private: System::Windows::Forms::Panel^ mainPanel;
 	private: System::Windows::Forms::Panel^ panel1;
 	private: System::Windows::Forms::Button^ button1;
@@ -111,6 +112,8 @@ namespace CafeStock {
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->panel5 = (gcnew System::Windows::Forms::Panel());
 			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->panel7 = (gcnew System::Windows::Forms::Panel());
 			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->panel8 = (gcnew System::Windows::Forms::Panel());
@@ -121,16 +124,14 @@ namespace CafeStock {
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->menuTransition = (gcnew System::Windows::Forms::Timer(this->components));
 			this->mainPanel = (gcnew System::Windows::Forms::Panel());
-			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->flowLayoutPanel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->panel5->SuspendLayout();
+			this->panel1->SuspendLayout();
 			this->panel7->SuspendLayout();
 			this->panel8->SuspendLayout();
 			this->panel2->SuspendLayout();
 			this->panel4->SuspendLayout();
-			this->panel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// flowLayoutPanel1
@@ -189,6 +190,33 @@ namespace CafeStock {
 			this->button5->Text = L"Dashboard";
 			this->button5->UseVisualStyleBackColor = false;
 			this->button5->Click += gcnew System::EventHandler(this, &Menumain::button5_Click);
+			// 
+			// panel1
+			// 
+			this->panel1->BackColor = System::Drawing::Color::Transparent;
+			this->panel1->Controls->Add(this->button1);
+			this->panel1->Location = System::Drawing::Point(3, 163);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(214, 50);
+			this->panel1->TabIndex = 5;
+			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(162)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(23)));
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->button1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button1->ForeColor = System::Drawing::Color::White;
+			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
+			this->button1->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->button1->Location = System::Drawing::Point(0, 4);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(214, 43);
+			this->button1->TabIndex = 2;
+			this->button1->Text = L"Inventory Menu";
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &Menumain::button1_Click_1);
 			// 
 			// panel7
 			// 
@@ -309,33 +337,6 @@ namespace CafeStock {
 			this->mainPanel->Size = System::Drawing::Size(745, 544);
 			this->mainPanel->TabIndex = 7;
 			// 
-			// panel1
-			// 
-			this->panel1->BackColor = System::Drawing::Color::Transparent;
-			this->panel1->Controls->Add(this->button1);
-			this->panel1->Location = System::Drawing::Point(3, 163);
-			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(214, 50);
-			this->panel1->TabIndex = 5;
-			// 
-			// button1
-			// 
-			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(162)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
-				static_cast<System::Int32>(static_cast<System::Byte>(23)));
-			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->button1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button1->ForeColor = System::Drawing::Color::White;
-			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
-			this->button1->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->button1->Location = System::Drawing::Point(0, 4);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(214, 43);
-			this->button1->TabIndex = 2;
-			this->button1->Text = L"Inventory Menu";
-			this->button1->UseVisualStyleBackColor = false;
-			this->button1->Click += gcnew System::EventHandler(this, &Menumain::button1_Click_1);
-			// 
 			// Menumain
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -353,11 +354,11 @@ namespace CafeStock {
 			this->flowLayoutPanel1->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->panel5->ResumeLayout(false);
+			this->panel1->ResumeLayout(false);
 			this->panel7->ResumeLayout(false);
 			this->panel8->ResumeLayout(false);
 			this->panel2->ResumeLayout(false);
 			this->panel4->ResumeLayout(false);
-			this->panel1->ResumeLayout(false);
 			this->ResumeLayout(false);
 
 		}
@@ -391,33 +392,15 @@ private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
 	LoadUserControl(gcnew HistoryControll());
 }
-private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) {
-	System::Windows::Forms::DialogResult result =
-		System::Windows::Forms::MessageBox::Show(
-			"Are you sure you want to exit?", // Message
-			"Exit Application",              // Title
-			System::Windows::Forms::MessageBoxButtons::YesNo,
-			System::Windows::Forms::MessageBoxIcon::Question
-		);
-
-	// Check if the user clicked "Yes"
-	if (result == System::Windows::Forms::DialogResult::Yes) {
-		this->Hide();
-	}
-}
 private: System::Void button5_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
 	button5->BackColor = System::Drawing::Color::Black;
-	   }
-
-			  // MouseLeave event handler
+	   }		 
 private: System::Void button5_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
 	button5->BackColor = System::Drawing::Color::FromArgb(162, 0, 23);
 }
 private: System::Void button1_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
 	button1->BackColor = System::Drawing::Color::Black;
-}
-
-	   // MouseLeave event handler
+}	 
 private: System::Void button1_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
 	button1->BackColor = System::Drawing::Color::FromArgb(162, 0, 23);
 }
@@ -425,7 +408,6 @@ private: System::Void button7_MouseEnter(System::Object^ sender, System::EventAr
 	button7->BackColor = System::Drawing::Color::Black;
 }
 
-			  // MouseLeave event handler
 private: System::Void button7_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
 	button7->BackColor = System::Drawing::Color::FromArgb(162, 0, 23);
 }

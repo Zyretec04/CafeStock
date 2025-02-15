@@ -41,7 +41,10 @@ namespace CafeStock {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::Button^ DashExit;
+
+
+
 
 
 
@@ -69,8 +72,7 @@ namespace CafeStock {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			this->DashExit = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// label3
@@ -89,6 +91,7 @@ namespace CafeStock {
 			// label2
 			// 
 			this->label2->BackColor = System::Drawing::Color::Transparent;
+			this->label2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Romantic", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(2)));
 			this->label2->ForeColor = System::Drawing::Color::Firebrick;
@@ -97,6 +100,7 @@ namespace CafeStock {
 			this->label2->Size = System::Drawing::Size(579, 156);
 			this->label2->TabIndex = 4;
 			this->label2->Text = resources->GetString(L"label2.Text");
+			this->label2->Click += gcnew System::EventHandler(this, &Dashboard::label2_Click);
 			// 
 			// label1
 			// 
@@ -111,32 +115,53 @@ namespace CafeStock {
 			this->label1->TabIndex = 3;
 			this->label1->Text = L"About";
 			// 
-			// pictureBox1
+			// DashExit
 			// 
-			this->pictureBox1->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(0, 0);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(745, 544);
-			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->pictureBox1->TabIndex = 1;
-			this->pictureBox1->TabStop = false;
+			this->DashExit->BackColor = System::Drawing::Color::Transparent;
+			this->DashExit->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"DashExit.BackgroundImage")));
+			this->DashExit->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->DashExit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->DashExit->Location = System::Drawing::Point(671, 27);
+			this->DashExit->Name = L"DashExit";
+			this->DashExit->Size = System::Drawing::Size(46, 48);
+			this->DashExit->TabIndex = 8;
+			this->DashExit->UseVisualStyleBackColor = false;
+			this->DashExit->Click += gcnew System::EventHandler(this, &Dashboard::DashExit_Click);
 			// 
 			// Dashboard
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
+			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->Controls->Add(this->DashExit);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->pictureBox1);
 			this->Name = L"Dashboard";
 			this->Size = System::Drawing::Size(745, 544);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	};
+	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	}
+private: System::Void DashExit_Click(System::Object^ sender, System::EventArgs^ e) {
+	// Show a confirmation dialog
+	System::Windows::Forms::DialogResult result =
+		System::Windows::Forms::MessageBox::Show(
+			"Are you sure you want to exit?", // Message
+			"Exit Application",              // Title
+			System::Windows::Forms::MessageBoxButtons::YesNo,
+			System::Windows::Forms::MessageBoxIcon::Question
+		);
+
+	// Check if the user clicked "Yes"
+	if (result == System::Windows::Forms::DialogResult::Yes) {
+		System::Windows::Forms::Application::Exit(); // Exit the application
+	}
+}
+};
 }
