@@ -395,7 +395,6 @@ private: System::Void pictureBox2_Click_1(System::Object^ sender, System::EventA
 private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	// Show a confirmation dialog
 	System::Windows::Forms::DialogResult result =
 		System::Windows::Forms::MessageBox::Show(
 			"Are you sure you want to exit?", // Message

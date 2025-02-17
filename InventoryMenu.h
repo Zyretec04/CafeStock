@@ -19,9 +19,17 @@ namespace CafeStock {
 		InventoryMenu(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+			if (dataGridView1->Columns->Count == 0)
+			{
+				dataGridView1->Columns->Add("Item_ID", "Item ID");
+				dataGridView1->Columns->Add("Item_Name", "Item Name");
+				dataGridView1->Columns->Add("Item_Category", "Item Category");	
+				dataGridView1->Columns->Add("Item_Quantity", "Item Quantity");
+			}
+			
+			dataGridView1->Rows->Add("01","Pancit","Food","1000");
+			dataGridView1->Rows->Add("02","Pusit","Food","700");
+
 		}
 
 	protected:
@@ -100,6 +108,7 @@ namespace CafeStock {
 			this->button1->Size = System::Drawing::Size(46, 36);
 			this->button1->TabIndex = 6;
 			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &InventoryMenu::button1_Click);
 			// 
 			// textBox1
 			// 
@@ -107,12 +116,17 @@ namespace CafeStock {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(474, 20);
 			this->textBox1->TabIndex = 5;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &InventoryMenu::textBox1_TextChanged);
 			// 
 			// dataGridView1
 			// 
+			this->dataGridView1->AllowUserToAddRows = false;
+			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Location = System::Drawing::Point(68, 135);
 			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->RowHeadersVisible = false;
+			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(609, 390);
 			this->dataGridView1->TabIndex = 4;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &InventoryMenu::dataGridView1_CellContentClick);
@@ -165,6 +179,24 @@ private: System::Void InventExit_Click(System::Object^ sender, System::EventArgs
 	if (result == System::Windows::Forms::DialogResult::Yes) {
 		System::Windows::Forms::Application::Exit(); // Exit the application
 	}
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ searchText = textBox1->Text;
+	for each (DataGridViewRow ^ row in dataGridView1->Rows) {
+		if (!row->IsNewRow) {
+			if (row->Cells["Item_Name"]->Value != nullptr &&
+				row->Cells["Item_Name"]->Value->ToString()->IndexOf(searchText, StringComparison::InvariantCultureIgnoreCase) >= 0) {
+				row->Visible = true;
+			}
+			else {
+				row->Visible = false;
+			}
+				
+		}
+	}
+}
+private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+
 }
 };
 }
