@@ -105,8 +105,8 @@ namespace CafeStock {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::Button^ button1;
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainLogin::typeid));
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
@@ -122,7 +122,6 @@ namespace CafeStock {
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			button1 = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->panel2->SuspendLayout();
@@ -133,19 +132,19 @@ namespace CafeStock {
 			// 
 			// button1
 			// 
-			button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			button1->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			button1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->button1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			button1->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			button1->Location = System::Drawing::Point(162, 413);
-			button1->Name = L"button1";
-			button1->Size = System::Drawing::Size(194, 63);
-			button1->TabIndex = 6;
-			button1->Text = L"Login";
-			button1->UseVisualStyleBackColor = false;
-			button1->Click += gcnew System::EventHandler(this, &MainLogin::button1_Click);
+			this->button1->ForeColor = System::Drawing::SystemColors::ButtonFace;
+			this->button1->Location = System::Drawing::Point(162, 413);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(194, 63);
+			this->button1->TabIndex = 6;
+			this->button1->Text = L"Login";
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &MainLogin::button1_Click);
 			// 
 			// panel1
 			// 
@@ -180,7 +179,7 @@ namespace CafeStock {
 			this->panel2->Controls->Add(this->pictureBox4);
 			this->panel2->Controls->Add(this->pictureBox3);
 			this->panel2->Controls->Add(this->button2);
-			this->panel2->Controls->Add(button1);
+			this->panel2->Controls->Add(this->button1);
 			this->panel2->Controls->Add(this->passTxt);
 			this->panel2->Controls->Add(this->uNameTxt);
 			this->panel2->Controls->Add(this->label6);

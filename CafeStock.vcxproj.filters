@@ -36,6 +36,9 @@
     <ClCompile Include="HistoryControll.cpp">
       <Filter>Resource Files\MenuGUI</Filter>
     </ClCompile>
+    <ClCompile Include="EditPopup.cpp">
+      <Filter>Resource Files\MenuGUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainLogin.h">
@@ -51,6 +54,9 @@
       <Filter>Resource Files\MenuGUI</Filter>
     </ClInclude>
     <ClInclude Include="HistoryControll.h">
+      <Filter>Resource Files\MenuGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="EditPopup.h">
       <Filter>Resource Files\MenuGUI</Filter>
     </ClInclude>
   </ItemGroup>

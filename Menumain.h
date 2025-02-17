@@ -373,54 +373,54 @@ namespace CafeStock {
 	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-private: System::Void flowLayoutPanel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	private: System::Void flowLayoutPanel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-	
-}
-private: System::Void menuContainer_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-}
-private: System::Void panel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-}
-private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
-	LoadUserControl(gcnew Dashboard()); // Replace 'Dashboard' with your control's class
-}
-private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
-	LoadUserControl(gcnew HistoryControll());
-}
-private: System::Void button5_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
-	button5->BackColor = System::Drawing::Color::Black;
-	   }		 
-private: System::Void button5_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
-	button5->BackColor = System::Drawing::Color::FromArgb(162, 0, 23);
-}
-private: System::Void button1_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
-	button1->BackColor = System::Drawing::Color::Black;
-}	 
-private: System::Void button1_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
-	button1->BackColor = System::Drawing::Color::FromArgb(162, 0, 23);
-}
-private: System::Void button7_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
-	button7->BackColor = System::Drawing::Color::Black;
-}
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 
-private: System::Void button7_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
-	button7->BackColor = System::Drawing::Color::FromArgb(162, 0, 23);
-}
-private: System::Void button8_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
-	button8->BackColor = System::Drawing::Color::Black;
-}
+	}
+	private: System::Void menuContainer_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
+	private: System::Void panel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
+	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+		LoadUserControl(gcnew Dashboard()); // Replace 'Dashboard' with your control's class
+	}
+	private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
+		LoadUserControl(gcnew HistoryControll());
+	}
+	private: System::Void button5_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
+		button5->BackColor = System::Drawing::Color::Black;
+	}
+	private: System::Void button5_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
+		button5->BackColor = System::Drawing::Color::FromArgb(162, 0, 23);
+	}
+	private: System::Void button1_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
+		button1->BackColor = System::Drawing::Color::Black;
+	}
+	private: System::Void button1_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
+		button1->BackColor = System::Drawing::Color::FromArgb(162, 0, 23);
+	}
+	private: System::Void button7_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
+		button7->BackColor = System::Drawing::Color::Black;
+	}
 
-	   // MouseLeave event handler
-private: System::Void button8_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
-	button8->BackColor = System::Drawing::Color::FromArgb(162, 0, 23);
-}
-private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
-	LoadUserControl(gcnew InventoryMenu());
-}
-};
+	private: System::Void button7_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
+		button7->BackColor = System::Drawing::Color::FromArgb(162, 0, 23);
+	}
+	private: System::Void button8_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
+		button8->BackColor = System::Drawing::Color::Black;
+	}
+
+		   // MouseLeave event handler
+	private: System::Void button8_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
+		button8->BackColor = System::Drawing::Color::FromArgb(162, 0, 23);
+	}
+	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+		LoadUserControl(gcnew InventoryMenu());
+	}
+	};
 }
