@@ -22,7 +22,7 @@ namespace CafeStock {
 			//
 			//TODO: Add the constructor code here
 			//
-			this->label2->BackColor = System::Drawing::Color::Transparent;
+			this->lblText->BackColor = System::Drawing::Color::Transparent;
 		}
 
 	protected:
@@ -36,21 +36,19 @@ namespace CafeStock {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::Label^ lblTitle;
+	private: System::Windows::Forms::Label^ lblText;
+	protected:
 
-
-	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Button^ DashExit;
-
-
+	protected:
 
 
 
 
+	private: System::Windows::Forms::Label^ lblHeader;
 
-
-
+	private: System::Windows::Forms::Button^ BttnExit;
+	private: System::Windows::Forms::Button^ BttnMinimize;
 
 	protected:
 
@@ -69,64 +67,86 @@ namespace CafeStock {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Dashboard::typeid));
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->DashExit = (gcnew System::Windows::Forms::Button());
+			this->lblTitle = (gcnew System::Windows::Forms::Label());
+			this->lblText = (gcnew System::Windows::Forms::Label());
+			this->lblHeader = (gcnew System::Windows::Forms::Label());
+			this->BttnExit = (gcnew System::Windows::Forms::Button());
+			this->BttnMinimize = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
-			// label3
+			// lblTitle
 			// 
-			this->label3->AutoSize = true;
-			this->label3->BackColor = System::Drawing::Color::Transparent;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Unispace", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lblTitle->AutoSize = true;
+			this->lblTitle->BackColor = System::Drawing::Color::Transparent;
+			this->lblTitle->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->ForeColor = System::Drawing::Color::Firebrick;
-			this->label3->Location = System::Drawing::Point(245, 124);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(249, 35);
-			this->label3->TabIndex = 5;
-			this->label3->Text = L"Welcome User!";
+			this->lblTitle->ForeColor = System::Drawing::Color::Firebrick;
+			this->lblTitle->Location = System::Drawing::Point(245, 124);
+			this->lblTitle->Name = L"lblTitle";
+			this->lblTitle->Size = System::Drawing::Size(228, 33);
+			this->lblTitle->TabIndex = 5;
+			this->lblTitle->Text = L"Welcome User!";
 			// 
-			// label2
+			// lblText
 			// 
-			this->label2->BackColor = System::Drawing::Color::Transparent;
-			this->label2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Romantic", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lblText->BackColor = System::Drawing::Color::Transparent;
+			this->lblText->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->lblText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(2)));
-			this->label2->ForeColor = System::Drawing::Color::Firebrick;
-			this->label2->Location = System::Drawing::Point(83, 252);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(579, 156);
-			this->label2->TabIndex = 4;
-			this->label2->Text = resources->GetString(L"label2.Text");
-			this->label2->Click += gcnew System::EventHandler(this, &Dashboard::label2_Click);
+			this->lblText->ForeColor = System::Drawing::Color::Firebrick;
+			this->lblText->Location = System::Drawing::Point(83, 252);
+			this->lblText->Name = L"lblText";
+			this->lblText->Size = System::Drawing::Size(579, 156);
+			this->lblText->TabIndex = 4;
+			this->lblText->Text = resources->GetString(L"lblText.Text");
+			this->lblText->Click += gcnew System::EventHandler(this, &Dashboard::lblText_Click);
 			// 
-			// label1
+			// lblHeader
 			// 
-			this->label1->AutoSize = true;
-			this->label1->BackColor = System::Drawing::Color::Transparent;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Unispace", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lblHeader->AutoSize = true;
+			this->lblHeader->BackColor = System::Drawing::Color::Transparent;
+			this->lblHeader->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->ForeColor = System::Drawing::Color::Firebrick;
-			this->label1->Location = System::Drawing::Point(82, 198);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(88, 29);
-			this->label1->TabIndex = 3;
-			this->label1->Text = L"About";
+			this->lblHeader->ForeColor = System::Drawing::Color::Firebrick;
+			this->lblHeader->Location = System::Drawing::Point(82, 198);
+			this->lblHeader->Name = L"lblHeader";
+			this->lblHeader->Size = System::Drawing::Size(80, 29);
+			this->lblHeader->TabIndex = 3;
+			this->lblHeader->Text = L"About";
 			// 
-			// DashExit
+			// BttnExit
 			// 
-			this->DashExit->BackColor = System::Drawing::Color::Transparent;
-			this->DashExit->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"DashExit.BackgroundImage")));
-			this->DashExit->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->DashExit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->DashExit->Location = System::Drawing::Point(671, 27);
-			this->DashExit->Name = L"DashExit";
-			this->DashExit->Size = System::Drawing::Size(46, 48);
-			this->DashExit->TabIndex = 8;
-			this->DashExit->UseVisualStyleBackColor = false;
-			this->DashExit->Click += gcnew System::EventHandler(this, &Dashboard::DashExit_Click);
+			this->BttnExit->BackColor = System::Drawing::Color::Transparent;
+			this->BttnExit->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->BttnExit->FlatAppearance->BorderSize = 0;
+			this->BttnExit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->BttnExit->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->BttnExit->ForeColor = System::Drawing::Color::Red;
+			this->BttnExit->Location = System::Drawing::Point(710, 0);
+			this->BttnExit->Name = L"BttnExit";
+			this->BttnExit->Size = System::Drawing::Size(35, 35);
+			this->BttnExit->TabIndex = 8;
+			this->BttnExit->Text = L"X";
+			this->BttnExit->UseVisualStyleBackColor = false;
+			this->BttnExit->Click += gcnew System::EventHandler(this, &Dashboard::BttnExit_Click);
+			// 
+			// BttnMinimize
+			// 
+			this->BttnMinimize->BackColor = System::Drawing::Color::Transparent;
+			this->BttnMinimize->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->BttnMinimize->FlatAppearance->BorderSize = 0;
+			this->BttnMinimize->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->BttnMinimize->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->BttnMinimize->ForeColor = System::Drawing::Color::Red;
+			this->BttnMinimize->Location = System::Drawing::Point(669, 0);
+			this->BttnMinimize->Name = L"BttnMinimize";
+			this->BttnMinimize->Size = System::Drawing::Size(35, 35);
+			this->BttnMinimize->TabIndex = 9;
+			this->BttnMinimize->Text = L"—";
+			this->BttnMinimize->UseVisualStyleBackColor = false;
+			this->BttnMinimize->Click += gcnew System::EventHandler(this, &Dashboard::BttnMinimize_Click);
 			// 
 			// Dashboard
 			// 
@@ -134,10 +154,11 @@ namespace CafeStock {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->Controls->Add(this->DashExit);
-			this->Controls->Add(this->label3);
-			this->Controls->Add(this->label2);
-			this->Controls->Add(this->label1);
+			this->Controls->Add(this->BttnMinimize);
+			this->Controls->Add(this->BttnExit);
+			this->Controls->Add(this->lblTitle);
+			this->Controls->Add(this->lblText);
+			this->Controls->Add(this->lblHeader);
 			this->Name = L"Dashboard";
 			this->Size = System::Drawing::Size(745, 544);
 			this->ResumeLayout(false);
@@ -145,10 +166,11 @@ namespace CafeStock {
 
 		}
 #pragma endregion
-	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	private: System::Void lblText_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	}
-private: System::Void DashExit_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void BttnExit_Click(System::Object^ sender, System::EventArgs^ e) {
 	// Show a confirmation dialog
 	System::Windows::Forms::DialogResult result =
 		System::Windows::Forms::MessageBox::Show(
@@ -162,6 +184,8 @@ private: System::Void DashExit_Click(System::Object^ sender, System::EventArgs^ 
 	if (result == System::Windows::Forms::DialogResult::Yes) {
 		System::Windows::Forms::Application::Exit(); // Exit the application
 	}
+}
+private: System::Void BttnMinimize_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
