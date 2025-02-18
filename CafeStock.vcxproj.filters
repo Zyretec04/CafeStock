@@ -36,11 +36,11 @@
     <ClCompile Include="HistoryControll.cpp">
       <Filter>Resource Files\MenuGUI</Filter>
     </ClCompile>
-    <ClCompile Include="EditPopup.cpp">
-      <Filter>Resource Files\MenuGUI</Filter>
-    </ClCompile>
     <ClCompile Include="Register.cpp">
       <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PopupEdit.cpp">
+      <Filter>Resource Files\MenuGUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -59,11 +59,11 @@
     <ClInclude Include="HistoryControll.h">
       <Filter>Resource Files\MenuGUI</Filter>
     </ClInclude>
-    <ClInclude Include="EditPopup.h">
-      <Filter>Resource Files\MenuGUI</Filter>
-    </ClInclude>
     <ClInclude Include="Register.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PopupEdit.h">
+      <Filter>Resource Files\MenuGUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

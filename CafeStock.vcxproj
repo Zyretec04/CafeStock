@@ -122,18 +122,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dashboard.cpp" />
-    <ClCompile Include="EditPopup.cpp" />
     <ClCompile Include="HistoryControll.cpp" />
     <ClCompile Include="InventoryMenu.cpp" />
     <ClCompile Include="MainLogin.cpp" />
     <ClCompile Include="Menumain.cpp" />
+    <ClCompile Include="PopupEdit.cpp" />
     <ClCompile Include="Register.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dashboard.h">
-      <FileType>CppControl</FileType>
-    </ClInclude>
-    <ClInclude Include="EditPopup.h">
       <FileType>CppControl</FileType>
     </ClInclude>
     <ClInclude Include="HistoryControll.h">
@@ -148,6 +145,9 @@
     <ClInclude Include="Menumain.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="PopupEdit.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Register.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -155,9 +155,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditPopup.resx">
-      <DependentUpon>EditPopup.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HistoryControll.resx">
       <DependentUpon>HistoryControll.h</DependentUpon>
@@ -170,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Menumain.resx">
       <DependentUpon>Menumain.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupEdit.resx">
+      <DependentUpon>PopupEdit.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.h</DependentUpon>

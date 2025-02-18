@@ -27,8 +27,15 @@ namespace CafeStock {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::Button^ btnEdit;
+	private: System::Void btnEdit_Click(System::Object^ sender, System::EventArgs^ e);
+	protected:
 
-	private: System::Windows::Forms::Button^ button2;
+	protected:
+
+	protected:
+
+
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
@@ -40,7 +47,7 @@ namespace CafeStock {
 		   void InitializeComponent(void)
 		   {
 			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(InventoryMenu::typeid));
-			   this->button2 = (gcnew System::Windows::Forms::Button());
+			   this->btnEdit = (gcnew System::Windows::Forms::Button());
 			   this->button1 = (gcnew System::Windows::Forms::Button());
 			   this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			   this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
@@ -48,19 +55,19 @@ namespace CafeStock {
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			   this->SuspendLayout();
 			   // 
-			   // button2
+			   // btnEdit
 			   // 
-			   this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(162)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+			   this->btnEdit->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(162)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(23)));
-			   this->button2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			   this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			   this->button2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button2.Image")));
-			   this->button2->Location = System::Drawing::Point(848, 96);
-			   this->button2->Margin = System::Windows::Forms::Padding(4);
-			   this->button2->Name = L"button2";
-			   this->button2->Size = System::Drawing::Size(55, 44);
-			   this->button2->TabIndex = 7;
-			   this->button2->UseVisualStyleBackColor = false;
+			   this->btnEdit->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			   this->btnEdit->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			   this->btnEdit->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnEdit.Image")));
+			   this->btnEdit->Location = System::Drawing::Point(636, 78);
+			   this->btnEdit->Name = L"btnEdit";
+			   this->btnEdit->Size = System::Drawing::Size(41, 36);
+			   this->btnEdit->TabIndex = 7;
+			   this->btnEdit->UseVisualStyleBackColor = false;
+			   this->btnEdit->Click += gcnew System::EventHandler(this, &InventoryMenu::btnEdit_Click);
 			   // 
 			   // button1
 			   // 
@@ -69,20 +76,18 @@ namespace CafeStock {
 			   this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			   this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			   this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
-			   this->button1->Location = System::Drawing::Point(753, 96);
-			   this->button1->Margin = System::Windows::Forms::Padding(4);
+			   this->button1->Location = System::Drawing::Point(565, 78);
 			   this->button1->Name = L"button1";
-			   this->button1->Size = System::Drawing::Size(61, 44);
+			   this->button1->Size = System::Drawing::Size(46, 36);
 			   this->button1->TabIndex = 6;
 			   this->button1->UseVisualStyleBackColor = false;
 			   this->button1->Click += gcnew System::EventHandler(this, &InventoryMenu::button1_Click);
 			   // 
 			   // textBox1
 			   // 
-			   this->textBox1->Location = System::Drawing::Point(91, 107);
-			   this->textBox1->Margin = System::Windows::Forms::Padding(4);
+			   this->textBox1->Location = System::Drawing::Point(68, 87);
 			   this->textBox1->Name = L"textBox1";
-			   this->textBox1->Size = System::Drawing::Size(631, 22);
+			   this->textBox1->Size = System::Drawing::Size(474, 20);
 			   this->textBox1->TabIndex = 5;
 			   this->textBox1->TextChanged += gcnew System::EventHandler(this, &InventoryMenu::textBox1_TextChanged);
 			   // 
@@ -95,13 +100,12 @@ namespace CafeStock {
 			   this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			   this->dataGridView1->ClipboardCopyMode = System::Windows::Forms::DataGridViewClipboardCopyMode::EnableAlwaysIncludeHeaderText;
 			   this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			   this->dataGridView1->Location = System::Drawing::Point(91, 166);
-			   this->dataGridView1->Margin = System::Windows::Forms::Padding(4);
+			   this->dataGridView1->Location = System::Drawing::Point(68, 135);
 			   this->dataGridView1->Name = L"dataGridView1";
 			   this->dataGridView1->RowHeadersVisible = false;
 			   this->dataGridView1->RowHeadersWidth = 51;
 			   this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			   this->dataGridView1->Size = System::Drawing::Size(812, 480);
+			   this->dataGridView1->Size = System::Drawing::Size(609, 390);
 			   this->dataGridView1->TabIndex = 4;
 			   this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &InventoryMenu::dataGridView1_CellContentClick);
 			   // 
@@ -111,28 +115,26 @@ namespace CafeStock {
 			   this->InventExit->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"InventExit.BackgroundImage")));
 			   this->InventExit->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			   this->InventExit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->InventExit->Location = System::Drawing::Point(913, 20);
-			   this->InventExit->Margin = System::Windows::Forms::Padding(4);
+			   this->InventExit->Location = System::Drawing::Point(685, 16);
 			   this->InventExit->Name = L"InventExit";
-			   this->InventExit->Size = System::Drawing::Size(61, 59);
+			   this->InventExit->Size = System::Drawing::Size(46, 48);
 			   this->InventExit->TabIndex = 8;
 			   this->InventExit->UseVisualStyleBackColor = false;
 			   this->InventExit->Click += gcnew System::EventHandler(this, &InventoryMenu::InventExit_Click);
 			   // 
 			   // InventoryMenu
 			   // 
-			   this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			   this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			   this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			   this->Controls->Add(this->InventExit);
-			   this->Controls->Add(this->button2);
+			   this->Controls->Add(this->btnEdit);
 			   this->Controls->Add(this->button1);
 			   this->Controls->Add(this->textBox1);
 			   this->Controls->Add(this->dataGridView1);
-			   this->Margin = System::Windows::Forms::Padding(4);
 			   this->Name = L"InventoryMenu";
-			   this->Size = System::Drawing::Size(993, 670);
+			   this->Size = System::Drawing::Size(745, 544);
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			   this->ResumeLayout(false);
 			   this->PerformLayout();
@@ -170,9 +172,9 @@ namespace CafeStock {
 			dataTable->DefaultView->RowFilter = String::Format("Item_Name LIKE '%{0}%'", searchText->Replace("'", "''"));
 		}
 	}
-	private:
+	public:
 		void LoadDataFromDatabase() {
-			String^ connectionString = "Data Source=LAPTOP-JM0T2KKH\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=123";
+			String^ connectionString = "Data Source=DESKTOP-7R4GRV2\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=12345";
 			String^ query = "SELECT * FROM tblItems";
 			try {
 				SqlConnection^ con = gcnew SqlConnection(connectionString);
@@ -188,5 +190,6 @@ namespace CafeStock {
 				MessageBox::Show("Error loading data: " + ex->Message);
 			}
 		};
-	};
+	 
+};
 }
