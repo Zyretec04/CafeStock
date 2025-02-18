@@ -19,8 +19,8 @@ int main(array<String^>^ args) {
 
 System::Void CafeStock::MainLogin::bttnLogin_Click(System::Object^ sender, System::EventArgs^ e) {
     // Get the input values from the textboxes
-    System::String^ username = this->uNameTxt->Text;
-    System::String^ password = this->passTxt->Text;
+    System::String^ username = this->txtUsername->Text;
+    System::String^ password = this->txtPassword->Text;
 
     // 🔹 Input validation: Check if username or password is empty
     if (System::String::IsNullOrWhiteSpace(username)) {
@@ -37,7 +37,7 @@ System::Void CafeStock::MainLogin::bttnLogin_Click(System::Object^ sender, Syste
         return; // Exit the function
     }
 
-    System::String^ connString = "Data Source=LAPTOP-JM0T2KKH\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=123;TrustServerCertificate=True";
+    System::String^ connString = "Data Source=DESKTOP-7R4GRV2\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=12345;TrustServerCertificate=True";
 
     // // Define hardcoded credentials for simplicity (replace with database query in production)
     // System::String^ adminUsername = "admin";
