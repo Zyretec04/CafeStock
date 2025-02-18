@@ -1,38 +1,38 @@
 #pragma once
-#include "Menumain.h"
-#include "InventoryMenu.h"
-
-using namespace System;
-using namespace System::ComponentModel;
-using namespace System::Collections;
-using namespace System::Windows::Forms;
-using namespace System::Data;
-using namespace System::Drawing;
-
 
 namespace CafeStock {
 
-	/// <summary>
-	/// Summary for EditPopup
-	/// </summary>
-	public ref class EditPopup : public System::Windows::Forms::UserControl
+	using namespace System;
+	using namespace System::ComponentModel;
+	using namespace System::Collections;
+	using namespace System::Windows::Forms;
+	using namespace System::Data;
+	using namespace System::Drawing;
 
+	/// <summary>
+	/// Summary for PopupEdit
+	/// </summary>
+	public ref class PopupEdit : public System::Windows::Forms::Form
 	{
-	private:
-		Menumain^ mainForm;
 	public:
-		EditPopup(Menumain^ parentForm)
+		PopupEdit(void)
 		{
 			InitializeComponent();
 
-			mainForm = parentForm;
+			// Populate the ComboBox with predefined values
+			this->editCombo->Items->Add("Utensils");
+			this->editCombo->Items->Add("Meat");
+			this->editCombo->Items->Add("Drink");
+
+			// Set default selection (optional)
+			this->editCombo->SelectedIndex = 0;
 		}
 
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~EditPopup()
+		~PopupEdit()
 		{
 			if (components)
 			{
@@ -40,29 +40,24 @@ namespace CafeStock {
 			}
 		}
 	private: System::Windows::Forms::Panel^ panel1;
-	private: System::Windows::Forms::Button^ HistoryExit;
-	private: System::Windows::Forms::Button^ btnAdd;
-
-
+	private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void btnBack_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void editCombo_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
+	protected:
+	private: System::Windows::Forms::TextBox^ txtQuant;
+	private: System::Windows::Forms::Label^ lblQuant;
+	private: System::Windows::Forms::TextBox^ txtItemName;
 	private: System::Windows::Forms::ComboBox^ editCombo;
 	private: System::Windows::Forms::Label^ lblType;
 	private: System::Windows::Forms::Label^ lblName;
-
-
-
-	private: System::Windows::Forms::Label^ lblQuant;
-	private: System::Windows::Forms::TextBox^ txtItemName;
-	private: System::Windows::Forms::TextBox^ txtQuant;
-
-
-
-	protected:
+	private: System::Windows::Forms::Button^ btnAdd;
+	private: System::Windows::Forms::Button^ HistoryExit;
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container^ components;
+		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -71,7 +66,7 @@ namespace CafeStock {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(EditPopup::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(PopupEdit::typeid));
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->txtQuant = (gcnew System::Windows::Forms::TextBox());
 			this->lblQuant = (gcnew System::Windows::Forms::Label());
@@ -95,10 +90,10 @@ namespace CafeStock {
 			this->panel1->Controls->Add(this->lblType);
 			this->panel1->Controls->Add(this->lblName);
 			this->panel1->Controls->Add(this->btnAdd);
-			this->panel1->Location = System::Drawing::Point(60, 94);
+			this->panel1->Location = System::Drawing::Point(151, 97);
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(613, 418);
-			this->panel1->TabIndex = 0;
+			this->panel1->TabIndex = 10;
 			// 
 			// txtQuant
 			// 
@@ -122,7 +117,6 @@ namespace CafeStock {
 			this->lblQuant->Size = System::Drawing::Size(77, 21);
 			this->lblQuant->TabIndex = 13;
 			this->lblQuant->Text = L"Quantity:";
-			this->lblQuant->Click += gcnew System::EventHandler(this, &EditPopup::lblQuant_Click);
 			// 
 			// txtItemName
 			// 
@@ -181,6 +175,7 @@ namespace CafeStock {
 			this->btnAdd->TabIndex = 8;
 			this->btnAdd->Text = L"Add";
 			this->btnAdd->UseVisualStyleBackColor = false;
+			this->btnAdd->Click += gcnew System::EventHandler(this, &PopupEdit::btnAdd_Click);
 			// 
 			// HistoryExit
 			// 
@@ -189,46 +184,30 @@ namespace CafeStock {
 			this->HistoryExit->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->HistoryExit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->HistoryExit->ForeColor = System::Drawing::Color::Transparent;
-			this->HistoryExit->Location = System::Drawing::Point(675, 26);
+			this->HistoryExit->Location = System::Drawing::Point(904, 12);
 			this->HistoryExit->Name = L"HistoryExit";
 			this->HistoryExit->Size = System::Drawing::Size(46, 48);
-			this->HistoryExit->TabIndex = 9;
+			this->HistoryExit->TabIndex = 11;
 			this->HistoryExit->UseVisualStyleBackColor = false;
-			this->HistoryExit->Click += gcnew System::EventHandler(this, &EditPopup::HistoryExit_Click);
 			// 
-			// EditPopup
+			// PopupEdit
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::Control;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->Controls->Add(this->HistoryExit);
+			this->ClientSize = System::Drawing::Size(962, 544);
 			this->Controls->Add(this->panel1);
-			this->Name = L"EditPopup";
-			this->Size = System::Drawing::Size(745, 544);
+			this->Controls->Add(this->HistoryExit);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->Name = L"PopupEdit";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
+			this->Text = L"PopupEdit";
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	private: System::Void HistoryExit_Click(System::Object^ sender, System::EventArgs^ e) {
-		// Show a confirmation dialog
-		System::Windows::Forms::DialogResult result =
-			System::Windows::Forms::MessageBox::Show(
-				"Are you sure you want to exit?", // Message
-				"Exit Application",              // Title
-				System::Windows::Forms::MessageBoxButtons::YesNo,
-				System::Windows::Forms::MessageBoxIcon::Question
-			);
-
-		// Check if the user clicked "Yes"
-		if (result == System::Windows::Forms::DialogResult::Yes) {
-			System::Windows::Forms::Application::Exit(); // Exit the application
-		}
-	}
-	private: System::Void lblQuant_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	};
+};
 }
