@@ -1,6 +1,7 @@
 #include "Menumain.h"
 #include "MainLogin.h"
-//test//
+#include "InventoryMenu.h"
+
 using namespace System;
 using namespace System::Windows::Forms;
 
@@ -25,3 +26,4 @@ System::Void CafeStock::Menumain::button8_Click(System::Object^ sender, System::
         this->Close();
     }
 }
+

@@ -2,6 +2,7 @@
 #include "Dashboard.h"
 #include "InventoryMenu.h"
 #include "HistoryControll.h" 
+#include "EditPopup1.h"
 ref class MainLogin;
 namespace CafeStock {
 
@@ -33,6 +34,7 @@ namespace CafeStock {
 			this->button8->MouseLeave += gcnew System::EventHandler(this, &Menumain::button8_MouseLeave);
 			this->AllowDrop = false;
 
+
 		}
 
 	protected:
@@ -51,6 +53,8 @@ namespace CafeStock {
 	private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e);
+	public: InventoryMenu^ inventoryMenu = nullptr;
+
 
 
 
@@ -420,7 +424,10 @@ namespace CafeStock {
 		button8->BackColor = System::Drawing::Color::FromArgb(162, 0, 23);
 	}
 	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
-		LoadUserControl(gcnew InventoryMenu());
+		if (inventoryMenu == nullptr) {
+			inventoryMenu = gcnew InventoryMenu();  // Create only if it doesn't exist
+		}
+		LoadUserControl(inventoryMenu);
 	}
 	};
 }

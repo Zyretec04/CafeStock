@@ -16,7 +16,7 @@ System::Void CafeStock::Register::lblRegis_Click(System::Object^ sender, System:
 // Database Connection String
 
 System::Void CafeStock::Register::button1_Click(System::Object^ sender, System::EventArgs^ e) {
-    System::String^ connString = "Data Source=AEL2\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=123456;Integrated Security=False";
+    System::String^ connString = "Data Source=DESKTOP-7R4GRV2\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=12345;Integrated Security=False";
     // Get user input from form fields
     System::String^ username = uNameTxt->Text;
     System::String^ password = passTxt->Text;
