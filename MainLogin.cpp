@@ -19,8 +19,8 @@ int main(array<String^>^ args) {
 
 System::Void CafeStock::MainLogin::bttnLogin_Click(System::Object^ sender, System::EventArgs^ e) {
     // Get the input values from the textboxes
-    System::String^ username = this->uNameTxt->Text;
-    System::String^ password = this->passTxt->Text;
+    System::String^ username = this->txtUsername->Text;
+    System::String^ password = this->txtPassword->Text;
 
     // 🔹 Input validation: Check if username or password is empty
     if (System::String::IsNullOrWhiteSpace(username)) {

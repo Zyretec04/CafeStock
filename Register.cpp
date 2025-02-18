@@ -18,9 +18,9 @@ System::Void CafeStock::Register::lblRegis_Click(System::Object^ sender, System:
 System::Void CafeStock::Register::button1_Click(System::Object^ sender, System::EventArgs^ e) {
     System::String^ connString = "Data Source=AEL2\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=123456;Integrated Security=False";
     // Get user input from form fields
-    System::String^ username = uNameTxt->Text;
-    System::String^ password = passTxt->Text;
-    System::String^ confirmPassword = textBox1->Text;
+    System::String^ username = txtUsername->Text;
+    System::String^ password = txtPassword->Text;
+    System::String^ confirmPassword = txtConfirmPass->Text;
 
     // Check if fields are empty
     if (username->Trim() == "" || password->Trim() == "" || confirmPassword->Trim() == "") {
