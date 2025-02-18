@@ -40,8 +40,10 @@ namespace CafeStock {
 	protected:
 	private: System::Void bttnLogin_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void label7_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ lblTitle1;
+
+	private: System::Windows::Forms::Label^ lblTitle2;
+
 	private: System::Windows::Forms::PictureBox^ pictureBox2;
 	private: System::Windows::Forms::Panel^ panel1;
 	private: System::Windows::Forms::Panel^ panel2;
@@ -84,8 +86,8 @@ namespace CafeStock {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainLogin::typeid));
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->lblTitle1 = (gcnew System::Windows::Forms::Label());
+			this->lblTitle2 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
@@ -110,37 +112,40 @@ namespace CafeStock {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// label1
+			// lblTitle1
 			// 
-			this->label1->AutoSize = true;
-			this->label1->BackColor = System::Drawing::Color::Transparent;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lblTitle1->BackColor = System::Drawing::Color::Transparent;
+			this->lblTitle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->ForeColor = System::Drawing::SystemColors::Control;
-			this->label1->Location = System::Drawing::Point(141, 306);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(141, 31);
-			this->label1->TabIndex = 1;
-			this->label1->Text = L"CafeStock";
+			this->lblTitle1->ForeColor = System::Drawing::SystemColors::Control;
+			this->lblTitle1->Location = System::Drawing::Point(0, 306);
+			this->lblTitle1->Name = L"lblTitle1";
+			this->lblTitle1->Size = System::Drawing::Size(445, 31);
+			this->lblTitle1->TabIndex = 1;
+			this->lblTitle1->Text = L"CafeStock";
+			this->lblTitle1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
-			// label2
+			// lblTitle2
 			// 
-			this->label2->AutoSize = true;
-			this->label2->BackColor = System::Drawing::Color::Transparent;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lblTitle2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->lblTitle2->BackColor = System::Drawing::Color::Transparent;
+			this->lblTitle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->ForeColor = System::Drawing::SystemColors::Control;
-			this->label2->Location = System::Drawing::Point(114, 358);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(177, 25);
-			this->label2->TabIndex = 2;
-			this->label2->Text = L"Inventory System";
+			this->lblTitle2->ForeColor = System::Drawing::SystemColors::Control;
+			this->lblTitle2->Location = System::Drawing::Point(0, 344);
+			this->lblTitle2->Name = L"lblTitle2";
+			this->lblTitle2->Size = System::Drawing::Size(445, 25);
+			this->lblTitle2->TabIndex = 2;
+			this->lblTitle2->Text = L"Inventory System";
+			this->lblTitle2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// pictureBox2
 			// 
 			this->pictureBox2->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(104, 135);
+			this->pictureBox2->Location = System::Drawing::Point(111, 135);
 			this->pictureBox2->Name = L"pictureBox2";
 			this->pictureBox2->Size = System::Drawing::Size(231, 167);
 			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -154,8 +159,8 @@ namespace CafeStock {
 			this->panel1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->panel1->Controls->Add(this->pictureBox2);
 			this->panel1->Controls->Add(this->panel2);
-			this->panel1->Controls->Add(this->label2);
-			this->panel1->Controls->Add(this->label1);
+			this->panel1->Controls->Add(this->lblTitle2);
+			this->panel1->Controls->Add(this->lblTitle1);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel1->Location = System::Drawing::Point(0, 0);
 			this->panel1->Name = L"panel1";
@@ -372,7 +377,6 @@ namespace CafeStock {
 			this->Load += gcnew System::EventHandler(this, &MainLogin::MainLogin_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->panel1->ResumeLayout(false);
-			this->panel1->PerformLayout();
 			this->panel2->ResumeLayout(false);
 			this->panel2->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
@@ -431,7 +435,7 @@ private: System::Void BttnExit_Click(System::Object^ sender, System::EventArgs^ 
 	}
 }
 private: System::Void BttnMinimize_Click(System::Object^ sender, System::EventArgs^ e) {
-
+	this->WindowState = System::Windows::Forms::FormWindowState::Minimized;
 }
 };
 }
