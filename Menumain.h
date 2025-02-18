@@ -3,8 +3,8 @@
 #include "InventoryMenu.h"
 #include "HistoryControll.h" 
 ref class MainLogin;
-namespace CafeStock {
 
+namespace CafeStock {
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -46,59 +46,29 @@ namespace CafeStock {
 				delete components;
 			}
 		}
-
 	protected:
 	private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e);
-
-
-
-
-
-
-
-
-
-
-
-
-
 	private: System::Windows::Forms::Panel^ panel2;
 	private: System::Windows::Forms::Button^ button2;
-
-
 	private: System::Windows::Forms::Panel^ panel4;
 	private: System::Windows::Forms::Button^ button4;
 	private: System::Windows::Forms::Panel^ panel5;
 	private: System::Windows::Forms::Button^ button5;
-
-
-
-
 	private: System::Windows::Forms::Timer^ menuTransition;
 	private: System::Windows::Forms::Panel^ panel7;
 	private: System::Windows::Forms::Button^ button7;
 	private: System::Windows::Forms::Panel^ panel8;
 	private: System::Windows::Forms::Button^ button8;
-
-
 	private: System::Windows::Forms::Panel^ mainPanel;
 	private: System::Windows::Forms::Panel^ panel1;
 	private: System::Windows::Forms::Button^ button1;
-
-
-
-
-
 	private: System::ComponentModel::IContainer^ components;
-
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-
-
 #pragma region Windows Form Designer generated code
 		/// <summary>
 		/// Required method for Designer support - do not modify

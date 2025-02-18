@@ -21,9 +21,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MainLogin.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Menumain.cpp">
       <Filter>Resource Files\MainMenu</Filter>
     </ClCompile>
@@ -39,8 +36,12 @@
     <ClCompile Include="Register.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+
+    <ClCompile Include="MainLogin.cpp">
+      <Filter>Header Files</Filter>
     <ClCompile Include="PopupEdit.cpp">
       <Filter>Resource Files\MenuGUI</Filter>
+
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
