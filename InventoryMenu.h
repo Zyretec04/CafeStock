@@ -56,7 +56,7 @@ namespace CafeStock {
 			   this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			   this->button2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button2.Image")));
 			   this->button2->Location = System::Drawing::Point(848, 96);
-			   this->button2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->button2->Margin = System::Windows::Forms::Padding(4);
 			   this->button2->Name = L"button2";
 			   this->button2->Size = System::Drawing::Size(55, 44);
 			   this->button2->TabIndex = 7;
@@ -70,7 +70,7 @@ namespace CafeStock {
 			   this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			   this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
 			   this->button1->Location = System::Drawing::Point(753, 96);
-			   this->button1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->button1->Margin = System::Windows::Forms::Padding(4);
 			   this->button1->Name = L"button1";
 			   this->button1->Size = System::Drawing::Size(61, 44);
 			   this->button1->TabIndex = 6;
@@ -80,7 +80,7 @@ namespace CafeStock {
 			   // textBox1
 			   // 
 			   this->textBox1->Location = System::Drawing::Point(91, 107);
-			   this->textBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->textBox1->Margin = System::Windows::Forms::Padding(4);
 			   this->textBox1->Name = L"textBox1";
 			   this->textBox1->Size = System::Drawing::Size(631, 22);
 			   this->textBox1->TabIndex = 5;
@@ -93,9 +93,10 @@ namespace CafeStock {
 			   this->dataGridView1->AllowUserToResizeColumns = false;
 			   this->dataGridView1->AllowUserToResizeRows = false;
 			   this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+			   this->dataGridView1->ClipboardCopyMode = System::Windows::Forms::DataGridViewClipboardCopyMode::EnableAlwaysIncludeHeaderText;
 			   this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			   this->dataGridView1->Location = System::Drawing::Point(91, 166);
-			   this->dataGridView1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->dataGridView1->Margin = System::Windows::Forms::Padding(4);
 			   this->dataGridView1->Name = L"dataGridView1";
 			   this->dataGridView1->RowHeadersVisible = false;
 			   this->dataGridView1->RowHeadersWidth = 51;
@@ -111,7 +112,7 @@ namespace CafeStock {
 			   this->InventExit->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			   this->InventExit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->InventExit->Location = System::Drawing::Point(913, 20);
-			   this->InventExit->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->InventExit->Margin = System::Windows::Forms::Padding(4);
 			   this->InventExit->Name = L"InventExit";
 			   this->InventExit->Size = System::Drawing::Size(61, 59);
 			   this->InventExit->TabIndex = 8;
@@ -129,7 +130,7 @@ namespace CafeStock {
 			   this->Controls->Add(this->button1);
 			   this->Controls->Add(this->textBox1);
 			   this->Controls->Add(this->dataGridView1);
-			   this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->Margin = System::Windows::Forms::Padding(4);
 			   this->Name = L"InventoryMenu";
 			   this->Size = System::Drawing::Size(993, 670);
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
@@ -171,7 +172,7 @@ namespace CafeStock {
 	}
 	private:
 		void LoadDataFromDatabase() {
-			String^ connectionString = "Data Source=AEL2\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=123456;Integrated Security=False";
+			String^ connectionString = "Data Source=LAPTOP-JM0T2KKH\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=123";
 			String^ query = "SELECT * FROM tblItems";
 			try {
 				SqlConnection^ con = gcnew SqlConnection(connectionString);
