@@ -17,7 +17,7 @@ int main(array<String^>^ args) {
     return 0;  
 }
 
-System::Void CafeStock::MainLogin::button1_Click(System::Object^ sender, System::EventArgs^ e) {
+System::Void CafeStock::MainLogin::bttnLogin_Click(System::Object^ sender, System::EventArgs^ e) {
     // Get the input values from the textboxes
     System::String^ username = this->uNameTxt->Text;
     System::String^ password = this->passTxt->Text;
@@ -37,7 +37,7 @@ System::Void CafeStock::MainLogin::button1_Click(System::Object^ sender, System:
         return; // Exit the function
     }
 
-    System::String^ connString = "Data Source=AlainsComputer\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=alain121004;Integrated Security=False";
+    System::String^ connString = "Data Source=AEL2\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=123456;Integrated Security=False";
 
     // // Define hardcoded credentials for simplicity (replace with database query in production)
     // System::String^ adminUsername = "admin";
