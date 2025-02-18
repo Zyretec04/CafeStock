@@ -1,6 +1,6 @@
 ﻿#include "MainLogin.h"
 #include "Menumain.h"
-
+#include "Register.h"
 using namespace System;
 using namespace System::Windows::Forms;
 using namespace System::Data;
@@ -70,6 +70,13 @@ System::Void CafeStock::MainLogin::button1_Click(System::Object^ sender, System:
         // Handle any errors that may have occurred
         MessageBox::Show(ex->Message, "Database Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
     }
+}
+
+System::Void CafeStock::MainLogin::label7_Click(System::Object^ sender, System::EventArgs^ e) {
+    this->Hide();
+    Register^ regForm = gcnew Register();
+    regForm->ShowDialog();
+    this->Close();
 }
 
 //     // Authentication logic

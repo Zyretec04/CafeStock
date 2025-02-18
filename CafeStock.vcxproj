@@ -127,6 +127,7 @@
     <ClCompile Include="InventoryMenu.cpp" />
     <ClCompile Include="MainLogin.cpp" />
     <ClCompile Include="Menumain.cpp" />
+    <ClCompile Include="Register.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dashboard.h">
@@ -145,6 +146,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Menumain.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Register.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -166,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Menumain.resx">
       <DependentUpon>Menumain.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Register.resx">
+      <DependentUpon>Register.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

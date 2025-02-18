@@ -39,6 +39,9 @@
     <ClCompile Include="EditPopup.cpp">
       <Filter>Resource Files\MenuGUI</Filter>
     </ClCompile>
+    <ClCompile Include="Register.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainLogin.h">
@@ -58,6 +61,9 @@
     </ClInclude>
     <ClInclude Include="EditPopup.h">
       <Filter>Resource Files\MenuGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Register.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

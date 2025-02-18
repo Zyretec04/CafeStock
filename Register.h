@@ -1,53 +1,51 @@
 #pragma once
-ref class Menumain;
-
-
+#include "MainLogin.h"
 
 namespace CafeStock {
-
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
-	using namespace System::Drawing;
+	using namespace System::Drawing;	
 
 	/// <summary>
-	/// Summary for MainLogin
+	/// Summary for Register
 	/// </summary>
-	public ref class MainLogin : public System::Windows::Forms::Form
+	public ref class Register : public System::Windows::Forms::Form
 	{
 	public:
-		MainLogin(void)
+		Register(void)
 		{
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
-			this->passTxt->PasswordChar = '*';
-		
 		}
+
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~MainLogin()
+		~Register()
 		{
 			if (components)
 			{
-				if (components) delete components;
+				delete components;
 			}
 		}
 
-	protected:
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void label7_Click(System::Object^ sender, System::EventArgs^ e);
+	private:
+	private: System::Void lblRegis_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::PictureBox^ pictureBox2;
 	private: System::Windows::Forms::Panel^ panel1;
 	private: System::Windows::Forms::Panel^ panel2;
-	private: System::Windows::Forms::Label^ label7;
+	private: System::Windows::Forms::PictureBox^ pictureBox5;
+	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::Label^ lblRegis;
 	private: System::Windows::Forms::PictureBox^ pictureBox4;
 	private: System::Windows::Forms::PictureBox^ pictureBox3;
 	private: System::Windows::Forms::Button^ button2;
@@ -99,40 +97,11 @@ namespace CafeStock {
 
 
 
-	protected:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	protected:
-
-	protected:
-
-	private:
-		/// <summary>
+		   /// <summary>
 		/// Required designer variable.
 		/// </summary>
-
-
-		   System::ComponentModel::Container^ components;
+		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -141,7 +110,7 @@ namespace CafeStock {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainLogin::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Register::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
@@ -157,13 +126,17 @@ namespace CafeStock {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
-			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->lblRegis = (gcnew System::Windows::Forms::Label());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
 			this->panel2->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -203,7 +176,6 @@ namespace CafeStock {
 			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox2->TabIndex = 4;
 			this->pictureBox2->TabStop = false;
-			this->pictureBox2->Click += gcnew System::EventHandler(this, &MainLogin::pictureBox2_Click_1);
 			// 
 			// panel1
 			// 
@@ -217,14 +189,14 @@ namespace CafeStock {
 			this->panel1->Location = System::Drawing::Point(0, 0);
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(975, 582);
-			this->panel1->TabIndex = 1;
+			this->panel1->TabIndex = 2;
 			// 
 			// pictureBox1
 			// 
 			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(186, 50);
+			this->pictureBox1->Location = System::Drawing::Point(183, 39);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(150, 137);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -242,19 +214,18 @@ namespace CafeStock {
 			this->label3->TabIndex = 0;
 			this->label3->Text = L"Login";
 			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->label3->Click += gcnew System::EventHandler(this, &MainLogin::label3_Click);
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
 			this->label4->BackColor = System::Drawing::Color::Transparent;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Segoe MDL2 Assets", 18, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(70, 214);
+			this->label4->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 12, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label4->Location = System::Drawing::Point(107, 196);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(115, 24);
+			this->label4->Size = System::Drawing::Size(69, 21);
 			this->label4->TabIndex = 1;
-			this->label4->Text = L"Administrator";
+			this->label4->Text = L"Register";
 			// 
 			// label5
 			// 
@@ -262,7 +233,7 @@ namespace CafeStock {
 			this->label5->BackColor = System::Drawing::Color::Transparent;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Segoe MDL2 Assets", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(110, 248);
+			this->label5->Location = System::Drawing::Point(108, 231);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(87, 21);
 			this->label5->TabIndex = 2;
@@ -274,36 +245,33 @@ namespace CafeStock {
 			this->label6->BackColor = System::Drawing::Color::Transparent;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Segoe MDL2 Assets", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(112, 330);
+			this->label6->Location = System::Drawing::Point(110, 309);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(85, 21);
 			this->label6->TabIndex = 3;
 			this->label6->Text = L"Password";
-			this->label6->Click += gcnew System::EventHandler(this, &MainLogin::label6_Click);
 			// 
 			// uNameTxt
 			// 
 			this->uNameTxt->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->uNameTxt->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->uNameTxt->Location = System::Drawing::Point(113, 276);
+			this->uNameTxt->Location = System::Drawing::Point(111, 259);
 			this->uNameTxt->Multiline = true;
 			this->uNameTxt->Name = L"uNameTxt";
 			this->uNameTxt->Size = System::Drawing::Size(294, 32);
 			this->uNameTxt->TabIndex = 4;
-			this->uNameTxt->TextChanged += gcnew System::EventHandler(this, &MainLogin::uNameTxt_TextChanged);
 			// 
 			// passTxt
 			// 
 			this->passTxt->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->passTxt->Font = (gcnew System::Drawing::Font(L"Segoe UI", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->passTxt->Location = System::Drawing::Point(113, 355);
+			this->passTxt->Location = System::Drawing::Point(111, 334);
 			this->passTxt->Multiline = true;
 			this->passTxt->Name = L"passTxt";
 			this->passTxt->Size = System::Drawing::Size(294, 32);
 			this->passTxt->TabIndex = 5;
-			this->passTxt->TextChanged += gcnew System::EventHandler(this, &MainLogin::passTxt_TextChanged);
 			// 
 			// button1
 			// 
@@ -313,13 +281,12 @@ namespace CafeStock {
 			this->button1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button1->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->button1->Location = System::Drawing::Point(162, 413);
+			this->button1->Location = System::Drawing::Point(152, 468);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(194, 63);
+			this->button1->Size = System::Drawing::Size(207, 48);
 			this->button1->TabIndex = 6;
-			this->button1->Text = L"Login";
+			this->button1->Text = L"Register";
 			this->button1->UseVisualStyleBackColor = false;
-			this->button1->Click += gcnew System::EventHandler(this, &MainLogin::button1_Click);
 			// 
 			// button2
 			// 
@@ -332,13 +299,13 @@ namespace CafeStock {
 			this->button2->Size = System::Drawing::Size(46, 48);
 			this->button2->TabIndex = 7;
 			this->button2->UseVisualStyleBackColor = false;
-			this->button2->Click += gcnew System::EventHandler(this, &MainLogin::button2_Click);
+			this->button2->Click += gcnew System::EventHandler(this, &Register::button2_Click);
 			// 
 			// pictureBox3
 			// 
 			this->pictureBox3->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
-			this->pictureBox3->Location = System::Drawing::Point(61, 263);
+			this->pictureBox3->Location = System::Drawing::Point(59, 246);
 			this->pictureBox3->Name = L"pictureBox3";
 			this->pictureBox3->Size = System::Drawing::Size(38, 39);
 			this->pictureBox3->TabIndex = 8;
@@ -348,31 +315,67 @@ namespace CafeStock {
 			// 
 			this->pictureBox4->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.Image")));
-			this->pictureBox4->Location = System::Drawing::Point(61, 344);
+			this->pictureBox4->Location = System::Drawing::Point(59, 323);
 			this->pictureBox4->Name = L"pictureBox4";
 			this->pictureBox4->Size = System::Drawing::Size(38, 39);
 			this->pictureBox4->TabIndex = 9;
 			this->pictureBox4->TabStop = false;
 			// 
-			// label7
+			// lblRegis
 			// 
-			this->label7->AutoSize = true;
-			this->label7->BackColor = System::Drawing::Color::Transparent;
-			this->label7->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 11.25F, static_cast<System::Drawing::FontStyle>(((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)
+			this->lblRegis->AutoSize = true;
+			this->lblRegis->BackColor = System::Drawing::Color::Transparent;
+			this->lblRegis->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 11.25F, static_cast<System::Drawing::FontStyle>(((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)
 				| System::Drawing::FontStyle::Underline)), System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->label7->ForeColor = System::Drawing::Color::Firebrick;
-			this->label7->Location = System::Drawing::Point(182, 501);
-			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(167, 20);
-			this->label7->TabIndex = 10;
-			this->label7->Text = L"Dont have an account\?";
-			this->label7->Click += gcnew System::EventHandler(this, &MainLogin::label7_Click);
+			this->lblRegis->ForeColor = System::Drawing::Color::Firebrick;
+			this->lblRegis->Location = System::Drawing::Point(159, 528);
+			this->lblRegis->Name = L"lblRegis";
+			this->lblRegis->Size = System::Drawing::Size(191, 20);
+			this->lblRegis->TabIndex = 10;
+			this->lblRegis->Text = L"Already Have an Account\?";
+			this->lblRegis->Click += gcnew System::EventHandler(this, &Register::lblRegis_Click);
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->BackColor = System::Drawing::Color::Transparent;
+			this->label8->Font = (gcnew System::Drawing::Font(L"Segoe MDL2 Assets", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label8->Location = System::Drawing::Point(110, 380);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(152, 21);
+			this->label8->TabIndex = 11;
+			this->label8->Text = L"Confirm Password";
+			// 
+			// textBox1
+			// 
+			this->textBox1->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->textBox1->Location = System::Drawing::Point(111, 409);
+			this->textBox1->Multiline = true;
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(294, 32);
+			this->textBox1->TabIndex = 12;
+			// 
+			// pictureBox5
+			// 
+			this->pictureBox5->BackColor = System::Drawing::Color::Transparent;
+			this->pictureBox5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.Image")));
+			this->pictureBox5->Location = System::Drawing::Point(59, 398);
+			this->pictureBox5->Name = L"pictureBox5";
+			this->pictureBox5->Size = System::Drawing::Size(38, 39);
+			this->pictureBox5->TabIndex = 13;
+			this->pictureBox5->TabStop = false;
 			// 
 			// panel2
 			// 
 			this->panel2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel2.BackgroundImage")));
 			this->panel2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->panel2->Controls->Add(this->label7);
+			this->panel2->Controls->Add(this->pictureBox5);
+			this->panel2->Controls->Add(this->textBox1);
+			this->panel2->Controls->Add(this->label8);
+			this->panel2->Controls->Add(this->lblRegis);
 			this->panel2->Controls->Add(this->pictureBox4);
 			this->panel2->Controls->Add(this->pictureBox3);
 			this->panel2->Controls->Add(this->button2);
@@ -389,79 +392,43 @@ namespace CafeStock {
 			this->panel2->Name = L"panel2";
 			this->panel2->Size = System::Drawing::Size(524, 582);
 			this->panel2->TabIndex = 3;
-			this->panel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MainLogin::panel2_Paint_1);
 			// 
-			// MainLogin
+			// Register
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(975, 582);
 			this->Controls->Add(this->panel1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-			this->MaximizeBox = false;
-			this->Name = L"MainLogin";
+			this->Name = L"Register";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"MainLogin";
-			this->Load += gcnew System::EventHandler(this, &MainLogin::MainLogin_Load);
+			this->Text = L"Register";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->EndInit();
 			this->panel2->ResumeLayout(false);
 			this->panel2->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	private: System::Void MainLogin_Load(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void panel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-	private: System::Void label1_Click_1(System::Object^ sender, System::EventArgs^ e) {
-	}
-private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) {
-}
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		System::Windows::Forms::DialogResult result =
+			System::Windows::Forms::MessageBox::Show(
+				"Are you sure you want to exit?", // Message
+				"Exit Application",              // Title
+				System::Windows::Forms::MessageBoxButtons::YesNo,
+				System::Windows::Forms::MessageBoxIcon::Question
+			);
 
-private: System::Void pictureBox1_Click_1(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void panel2_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-}
-private: System::Void pictureBox1_Click_2(System::Object^ sender, System::EventArgs^ e) {
-}
-
-private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void panel2_Paint_1(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-}
-private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void pictureBox2_Click_1(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	System::Windows::Forms::DialogResult result =
-		System::Windows::Forms::MessageBox::Show(
-			"Are you sure you want to exit?", // Message
-			"Exit Application",              // Title
-			System::Windows::Forms::MessageBoxButtons::YesNo,
-			System::Windows::Forms::MessageBoxIcon::Question
-		);
-
-	// Check if the user clicked "Yes"
-	if (result == System::Windows::Forms::DialogResult::Yes) {
-		System::Windows::Forms::Application::Exit(); // Exit the application
+		// Check if the user clicked "Yes"
+		if (result == System::Windows::Forms::DialogResult::Yes) {
+			System::Windows::Forms::Application::Exit(); // Exit the application
+		}
 	}
-}
-private: System::Void uNameTxt_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void passTxt_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
 };
 }
