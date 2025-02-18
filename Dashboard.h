@@ -39,19 +39,13 @@ namespace CafeStock {
 	private: System::Windows::Forms::Label^ lblTitle;
 	private: System::Windows::Forms::Label^ lblText;
 	protected:
-
 	protected:
-
-
-
-
 	private: System::Windows::Forms::Label^ lblHeader;
+	private: System::Windows::Forms::Button^ bttnExit;
 
-	private: System::Windows::Forms::Button^ BttnExit;
-	private: System::Windows::Forms::Button^ BttnMinimize;
+	private: System::Windows::Forms::Button^ bttnMinimize;
 
 	protected:
-
 
 	private:
 		/// <summary>
@@ -70,8 +64,8 @@ namespace CafeStock {
 			this->lblTitle = (gcnew System::Windows::Forms::Label());
 			this->lblText = (gcnew System::Windows::Forms::Label());
 			this->lblHeader = (gcnew System::Windows::Forms::Label());
-			this->BttnExit = (gcnew System::Windows::Forms::Button());
-			this->BttnMinimize = (gcnew System::Windows::Forms::Button());
+			this->bttnExit = (gcnew System::Windows::Forms::Button());
+			this->bttnMinimize = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// lblTitle
@@ -99,7 +93,6 @@ namespace CafeStock {
 			this->lblText->Size = System::Drawing::Size(579, 156);
 			this->lblText->TabIndex = 4;
 			this->lblText->Text = resources->GetString(L"lblText.Text");
-			this->lblText->Click += gcnew System::EventHandler(this, &Dashboard::lblText_Click);
 			// 
 			// lblHeader
 			// 
@@ -114,39 +107,39 @@ namespace CafeStock {
 			this->lblHeader->TabIndex = 3;
 			this->lblHeader->Text = L"About";
 			// 
-			// BttnExit
+			// bttnExit
 			// 
-			this->BttnExit->BackColor = System::Drawing::Color::Transparent;
-			this->BttnExit->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->BttnExit->FlatAppearance->BorderSize = 0;
-			this->BttnExit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->BttnExit->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->bttnExit->BackColor = System::Drawing::Color::Transparent;
+			this->bttnExit->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->bttnExit->FlatAppearance->BorderSize = 0;
+			this->bttnExit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->bttnExit->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->BttnExit->ForeColor = System::Drawing::Color::Red;
-			this->BttnExit->Location = System::Drawing::Point(710, 0);
-			this->BttnExit->Name = L"BttnExit";
-			this->BttnExit->Size = System::Drawing::Size(35, 35);
-			this->BttnExit->TabIndex = 8;
-			this->BttnExit->Text = L"X";
-			this->BttnExit->UseVisualStyleBackColor = false;
-			this->BttnExit->Click += gcnew System::EventHandler(this, &Dashboard::BttnExit_Click);
+			this->bttnExit->ForeColor = System::Drawing::Color::Red;
+			this->bttnExit->Location = System::Drawing::Point(710, 0);
+			this->bttnExit->Name = L"bttnExit";
+			this->bttnExit->Size = System::Drawing::Size(35, 35);
+			this->bttnExit->TabIndex = 8;
+			this->bttnExit->Text = L"X";
+			this->bttnExit->UseVisualStyleBackColor = false;
+			this->bttnExit->Click += gcnew System::EventHandler(this, &Dashboard::bttnExit_Click);
 			// 
-			// BttnMinimize
+			// bttnMinimize
 			// 
-			this->BttnMinimize->BackColor = System::Drawing::Color::Transparent;
-			this->BttnMinimize->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->BttnMinimize->FlatAppearance->BorderSize = 0;
-			this->BttnMinimize->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->BttnMinimize->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->bttnMinimize->BackColor = System::Drawing::Color::Transparent;
+			this->bttnMinimize->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->bttnMinimize->FlatAppearance->BorderSize = 0;
+			this->bttnMinimize->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->bttnMinimize->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->BttnMinimize->ForeColor = System::Drawing::Color::Red;
-			this->BttnMinimize->Location = System::Drawing::Point(669, 0);
-			this->BttnMinimize->Name = L"BttnMinimize";
-			this->BttnMinimize->Size = System::Drawing::Size(35, 35);
-			this->BttnMinimize->TabIndex = 9;
-			this->BttnMinimize->Text = L"—";
-			this->BttnMinimize->UseVisualStyleBackColor = false;
-			this->BttnMinimize->Click += gcnew System::EventHandler(this, &Dashboard::BttnMinimize_Click);
+			this->bttnMinimize->ForeColor = System::Drawing::Color::Red;
+			this->bttnMinimize->Location = System::Drawing::Point(669, 0);
+			this->bttnMinimize->Name = L"bttnMinimize";
+			this->bttnMinimize->Size = System::Drawing::Size(35, 35);
+			this->bttnMinimize->TabIndex = 9;
+			this->bttnMinimize->Text = L"—";
+			this->bttnMinimize->UseVisualStyleBackColor = false;
+			this->bttnMinimize->Click += gcnew System::EventHandler(this, &Dashboard::bttnMinimize_Click);
 			// 
 			// Dashboard
 			// 
@@ -154,8 +147,8 @@ namespace CafeStock {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->Controls->Add(this->BttnMinimize);
-			this->Controls->Add(this->BttnExit);
+			this->Controls->Add(this->bttnMinimize);
+			this->Controls->Add(this->bttnExit);
 			this->Controls->Add(this->lblTitle);
 			this->Controls->Add(this->lblText);
 			this->Controls->Add(this->lblHeader);
@@ -166,12 +159,7 @@ namespace CafeStock {
 
 		}
 #pragma endregion
-
-	private: System::Void lblText_Click(System::Object^ sender, System::EventArgs^ e) {
-
-	}
-private: System::Void BttnExit_Click(System::Object^ sender, System::EventArgs^ e) {
-	// Show a confirmation dialog
+private: System::Void bttnExit_Click(System::Object^ sender, System::EventArgs^ e) {
 	System::Windows::Forms::DialogResult result =
 		System::Windows::Forms::MessageBox::Show(
 			"Are you sure you want to exit?", // Message
@@ -185,7 +173,11 @@ private: System::Void BttnExit_Click(System::Object^ sender, System::EventArgs^ 
 		System::Windows::Forms::Application::Exit(); // Exit the application
 	}
 }
-private: System::Void BttnMinimize_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void bttnMinimize_Click(System::Object^ sender, System::EventArgs^ e) {
+	System::Windows::Forms::Form^ parentForm = this->FindForm(); // Get the parent form
+	if (parentForm != nullptr) {
+		parentForm->WindowState = System::Windows::Forms::FormWindowState::Minimized;
+	}
 }
 };
 }
