@@ -174,7 +174,7 @@ namespace CafeStock {
 	}
 	public:
 		void LoadDataFromDatabase() {
-			String^ connectionString = "Data Source=LAPTOP-JM0T2KKH\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=123";
+			String^ connectionString = "Data Source=AlainsComputer\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=alain121004";
 			String^ query = "SELECT * FROM tblItems";
 			try {
 				SqlConnection^ con = gcnew SqlConnection(connectionString);
