@@ -38,10 +38,12 @@ namespace CafeStock {
 		}
 
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
-	private: System::Windows::Forms::Button^ HistoryExit;
+
 	private: DataTable^ dataTable;		
 	private: System::Windows::Forms::TextBox^ txtSearch;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::Button^ bttnMinimize;
+	private: System::Windows::Forms::Button^ bttnExit;
 
 
 
@@ -71,9 +73,10 @@ namespace CafeStock {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(HistoryControll::typeid));
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->HistoryExit = (gcnew System::Windows::Forms::Button());
 			this->txtSearch = (gcnew System::Windows::Forms::TextBox());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->bttnMinimize = (gcnew System::Windows::Forms::Button());
+			this->bttnExit = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -86,22 +89,9 @@ namespace CafeStock {
 			this->dataGridView1->Margin = System::Windows::Forms::Padding(4);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersVisible = false;
+			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->Size = System::Drawing::Size(812, 480);
 			this->dataGridView1->TabIndex = 5;
-			// 
-			// HistoryExit
-			// 
-			this->HistoryExit->BackColor = System::Drawing::Color::Transparent;
-			this->HistoryExit->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"HistoryExit.BackgroundImage")));
-			this->HistoryExit->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->HistoryExit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->HistoryExit->Location = System::Drawing::Point(928, 4);
-			this->HistoryExit->Margin = System::Windows::Forms::Padding(4);
-			this->HistoryExit->Name = L"HistoryExit";
-			this->HistoryExit->Size = System::Drawing::Size(61, 59);
-			this->HistoryExit->TabIndex = 8;
-			this->HistoryExit->UseVisualStyleBackColor = false;
-			this->HistoryExit->Click += gcnew System::EventHandler(this, &HistoryControll::HistoryExit_Click);
 			// 
 			// txtSearch
 			// 
@@ -123,6 +113,42 @@ namespace CafeStock {
 			this->pictureBox1->TabIndex = 10;
 			this->pictureBox1->TabStop = false;
 			// 
+			// bttnMinimize
+			// 
+			this->bttnMinimize->BackColor = System::Drawing::Color::Transparent;
+			this->bttnMinimize->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->bttnMinimize->FlatAppearance->BorderSize = 0;
+			this->bttnMinimize->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->bttnMinimize->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->bttnMinimize->ForeColor = System::Drawing::Color::Red;
+			this->bttnMinimize->Location = System::Drawing::Point(891, 0);
+			this->bttnMinimize->Margin = System::Windows::Forms::Padding(4);
+			this->bttnMinimize->Name = L"bttnMinimize";
+			this->bttnMinimize->Size = System::Drawing::Size(47, 43);
+			this->bttnMinimize->TabIndex = 17;
+			this->bttnMinimize->Text = L"—";
+			this->bttnMinimize->UseVisualStyleBackColor = false;
+			this->bttnMinimize->Click += gcnew System::EventHandler(this, &HistoryControll::bttnMinimize_Click);
+			// 
+			// bttnExit
+			// 
+			this->bttnExit->BackColor = System::Drawing::Color::Transparent;
+			this->bttnExit->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->bttnExit->FlatAppearance->BorderSize = 0;
+			this->bttnExit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->bttnExit->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->bttnExit->ForeColor = System::Drawing::Color::Red;
+			this->bttnExit->Location = System::Drawing::Point(946, 0);
+			this->bttnExit->Margin = System::Windows::Forms::Padding(4);
+			this->bttnExit->Name = L"bttnExit";
+			this->bttnExit->Size = System::Drawing::Size(47, 43);
+			this->bttnExit->TabIndex = 16;
+			this->bttnExit->Text = L"X";
+			this->bttnExit->UseVisualStyleBackColor = false;
+			this->bttnExit->Click += gcnew System::EventHandler(this, &HistoryControll::bttnExit_Click);
+			// 
 			// HistoryControll
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -130,9 +156,10 @@ namespace CafeStock {
 			this->BackColor = System::Drawing::SystemColors::Control;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->Controls->Add(this->bttnMinimize);
+			this->Controls->Add(this->bttnExit);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->txtSearch);
-			this->Controls->Add(this->HistoryExit);
 			this->Controls->Add(this->dataGridView1);
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"HistoryControll";
@@ -186,6 +213,26 @@ private: System::Void txtSearch_TextChanged(System::Object^ sender, System::Even
 	}
 	else {
 		dataTable->DefaultView->RowFilter = String::Format("Item_Name LIKE '%{0}%'", searchText->Replace("'", "''"));
+	}
+}
+private: System::Void bttnExit_Click(System::Object^ sender, System::EventArgs^ e) {
+	System::Windows::Forms::DialogResult result =
+		System::Windows::Forms::MessageBox::Show(
+			"Are you sure you want to exit?", // Message
+			"Exit Application",              // Title
+			System::Windows::Forms::MessageBoxButtons::YesNo,
+			System::Windows::Forms::MessageBoxIcon::Question
+		);
+
+	// Check if the user clicked "Yes"
+	if (result == System::Windows::Forms::DialogResult::Yes) {
+		System::Windows::Forms::Application::Exit(); // Exit the application
+	}
+}
+private: System::Void bttnMinimize_Click(System::Object^ sender, System::EventArgs^ e) {
+	System::Windows::Forms::Form^ parentForm = this->FindForm(); // Get the parent form
+	if (parentForm != nullptr) {
+		parentForm->WindowState = System::Windows::Forms::FormWindowState::Minimized;
 	}
 }
 };
