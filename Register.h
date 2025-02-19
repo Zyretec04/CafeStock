@@ -223,11 +223,11 @@ namespace CafeStock {
 			// 
 			this->chkbxShowConPass->AutoSize = true;
 			this->chkbxShowConPass->BackColor = System::Drawing::Color::Transparent;
-			this->chkbxShowConPass->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->chkbxShowConPass->Location = System::Drawing::Point(310, 433);
+			this->chkbxShowConPass->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->chkbxShowConPass->Location = System::Drawing::Point(122, 437);
 			this->chkbxShowConPass->Name = L"chkbxShowConPass";
-			this->chkbxShowConPass->Size = System::Drawing::Size(101, 17);
+			this->chkbxShowConPass->Size = System::Drawing::Size(121, 20);
 			this->chkbxShowConPass->TabIndex = 17;
 			this->chkbxShowConPass->Text = L"Show password";
 			this->chkbxShowConPass->UseVisualStyleBackColor = false;
@@ -237,11 +237,11 @@ namespace CafeStock {
 			// 
 			this->chkbxShowPass->AutoSize = true;
 			this->chkbxShowPass->BackColor = System::Drawing::Color::Transparent;
-			this->chkbxShowPass->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->chkbxShowPass->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->chkbxShowPass->Location = System::Drawing::Point(310, 358);
+			this->chkbxShowPass->Location = System::Drawing::Point(122, 355);
 			this->chkbxShowPass->Name = L"chkbxShowPass";
-			this->chkbxShowPass->Size = System::Drawing::Size(101, 17);
+			this->chkbxShowPass->Size = System::Drawing::Size(121, 20);
 			this->chkbxShowPass->TabIndex = 16;
 			this->chkbxShowPass->Text = L"Show password";
 			this->chkbxShowPass->UseVisualStyleBackColor = false;
@@ -334,7 +334,7 @@ namespace CafeStock {
 			// 
 			this->picBoxPassword->BackColor = System::Drawing::Color::Transparent;
 			this->picBoxPassword->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picBoxPassword.Image")));
-			this->picBoxPassword->Location = System::Drawing::Point(59, 317);
+			this->picBoxPassword->Location = System::Drawing::Point(59, 310);
 			this->picBoxPassword->Name = L"picBoxPassword";
 			this->picBoxPassword->Size = System::Drawing::Size(39, 39);
 			this->picBoxPassword->TabIndex = 9;
@@ -344,7 +344,7 @@ namespace CafeStock {
 			// 
 			this->picBoxUsername->BackColor = System::Drawing::Color::Transparent;
 			this->picBoxUsername->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picBoxUsername.Image")));
-			this->picBoxUsername->Location = System::Drawing::Point(59, 245);
+			this->picBoxUsername->Location = System::Drawing::Point(59, 238);
 			this->picBoxUsername->Name = L"picBoxUsername";
 			this->picBoxUsername->Size = System::Drawing::Size(39, 39);
 			this->picBoxUsername->TabIndex = 8;
@@ -359,7 +359,7 @@ namespace CafeStock {
 			this->bttnRegister->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->bttnRegister->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->bttnRegister->Location = System::Drawing::Point(162, 465);
+			this->bttnRegister->Location = System::Drawing::Point(162, 473);
 			this->bttnRegister->Name = L"bttnRegister";
 			this->bttnRegister->Size = System::Drawing::Size(200, 45);
 			this->bttnRegister->TabIndex = 6;
@@ -373,7 +373,7 @@ namespace CafeStock {
 				static_cast<System::Byte>(0)));
 			this->txtPassword->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->txtPassword->Location = System::Drawing::Point(117, 327);
+			this->txtPassword->Location = System::Drawing::Point(117, 320);
 			this->txtPassword->Name = L"txtPassword";
 			this->txtPassword->Size = System::Drawing::Size(294, 29);
 			this->txtPassword->TabIndex = 5;
@@ -385,7 +385,7 @@ namespace CafeStock {
 				static_cast<System::Byte>(0)));
 			this->txtUsername->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->txtUsername->Location = System::Drawing::Point(117, 255);
+			this->txtUsername->Location = System::Drawing::Point(117, 248);
 			this->txtUsername->Name = L"txtUsername";
 			this->txtUsername->Size = System::Drawing::Size(294, 29);
 			this->txtUsername->TabIndex = 4;
@@ -396,7 +396,7 @@ namespace CafeStock {
 			this->lblPassword->BackColor = System::Drawing::Color::Transparent;
 			this->lblPassword->Font = (gcnew System::Drawing::Font(L"Segoe MDL2 Assets", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblPassword->Location = System::Drawing::Point(116, 300);
+			this->lblPassword->Location = System::Drawing::Point(116, 293);
 			this->lblPassword->Name = L"lblPassword";
 			this->lblPassword->Size = System::Drawing::Size(85, 21);
 			this->lblPassword->TabIndex = 3;
@@ -408,7 +408,7 @@ namespace CafeStock {
 			this->lblUsername->BackColor = System::Drawing::Color::Transparent;
 			this->lblUsername->Font = (gcnew System::Drawing::Font(L"Segoe MDL2 Assets", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblUsername->Location = System::Drawing::Point(114, 227);
+			this->lblUsername->Location = System::Drawing::Point(114, 220);
 			this->lblUsername->Name = L"lblUsername";
 			this->lblUsername->Size = System::Drawing::Size(87, 21);
 			this->lblUsername->TabIndex = 2;
@@ -418,11 +418,11 @@ namespace CafeStock {
 			// 
 			this->lblRegister->AutoSize = true;
 			this->lblRegister->BackColor = System::Drawing::Color::Transparent;
-			this->lblRegister->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 14, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->lblRegister->Location = System::Drawing::Point(115, 195);
+			this->lblRegister->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblRegister->Location = System::Drawing::Point(115, 190);
 			this->lblRegister->Name = L"lblRegister";
-			this->lblRegister->Size = System::Drawing::Size(82, 25);
+			this->lblRegister->Size = System::Drawing::Size(84, 25);
 			this->lblRegister->TabIndex = 1;
 			this->lblRegister->Text = L"Register";
 			// 

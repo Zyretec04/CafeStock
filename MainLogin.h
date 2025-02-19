@@ -105,6 +105,7 @@ namespace CafeStock {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainLogin::typeid));
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->chkbxShowPass = (gcnew System::Windows::Forms::CheckBox());
 			this->bttnMinimize = (gcnew System::Windows::Forms::Button());
@@ -120,13 +121,12 @@ namespace CafeStock {
 			this->lblAdmin = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->picMCM = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->panel1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->panel2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBoxPassword))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBoxUsername))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picMCM))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// panel1
@@ -140,6 +140,17 @@ namespace CafeStock {
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(975, 582);
 			this->panel1->TabIndex = 1;
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
+			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
+			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
+			this->pictureBox1->Location = System::Drawing::Point(76, 82);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(298, 419);
+			this->pictureBox1->TabIndex = 5;
+			this->pictureBox1->TabStop = false;
 			// 
 			// panel2
 			// 
@@ -167,13 +178,12 @@ namespace CafeStock {
 			// 
 			// chkbxShowPass
 			// 
-			this->chkbxShowPass->AutoSize = true;
 			this->chkbxShowPass->BackColor = System::Drawing::Color::Transparent;
-			this->chkbxShowPass->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->chkbxShowPass->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->chkbxShowPass->Location = System::Drawing::Point(311, 388);
+			this->chkbxShowPass->Location = System::Drawing::Point(123, 392);
 			this->chkbxShowPass->Name = L"chkbxShowPass";
-			this->chkbxShowPass->Size = System::Drawing::Size(101, 17);
+			this->chkbxShowPass->Size = System::Drawing::Size(152, 20);
 			this->chkbxShowPass->TabIndex = 18;
 			this->chkbxShowPass->Text = L"Show password";
 			this->chkbxShowPass->UseVisualStyleBackColor = false;
@@ -257,7 +267,7 @@ namespace CafeStock {
 			this->bttnLogin->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->bttnLogin->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->bttnLogin->Location = System::Drawing::Point(172, 420);
+			this->bttnLogin->Location = System::Drawing::Point(172, 441);
 			this->bttnLogin->Name = L"bttnLogin";
 			this->bttnLogin->Size = System::Drawing::Size(180, 45);
 			this->bttnLogin->TabIndex = 6;
@@ -316,10 +326,11 @@ namespace CafeStock {
 			// 
 			this->lblAdmin->AutoSize = true;
 			this->lblAdmin->BackColor = System::Drawing::Color::Transparent;
-			this->lblAdmin->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 14, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic))));
+			this->lblAdmin->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->lblAdmin->Location = System::Drawing::Point(113, 216);
 			this->lblAdmin->Name = L"lblAdmin";
-			this->lblAdmin->Size = System::Drawing::Size(59, 25);
+			this->lblAdmin->Size = System::Drawing::Size(63, 25);
 			this->lblAdmin->TabIndex = 1;
 			this->lblAdmin->Text = L"Login\r\n";
 			// 
@@ -347,17 +358,6 @@ namespace CafeStock {
 			this->picMCM->TabIndex = 0;
 			this->picMCM->TabStop = false;
 			// 
-			// pictureBox1
-			// 
-			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
-			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
-			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
-			this->pictureBox1->Location = System::Drawing::Point(76, 82);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(298, 419);
-			this->pictureBox1->TabIndex = 5;
-			this->pictureBox1->TabStop = false;
-			// 
 			// MainLogin
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -370,12 +370,12 @@ namespace CafeStock {
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"MainLogin";
 			this->panel1->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->panel2->ResumeLayout(false);
 			this->panel2->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBoxPassword))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBoxUsername))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picMCM))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 
 		}
