@@ -3,7 +3,7 @@
 #include "Menumain.h"
 
 using namespace System::Data::SqlClient;
-System::Void CafeStock::PopupEdit::btnBack_Click(System::Object^ sender, System::EventArgs^ e) {
+System::Void CafeStock::PopupEdit::PopupBack_Click(System::Object^ sender, System::EventArgs^ e) {
     Form^ mainForm = Application::OpenForms["Menumain"];  // Get the existing form
     if (mainForm != nullptr) {
         mainForm->Show();  // Show it again
@@ -36,7 +36,7 @@ if (!Int32::TryParse(quantityText, quantity) || quantity <= 0) {
 }
 
 // Database Connection String
-String^ connectionString = "Data Source=DESKTOP-7R4GRV2\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=12345;Integrated Security=False";
+String^ connectionString = "Data Source=AlainsComputer\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=alain121004;Integrated Security=False";
 
 try {
     SqlConnection^ con = gcnew SqlConnection(connectionString);
