@@ -39,6 +39,10 @@ namespace CafeStock {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::Button^ PopupBack;
+	private: System::Windows::Forms::Button^ bttnMinimize;
+	private: System::Windows::Forms::Button^ bttnExit;
+	protected:
 	private: System::Windows::Forms::Panel^ panel1;
 	private: System::Void PopupBack_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e);
@@ -51,7 +55,7 @@ namespace CafeStock {
 	private: System::Windows::Forms::Label^ lblType;
 	private: System::Windows::Forms::Label^ lblName;
 	private: System::Windows::Forms::Button^ btnAdd;
-	private: System::Windows::Forms::Button^ PopupBack;
+
 
 
 	private:
@@ -77,6 +81,8 @@ namespace CafeStock {
 			this->lblName = (gcnew System::Windows::Forms::Label());
 			this->btnAdd = (gcnew System::Windows::Forms::Button());
 			this->PopupBack = (gcnew System::Windows::Forms::Button());
+			this->bttnMinimize = (gcnew System::Windows::Forms::Button());
+			this->bttnExit = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -92,7 +98,7 @@ namespace CafeStock {
 			this->panel1->Controls->Add(this->lblName);
 			this->panel1->Controls->Add(this->btnAdd);
 			this->panel1->Location = System::Drawing::Point(201, 119);
-			this->panel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->panel1->Margin = System::Windows::Forms::Padding(4);
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(817, 514);
 			this->panel1->TabIndex = 10;
@@ -103,7 +109,7 @@ namespace CafeStock {
 			this->txtQuant->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtQuant->Location = System::Drawing::Point(223, 274);
-			this->txtQuant->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtQuant->Margin = System::Windows::Forms::Padding(4);
 			this->txtQuant->Multiline = true;
 			this->txtQuant->Name = L"txtQuant";
 			this->txtQuant->Size = System::Drawing::Size(392, 39);
@@ -128,7 +134,7 @@ namespace CafeStock {
 			this->txtItemName->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtItemName->Location = System::Drawing::Point(223, 155);
-			this->txtItemName->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtItemName->Margin = System::Windows::Forms::Padding(4);
 			this->txtItemName->Multiline = true;
 			this->txtItemName->Name = L"txtItemName";
 			this->txtItemName->Size = System::Drawing::Size(392, 39);
@@ -138,7 +144,7 @@ namespace CafeStock {
 			// 
 			this->editCombo->FormattingEnabled = true;
 			this->editCombo->Location = System::Drawing::Point(223, 231);
-			this->editCombo->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->editCombo->Margin = System::Windows::Forms::Padding(4);
 			this->editCombo->Name = L"editCombo";
 			this->editCombo->Size = System::Drawing::Size(391, 24);
 			this->editCombo->TabIndex = 11;
@@ -178,7 +184,7 @@ namespace CafeStock {
 				static_cast<System::Byte>(0)));
 			this->btnAdd->ForeColor = System::Drawing::SystemColors::ButtonFace;
 			this->btnAdd->Location = System::Drawing::Point(319, 369);
-			this->btnAdd->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnAdd->Margin = System::Windows::Forms::Padding(4);
 			this->btnAdd->Name = L"btnAdd";
 			this->btnAdd->Size = System::Drawing::Size(147, 58);
 			this->btnAdd->TabIndex = 8;
@@ -190,16 +196,52 @@ namespace CafeStock {
 			// 
 			this->PopupBack->BackColor = System::Drawing::Color::Transparent;
 			this->PopupBack->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"PopupBack.BackgroundImage")));
-			this->PopupBack->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->PopupBack->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
 			this->PopupBack->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->PopupBack->ForeColor = System::Drawing::Color::Transparent;
-			this->PopupBack->Location = System::Drawing::Point(1205, 15);
-			this->PopupBack->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->PopupBack->Location = System::Drawing::Point(-1, 0);
+			this->PopupBack->Margin = System::Windows::Forms::Padding(4);
 			this->PopupBack->Name = L"PopupBack";
 			this->PopupBack->Size = System::Drawing::Size(61, 59);
 			this->PopupBack->TabIndex = 11;
 			this->PopupBack->UseVisualStyleBackColor = false;
 			this->PopupBack->Click += gcnew System::EventHandler(this, &PopupEdit::PopupBack_Click);
+			// 
+			// bttnMinimize
+			// 
+			this->bttnMinimize->BackColor = System::Drawing::Color::Transparent;
+			this->bttnMinimize->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->bttnMinimize->FlatAppearance->BorderSize = 0;
+			this->bttnMinimize->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->bttnMinimize->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->bttnMinimize->ForeColor = System::Drawing::Color::Red;
+			this->bttnMinimize->Location = System::Drawing::Point(1181, 0);
+			this->bttnMinimize->Margin = System::Windows::Forms::Padding(4);
+			this->bttnMinimize->Name = L"bttnMinimize";
+			this->bttnMinimize->Size = System::Drawing::Size(47, 43);
+			this->bttnMinimize->TabIndex = 17;
+			this->bttnMinimize->Text = L"—";
+			this->bttnMinimize->UseVisualStyleBackColor = false;
+			this->bttnMinimize->Click += gcnew System::EventHandler(this, &PopupEdit::bttnMinimize_Click);
+			// 
+			// bttnExit
+			// 
+			this->bttnExit->BackColor = System::Drawing::Color::Transparent;
+			this->bttnExit->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->bttnExit->FlatAppearance->BorderSize = 0;
+			this->bttnExit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->bttnExit->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->bttnExit->ForeColor = System::Drawing::Color::Red;
+			this->bttnExit->Location = System::Drawing::Point(1236, 0);
+			this->bttnExit->Margin = System::Windows::Forms::Padding(4);
+			this->bttnExit->Name = L"bttnExit";
+			this->bttnExit->Size = System::Drawing::Size(47, 43);
+			this->bttnExit->TabIndex = 16;
+			this->bttnExit->Text = L"X";
+			this->bttnExit->UseVisualStyleBackColor = false;
+			this->bttnExit->Click += gcnew System::EventHandler(this, &PopupEdit::bttnExit_Click);
 			// 
 			// PopupEdit
 			// 
@@ -208,10 +250,12 @@ namespace CafeStock {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1283, 670);
+			this->Controls->Add(this->bttnMinimize);
+			this->Controls->Add(this->bttnExit);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->PopupBack);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"PopupEdit";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"PopupEdit";
@@ -222,5 +266,22 @@ namespace CafeStock {
 		}
 #pragma endregion
 
+private: System::Void bttnExit_Click(System::Object^ sender, System::EventArgs^ e) {
+	System::Windows::Forms::DialogResult result =
+		System::Windows::Forms::MessageBox::Show(
+			"Are you sure you want to exit?", // Message
+			"Exit Application",              // Title
+			System::Windows::Forms::MessageBoxButtons::YesNo,
+			System::Windows::Forms::MessageBoxIcon::Question
+		);
+
+	// Check if the user clicked "Yes"
+	if (result == System::Windows::Forms::DialogResult::Yes) {
+		System::Windows::Forms::Application::Exit(); // Exit the application
+	}
+}
+private: System::Void bttnMinimize_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->WindowState = System::Windows::Forms::FormWindowState::Minimized;
+}
 };
 }
