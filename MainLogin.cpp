@@ -37,7 +37,7 @@ System::Void CafeStock::MainLogin::bttnLogin_Click(System::Object^ sender, Syste
         return; // Exit the function
     }
 
-    System::String^ connString = "Data Source=LAPTOP-JM0T2KKH\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=123;TrustServerCertificate=True";
+    System::String^ connString = "Data Source=AlainsComputer\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=alain121004;TrustServerCertificate=True";
 
     // // Define hardcoded credentials for simplicity (replace with database query in production)
     // System::String^ adminUsername = "admin";
