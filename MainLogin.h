@@ -2,7 +2,6 @@
 ref class Menumain;
 
 
-
 namespace CafeStock {
 
 	using namespace System;

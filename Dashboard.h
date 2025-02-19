@@ -86,13 +86,14 @@ namespace CafeStock {
 			this->lblText->BackColor = System::Drawing::Color::Transparent;
 			this->lblText->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->lblText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(2)));
+				static_cast<System::Byte>(0)));
 			this->lblText->ForeColor = System::Drawing::Color::Firebrick;
 			this->lblText->Location = System::Drawing::Point(83, 252);
 			this->lblText->Name = L"lblText";
 			this->lblText->Size = System::Drawing::Size(579, 156);
 			this->lblText->TabIndex = 4;
 			this->lblText->Text = resources->GetString(L"lblText.Text");
+			this->lblText->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
 			// lblHeader
 			// 
@@ -101,7 +102,7 @@ namespace CafeStock {
 			this->lblHeader->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblHeader->ForeColor = System::Drawing::Color::Firebrick;
-			this->lblHeader->Location = System::Drawing::Point(82, 198);
+			this->lblHeader->Location = System::Drawing::Point(82, 206);
 			this->lblHeader->Name = L"lblHeader";
 			this->lblHeader->Size = System::Drawing::Size(80, 29);
 			this->lblHeader->TabIndex = 3;

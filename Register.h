@@ -7,7 +7,7 @@ namespace CafeStock {
 	using namespace System::Collections;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
-	using namespace System::Drawing;	
+	using namespace System::Drawing;
 
 	/// <summary>
 	/// Summary for Register

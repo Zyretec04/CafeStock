@@ -1,70 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Resource Files\MainMenu">
-      <UniqueIdentifier>{db919fd5-659a-448f-96fc-43569c2504a4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\MenuGUI">
-      <UniqueIdentifier>{43cf1078-d571-4755-9f64-d0848bb194b0}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="Dashboard.cpp" />
+    <ClCompile Include="HistoryControll.cpp" />
+    <ClCompile Include="InventoryMenu.cpp" />
+    <ClCompile Include="MainLogin.cpp" />
+    <ClCompile Include="Menumain.cpp" />
+    <ClCompile Include="PopupEdit.cpp" />
+    <ClCompile Include="Register.cpp" />
+    <ClCompile Include="DatabaseHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Menumain.cpp">
-      <Filter>Resource Files\MainMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="Dashboard.cpp">
-      <Filter>Resource Files\MenuGUI</Filter>
-    </ClCompile>
-    <ClCompile Include="InventoryMenu.cpp">
-      <Filter>Resource Files\MenuGUI</Filter>
-    </ClCompile>
-    <ClCompile Include="HistoryControll.cpp">
-      <Filter>Resource Files\MenuGUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Register.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-
-    <ClCompile Include="MainLogin.cpp">
-      <Filter>Header Files</Filter>
-    <ClCompile Include="PopupEdit.cpp">
-      <Filter>Resource Files\MenuGUI</Filter>
-
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="MainLogin.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Menumain.h">
-      <Filter>Resource Files\MainMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="Dashboard.h">
-      <Filter>Resource Files\MenuGUI</Filter>
-    </ClInclude>
-    <ClInclude Include="InventoryMenu.h">
-      <Filter>Resource Files\MenuGUI</Filter>
-    </ClInclude>
-    <ClInclude Include="HistoryControll.h">
-      <Filter>Resource Files\MenuGUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Register.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PopupEdit.h">
-      <Filter>Resource Files\MenuGUI</Filter>
-    </ClInclude>
+    <ClInclude Include="Dashboard.h" />
+    <ClInclude Include="HistoryControll.h" />
+    <ClInclude Include="InventoryMenu.h" />
+    <ClInclude Include="MainLogin.h" />
+    <ClInclude Include="Menumain.h" />
+    <ClInclude Include="PopupEdit.h" />
+    <ClInclude Include="Register.h" />
+    <ClInclude Include="DatabaseHandler.h" />
   </ItemGroup>
 </Project>
