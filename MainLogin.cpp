@@ -1,60 +1,67 @@
 ﻿#include "MainLogin.h"
 #include "Menumain.h"
 #include "Register.h"
+#include "DatabaseHandler.h"
+
 using namespace System;
 using namespace System::Windows::Forms;
 using namespace System::Data;
-using namespace System::Data::SqlClient;
 
-[STAThread] 
-int main(array<String^>^ args) { 
+[STAThread]
+int main(array<String^>^ args) {
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
-
-
     Application::Run(gcnew CafeStock::MainLogin());
-
-    return 0;  
+    return 0;
 }
 
 System::Void CafeStock::MainLogin::bttnLogin_Click(System::Object^ sender, System::EventArgs^ e) {
-    // Get the input values from the textboxes
+    // Get input from textboxes
     System::String^ username = this->txtUsername->Text;
     System::String^ password = this->txtPassword->Text;
 
-    // 🔹 Input validation: Check if username or password is empty
+    // Input validation
     if (System::String::IsNullOrWhiteSpace(username)) {
-        System::Windows::Forms::MessageBox::Show("Username cannot be empty.", "Validation Error",
-            System::Windows::Forms::MessageBoxButtons::OK,
-            System::Windows::Forms::MessageBoxIcon::Warning);
-        return; // Exit the function
+        MessageBox::Show("Username cannot be empty.", "Validation Error",
+            MessageBoxButtons::OK, MessageBoxIcon::Warning);
+        return;
     }
 
     if (System::String::IsNullOrWhiteSpace(password)) {
-        System::Windows::Forms::MessageBox::Show("Password cannot be empty.", "Validation Error",
-            System::Windows::Forms::MessageBoxButtons::OK,
-            System::Windows::Forms::MessageBoxIcon::Warning);
-        return; // Exit the function
+        MessageBox::Show("Password cannot be empty.", "Validation Error",
+            MessageBoxButtons::OK, MessageBoxIcon::Warning);
+        return;
     }
 
-    System::String^ connString = "Data Source=LAPTOP-JM0T2KKH\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=123;TrustServerCertificate=True";
+    // Create database handler
+    DatabaseHandler^ db = gcnew DatabaseHandler();
 
-    // // Define hardcoded credentials for simplicity (replace with database query in production)
-    // System::String^ adminUsername = "admin";
-    // System::String^ adminPassword = "12345";
+    if (!db->connect()) {
+        MessageBox::Show("Database connection failed. Check your Supabase credentials.",
+            "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+        return;
+    }
 
-    try {
-        SqlConnection^ connection = gcnew SqlConnection(connString);
-        connection->Open();
+    // Parameterized Query
+    System::String^ query = "SELECT COUNT(*) FROM public.users WHERE username = @username AND password = @password;";
 
-        SqlCommand^ command = gcnew SqlCommand("SELECT COUNT(*) FROM Users WHERE Username = @username AND Password = @password", connection);
-        command->Parameters->AddWithValue("@username", username);
-        command->Parameters->AddWithValue("@password", password);
-        int userCount = safe_cast<int>(command->ExecuteScalar());
+    // Execute Query
+    DataTable^ result = db->executeQuery(query, username, password);
+
+    if (result == nullptr) {
+        MessageBox::Show("Database query execution failed.", "Database Error",
+            MessageBoxButtons::OK, MessageBoxIcon::Error);
+        return;
+    }
+
+    // Check Query Result
+    if (result != nullptr && result->Rows->Count > 0) {
+        int userCount = System::Convert::ToInt32(result->Rows[0]->ItemArray[0]);  // ✅ Correct way to get COUNT(*)
+
         if (userCount > 0) {
-            MessageBox::Show("Login successful!", "Success",
-                MessageBoxButtons::OK, MessageBoxIcon::Information);
-
+            MessageBox::Show("Login successful!", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
+    
+            // Hide current form and show main menu
             this->Hide();
             Menumain^ newForm = gcnew Menumain();
             newForm->ShowDialog();
@@ -64,11 +71,9 @@ System::Void CafeStock::MainLogin::bttnLogin_Click(System::Object^ sender, Syste
             MessageBox::Show("Invalid username or password.", "Login Failed",
                 MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
-        connection->Close();
     }
-    catch (Exception^ ex) {
-        // Handle any errors that may have occurred
-        MessageBox::Show(ex->Message, "Database Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+    else {
+        MessageBox::Show("User not found.", "Login Failed", MessageBoxButtons::OK, MessageBoxIcon::Error);
     }
 }
 
@@ -78,27 +83,3 @@ System::Void CafeStock::MainLogin::label7_Click(System::Object^ sender, System::
     regForm->ShowDialog();
     this->Close();
 }
-
-//     // Authentication logic
-//     if (username == adminUsername && password == adminPassword) {
-//         // Display success message and proceed
-//         System::Windows::Forms::MessageBox::Show("Login successful!", "Success",
-//             System::Windows::Forms::MessageBoxButtons::OK,
-//             System::Windows::Forms::MessageBoxIcon::Information);
-
-//         // Hide current form
-//         this->Hide();
-
-//         // Create an instance of Menumain and show it
-//         Menumain^ newForm = gcnew Menumain();
-//         newForm->ShowDialog();
-
-//         this->Close();
-//     }
-//     else {
-//         // Invalid credentials
-//         System::Windows::Forms::MessageBox::Show("Invalid username or password.", "Login Failed",
-//             System::Windows::Forms::MessageBoxButtons::OK,
-//             System::Windows::Forms::MessageBoxIcon::Error);
-//     }
-// }

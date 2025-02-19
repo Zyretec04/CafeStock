@@ -77,13 +77,14 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Admin\Downloads\imgui-master;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;WIN32_LEAN_AND_MEAN;NO_COM;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Admin\Downloads\imgui-master;C:\Program Files\PostgreSQL\17\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies />
+      <AdditionalDependencies>libpq.lib</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
+      <AdditionalLibraryDirectories>C:\Program Files\PostgreSQL\17\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -122,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dashboard.cpp" />
+    <ClCompile Include="DatabaseHandler.cpp" />
     <ClCompile Include="HistoryControll.cpp" />
     <ClCompile Include="InventoryMenu.cpp" />
     <ClCompile Include="MainLogin.cpp" />
@@ -133,6 +135,7 @@
     <ClInclude Include="Dashboard.h">
       <FileType>CppControl</FileType>
     </ClInclude>
+    <ClInclude Include="DatabaseHandler.h" />
     <ClInclude Include="HistoryControll.h">
       <FileType>CppControl</FileType>
     </ClInclude>

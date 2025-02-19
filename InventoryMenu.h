@@ -8,6 +8,7 @@ using namespace System::Data;
 using namespace System::Drawing;
 using namespace System::Data::SqlClient;
 
+
 namespace CafeStock {
 
 	public ref class InventoryMenu : public System::Windows::Forms::UserControl

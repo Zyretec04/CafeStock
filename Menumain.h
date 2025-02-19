@@ -4,6 +4,8 @@
 #include "HistoryControll.h" 
 ref class MainLogin;
 
+
+
 namespace CafeStock {
 	using namespace System;
 	using namespace System::ComponentModel;
