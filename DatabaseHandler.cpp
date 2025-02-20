@@ -33,7 +33,7 @@ bool DatabaseHandler::connect() {
         return false;
     }
 
-    MessageBox::Show("Connected to Supabase PostgreSQL successfully!", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
+    //MessageBox::Show("Connected to Supabase PostgreSQL successfully!", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
     return true;
 }
 
@@ -96,31 +96,41 @@ DataTable^ DatabaseHandler::executeQuery(String^ query, String^ username, String
     PGresult* res = PQexec(conn, queryStr.c_str());
 
     // Check Query Status
-    if (PQresultStatus(res) != PGRES_TUPLES_OK) {
+    ExecStatusType status = PQresultStatus(res);
+
+    if (status == PGRES_TUPLES_OK) {
+        // This is a SELECT query, return results in DataTable
+        DataTable^ dt = gcnew DataTable();
+        int columns = PQnfields(res);
+        int rows = PQntuples(res);
+
+        for (int i = 0; i < columns; i++) {
+            dt->Columns->Add(gcnew String(PQfname(res, i)));
+        }
+
+        for (int i = 0; i < rows; i++) {
+            DataRow^ row = dt->NewRow();
+            for (int j = 0; j < columns; j++) {
+                row[j] = gcnew String(PQgetvalue(res, i, j));
+            }
+            dt->Rows->Add(row);
+        }
+
+        PQclear(res);
+        return dt;
+    }
+    else if (status == PGRES_COMMAND_OK) {
+        // This is an INSERT/UPDATE/DELETE query, return nullptr
+        PQclear(res);
+        return nullptr;
+    }
+    else {
+        // Query failed
         std::cerr << "Query failed: " << PQerrorMessage(conn) << std::endl;
         MessageBox::Show("Query execution failed.\n" + gcnew String(PQerrorMessage(conn)),
             "Database Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         PQclear(res);
         return nullptr;
     }
-
-    // Store Results in DataTable
-    DataTable^ dt = gcnew DataTable();
-    int columns = PQnfields(res);
-    int rows = PQntuples(res);
-
-    for (int i = 0; i < columns; i++) {
-        dt->Columns->Add(gcnew String(PQfname(res, i)));
-    }
-
-    for (int i = 0; i < rows; i++) {
-        DataRow^ row = dt->NewRow();
-        for (int j = 0; j < columns; j++) {
-            row[j] = gcnew String(PQgetvalue(res, i, j));
-        }
-        dt->Rows->Add(row);
-    }
-
-    PQclear(res);
-    return dt;
 }
+

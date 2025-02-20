@@ -1,8 +1,9 @@
 ﻿#include "Register.h"
 #include "MainLogin.h"
+#include "DatabaseHandler.h"
+
 using namespace System;
 using namespace System::Data;
-using namespace System::Data::SqlClient;
 using namespace System::Windows::Forms;
 
 System::Void CafeStock::Register::lblRegis_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -12,18 +13,18 @@ System::Void CafeStock::Register::lblRegis_Click(System::Object^ sender, System:
     this->Close();
 }
 
-
-// Database Connection String
-
+// Registration Button Click Event
 System::Void CafeStock::Register::button1_Click(System::Object^ sender, System::EventArgs^ e) {
-    System::String^ connString = "Data Source=AlainsComputer\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=alain121004";
     // Get user input from form fields
     System::String^ username = txtUsername->Text;
     System::String^ password = txtPassword->Text;
     System::String^ confirmPassword = txtConfirmPass->Text;
 
-    // Check if fields are empty
-    if (username->Trim() == "" || password->Trim() == "" || confirmPassword->Trim() == "") {
+    // Validate inputs
+    if (System::String::IsNullOrWhiteSpace(username) ||
+        System::String::IsNullOrWhiteSpace(password) ||
+        System::String::IsNullOrWhiteSpace(confirmPassword))
+    {
         MessageBox::Show("All fields are required!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         return;
     }
@@ -34,34 +35,38 @@ System::Void CafeStock::Register::button1_Click(System::Object^ sender, System::
         return;
     }
 
-    // Hash the password using a simple hashing method (MD5 or SHA-256 recommended)
-    System::String^ hashedPassword = password; // Ideally, you should use a proper hashing function
+    // Hash password (Replace with SHA-256 or bcrypt in production)
+    System::String^ hashedPassword = password; // Placeholder: Replace with actual hashing
+
+    // Create Database Handler
+    DatabaseHandler^ db = gcnew DatabaseHandler();
+
+    // Connect to Supabase
+    if (!db->connect()) {
+        MessageBox::Show("Failed to connect to database.", "Database Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+        return;
+    }
 
     try {
-        // Establish database connection
-        SqlConnection^ connection = gcnew SqlConnection(connString);
-        connection->Open();
-
         // Check if the username already exists
-        SqlCommand^ checkUserCmd = gcnew SqlCommand("SELECT COUNT(*) FROM Users WHERE Username = @username", connection);
-        checkUserCmd->Parameters->AddWithValue("@username", username);
-        int userCount = safe_cast<int>(checkUserCmd->ExecuteScalar());
+        System::String^ checkQuery = "SELECT COUNT(*) FROM public.users WHERE username = @username;";
+        DataTable^ result = db->executeQuery(checkQuery, username, "");
 
-        if (userCount > 0) {
-            MessageBox::Show("Username already exists. Choose another.", "Registration Failed", MessageBoxButtons::OK, MessageBoxIcon::Error);
-            connection->Close();
-            return;
+        if (result != nullptr && result->Rows->Count > 0) {
+            int userCount = System::Convert::ToInt32(result->Rows[0]->ItemArray[0]);
+
+            if (userCount > 0) {
+                MessageBox::Show("Username already exists. Choose another.", "Registration Failed", MessageBoxButtons::OK, MessageBoxIcon::Error);
+                return;
+            }
         }
 
-        // Insert new user into database
-        SqlCommand^ command = gcnew SqlCommand("INSERT INTO Users (Username, Password) VALUES (@username, @password)", connection);
-        command->Parameters->AddWithValue("@username", username);
-        command->Parameters->AddWithValue("@password", hashedPassword);
-        command->ExecuteNonQuery();
+        // Insert new user into Supabase (No DataTable needed, as INSERT returns no rows)
+        System::String^ insertQuery = "INSERT INTO public.users (username, password) VALUES (@username, @password);";
+        db->executeQuery(insertQuery, username, hashedPassword);  // No need to check for result since it's INSERT
 
+        // Show success message
         MessageBox::Show("Registration successful!", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
-
-        connection->Close();
 
         // Redirect to Login Form
         this->Hide();
