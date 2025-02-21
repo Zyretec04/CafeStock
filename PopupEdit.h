@@ -42,6 +42,8 @@ namespace CafeStock {
 	private: System::Windows::Forms::Button^ PopupBack;
 	private: System::Windows::Forms::Button^ bttnMinimize;
 	private: System::Windows::Forms::Button^ bttnExit;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Panel^ panel2;
 	protected:
 	private: System::Windows::Forms::Panel^ panel1;
 	private: System::Void PopupBack_Click(System::Object^ sender, System::EventArgs^ e);
@@ -83,6 +85,8 @@ namespace CafeStock {
 			this->PopupBack = (gcnew System::Windows::Forms::Button());
 			this->bttnMinimize = (gcnew System::Windows::Forms::Button());
 			this->bttnExit = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->panel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -90,6 +94,7 @@ namespace CafeStock {
 			// 
 			this->panel1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel1.BackgroundImage")));
 			this->panel1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->panel1->Controls->Add(this->label1);
 			this->panel1->Controls->Add(this->txtQuant);
 			this->panel1->Controls->Add(this->lblQuant);
 			this->panel1->Controls->Add(this->txtItemName);
@@ -97,22 +102,22 @@ namespace CafeStock {
 			this->panel1->Controls->Add(this->lblType);
 			this->panel1->Controls->Add(this->lblName);
 			this->panel1->Controls->Add(this->btnAdd);
-			this->panel1->Location = System::Drawing::Point(201, 119);
+			this->panel1->Location = System::Drawing::Point(187, 78);
 			this->panel1->Margin = System::Windows::Forms::Padding(4);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(817, 514);
+			this->panel1->Size = System::Drawing::Size(414, 514);
 			this->panel1->TabIndex = 10;
 			// 
 			// txtQuant
 			// 
-			this->txtQuant->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->txtQuant->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->txtQuant->Location = System::Drawing::Point(223, 274);
+			this->txtQuant->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->txtQuant->Location = System::Drawing::Point(66, 296);
 			this->txtQuant->Margin = System::Windows::Forms::Padding(4);
-			this->txtQuant->Multiline = true;
 			this->txtQuant->Name = L"txtQuant";
-			this->txtQuant->Size = System::Drawing::Size(392, 39);
+			this->txtQuant->Size = System::Drawing::Size(119, 29);
 			this->txtQuant->TabIndex = 14;
 			// 
 			// lblQuant
@@ -121,32 +126,35 @@ namespace CafeStock {
 			this->lblQuant->BackColor = System::Drawing::Color::Transparent;
 			this->lblQuant->Font = (gcnew System::Drawing::Font(L"Segoe MDL2 Assets", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblQuant->Location = System::Drawing::Point(84, 274);
+			this->lblQuant->Location = System::Drawing::Point(62, 267);
 			this->lblQuant->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblQuant->Name = L"lblQuant";
-			this->lblQuant->Size = System::Drawing::Size(100, 27);
+			this->lblQuant->Size = System::Drawing::Size(72, 42);
 			this->lblQuant->TabIndex = 13;
-			this->lblQuant->Text = L"Quantity:";
+			this->lblQuant->Text = L"Quantity\r\n\r\n";
 			// 
 			// txtItemName
 			// 
-			this->txtItemName->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->txtItemName->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->txtItemName->Location = System::Drawing::Point(223, 155);
+			this->txtItemName->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->txtItemName->Location = System::Drawing::Point(66, 144);
 			this->txtItemName->Margin = System::Windows::Forms::Padding(4);
-			this->txtItemName->Multiline = true;
 			this->txtItemName->Name = L"txtItemName";
-			this->txtItemName->Size = System::Drawing::Size(392, 39);
+			this->txtItemName->Size = System::Drawing::Size(285, 29);
 			this->txtItemName->TabIndex = 12;
 			// 
 			// editCombo
 			// 
+			this->editCombo->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->editCombo->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->editCombo->FormattingEnabled = true;
-			this->editCombo->Location = System::Drawing::Point(223, 231);
+			this->editCombo->Location = System::Drawing::Point(67, 223);
 			this->editCombo->Margin = System::Windows::Forms::Padding(4);
 			this->editCombo->Name = L"editCombo";
-			this->editCombo->Size = System::Drawing::Size(391, 24);
+			this->editCombo->Size = System::Drawing::Size(285, 24);
 			this->editCombo->TabIndex = 11;
 			// 
 			// lblType
@@ -155,12 +163,12 @@ namespace CafeStock {
 			this->lblType->BackColor = System::Drawing::Color::Transparent;
 			this->lblType->Font = (gcnew System::Drawing::Font(L"Segoe MDL2 Assets", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblType->Location = System::Drawing::Point(84, 223);
+			this->lblType->Location = System::Drawing::Point(63, 193);
 			this->lblType->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblType->Name = L"lblType";
-			this->lblType->Size = System::Drawing::Size(117, 27);
+			this->lblType->Size = System::Drawing::Size(85, 42);
 			this->lblType->TabIndex = 10;
-			this->lblType->Text = L"Item Type:";
+			this->lblType->Text = L"Item Type\r\n\r\n";
 			// 
 			// lblName
 			// 
@@ -168,25 +176,25 @@ namespace CafeStock {
 			this->lblName->BackColor = System::Drawing::Color::Transparent;
 			this->lblName->Font = (gcnew System::Drawing::Font(L"Segoe MDL2 Assets", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblName->Location = System::Drawing::Point(84, 155);
+			this->lblName->Location = System::Drawing::Point(62, 114);
 			this->lblName->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblName->Name = L"lblName";
-			this->lblName->Size = System::Drawing::Size(124, 27);
+			this->lblName->Size = System::Drawing::Size(93, 21);
 			this->lblName->TabIndex = 9;
-			this->lblName->Text = L"Item Name:";
+			this->lblName->Text = L"Item Name";
 			// 
 			// btnAdd
 			// 
 			this->btnAdd->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->btnAdd->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->btnAdd->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->btnAdd->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnAdd->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->btnAdd->Location = System::Drawing::Point(319, 369);
+			this->btnAdd->Location = System::Drawing::Point(155, 366);
 			this->btnAdd->Margin = System::Windows::Forms::Padding(4);
 			this->btnAdd->Name = L"btnAdd";
-			this->btnAdd->Size = System::Drawing::Size(147, 58);
+			this->btnAdd->Size = System::Drawing::Size(105, 35);
 			this->btnAdd->TabIndex = 8;
 			this->btnAdd->Text = L"Add";
 			this->btnAdd->UseVisualStyleBackColor = false;
@@ -194,15 +202,17 @@ namespace CafeStock {
 			// 
 			// PopupBack
 			// 
-			this->PopupBack->BackColor = System::Drawing::Color::Transparent;
+			this->PopupBack->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->PopupBack->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"PopupBack.BackgroundImage")));
 			this->PopupBack->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
+			this->PopupBack->FlatAppearance->BorderSize = 0;
 			this->PopupBack->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->PopupBack->ForeColor = System::Drawing::Color::Transparent;
-			this->PopupBack->Location = System::Drawing::Point(-1, 0);
+			this->PopupBack->Location = System::Drawing::Point(27, 28);
 			this->PopupBack->Margin = System::Windows::Forms::Padding(4);
 			this->PopupBack->Name = L"PopupBack";
-			this->PopupBack->Size = System::Drawing::Size(61, 59);
+			this->PopupBack->Size = System::Drawing::Size(49, 46);
 			this->PopupBack->TabIndex = 11;
 			this->PopupBack->UseVisualStyleBackColor = false;
 			this->PopupBack->Click += gcnew System::EventHandler(this, &PopupEdit::PopupBack_Click);
@@ -243,6 +253,27 @@ namespace CafeStock {
 			this->bttnExit->UseVisualStyleBackColor = false;
 			this->bttnExit->Click += gcnew System::EventHandler(this, &PopupEdit::bttnExit_Click);
 			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->BackColor = System::Drawing::Color::Transparent;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Segoe UI Black", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(132, 48);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(151, 40);
+			this->label1->TabIndex = 15;
+			this->label1->Text = L"Add Item";
+			// 
+			// panel2
+			// 
+			this->panel2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel2.BackgroundImage")));
+			this->panel2->Location = System::Drawing::Point(600, 78);
+			this->panel2->Name = L"panel2";
+			this->panel2->Size = System::Drawing::Size(495, 514);
+			this->panel2->TabIndex = 18;
+			// 
 			// PopupEdit
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -250,6 +281,7 @@ namespace CafeStock {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1283, 670);
+			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->bttnMinimize);
 			this->Controls->Add(this->bttnExit);
 			this->Controls->Add(this->panel1);
