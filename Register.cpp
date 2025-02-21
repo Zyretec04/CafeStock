@@ -27,6 +27,11 @@ System::Void CafeStock::Register::button1_Click(System::Object^ sender, System::
         MessageBox::Show("All fields are required!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         return;
     }
+    if (username->Trim() == "admin") {
+        MessageBox::Show("Please choose a different username!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+        return;
+
+    }
 
     // Check if passwords match
     if (password != confirmPassword) {
