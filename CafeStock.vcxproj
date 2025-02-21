@@ -121,6 +121,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AdminMenu.cpp" />
+    <ClCompile Include="AdminUsers.cpp" />
     <ClCompile Include="Dashboard.cpp" />
     <ClCompile Include="HistoryControll.cpp" />
     <ClCompile Include="InventoryMenu.cpp" />
@@ -130,6 +132,12 @@
     <ClCompile Include="Register.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AdminMenu.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AdminUsers.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
     <ClInclude Include="Dashboard.h">
       <FileType>CppControl</FileType>
     </ClInclude>
@@ -153,6 +161,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AdminMenu.resx">
+      <DependentUpon>AdminMenu.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminUsers.resx">
+      <DependentUpon>AdminUsers.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.h</DependentUpon>
     </EmbeddedResource>

@@ -1,5 +1,6 @@
 ﻿#include "MainLogin.h"
 #include "Menumain.h"
+#include "AdminMenu.h"
 #include "Register.h"
 using namespace System;
 using namespace System::Windows::Forms;
@@ -22,6 +23,7 @@ System::Void CafeStock::MainLogin::bttnLogin_Click(System::Object^ sender, Syste
     System::String^ username = this->txtUsername->Text;
     System::String^ password = this->txtPassword->Text;
 
+    
     // 🔹 Input validation: Check if username or password is empty
     if (System::String::IsNullOrWhiteSpace(username)) {
         System::Windows::Forms::MessageBox::Show("Username cannot be empty.", "Validation Error",
@@ -35,6 +37,14 @@ System::Void CafeStock::MainLogin::bttnLogin_Click(System::Object^ sender, Syste
             System::Windows::Forms::MessageBoxButtons::OK,
             System::Windows::Forms::MessageBoxIcon::Warning);
         return; // Exit the function
+    }
+    if (username->Trim() == "admin" && password->Trim() == "alain121004") {
+        MessageBox::Show("Welcome Admin!", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
+        this->Hide();
+        AdminMenu^ newForm = gcnew AdminMenu();
+        newForm->ShowDialog();
+        this->Close();
+        return;
     }
 
     System::String^ connString = "Data Source=AlainsComputer\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=alain121004;TrustServerCertificate=True";
