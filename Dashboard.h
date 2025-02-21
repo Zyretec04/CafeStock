@@ -86,7 +86,7 @@ namespace CafeStock {
 			this->lblText->BackColor = System::Drawing::Color::Transparent;
 			this->lblText->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->lblText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(2)));
+				static_cast<System::Byte>(0)));
 			this->lblText->ForeColor = System::Drawing::Color::Firebrick;
 			this->lblText->Location = System::Drawing::Point(83, 252);
 			this->lblText->Name = L"lblText";
