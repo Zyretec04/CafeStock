@@ -116,9 +116,9 @@ namespace CafeStock {
 			this->flowLayoutPanel1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->flowLayoutPanel1->Controls->Add(this->pictureBox1);
 			this->flowLayoutPanel1->Controls->Add(this->panel5);
+			this->flowLayoutPanel1->Controls->Add(this->panel2);
 			this->flowLayoutPanel1->Controls->Add(this->panel1);
 			this->flowLayoutPanel1->Controls->Add(this->panel7);
-			this->flowLayoutPanel1->Controls->Add(this->panel2);
 			this->flowLayoutPanel1->Controls->Add(this->panel8);
 			this->flowLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Left;
 			this->flowLayoutPanel1->Font = (gcnew System::Drawing::Font(L"Segoe MDL2 Assets", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
@@ -170,7 +170,7 @@ namespace CafeStock {
 			// 
 			this->panel1->BackColor = System::Drawing::Color::Transparent;
 			this->panel1->Controls->Add(this->btnAdInventory);
-			this->panel1->Location = System::Drawing::Point(3, 163);
+			this->panel1->Location = System::Drawing::Point(3, 219);
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(214, 50);
 			this->panel1->TabIndex = 5;
@@ -198,7 +198,7 @@ namespace CafeStock {
 			this->panel7->BackColor = System::Drawing::Color::Transparent;
 			this->panel7->Controls->Add(this->btnAdHistory);
 			this->panel7->Controls->Add(this->button7);
-			this->panel7->Location = System::Drawing::Point(3, 219);
+			this->panel7->Location = System::Drawing::Point(3, 275);
 			this->panel7->Name = L"panel7";
 			this->panel7->Size = System::Drawing::Size(214, 50);
 			this->panel7->TabIndex = 7;
@@ -242,7 +242,7 @@ namespace CafeStock {
 			// 
 			this->panel2->BackColor = System::Drawing::Color::Transparent;
 			this->panel2->Controls->Add(this->btnUsers);
-			this->panel2->Location = System::Drawing::Point(3, 275);
+			this->panel2->Location = System::Drawing::Point(3, 163);
 			this->panel2->Name = L"panel2";
 			this->panel2->Size = System::Drawing::Size(214, 50);
 			this->panel2->TabIndex = 9;

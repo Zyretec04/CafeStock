@@ -116,6 +116,7 @@ namespace CafeStock {
 			this->txtSearch->Name = L"txtSearch";
 			this->txtSearch->Size = System::Drawing::Size(564, 20);
 			this->txtSearch->TabIndex = 19;
+			this->txtSearch->TextChanged += gcnew System::EventHandler(this, &AdminUsers::txtSearch_TextChanged);
 			// 
 			// dataGridView1
 			// 
@@ -150,7 +151,7 @@ namespace CafeStock {
 #pragma endregion
 private:
 		void LoadDataFromDatabase() {
-			String^ connectionString = "Data Source=AlainsComputer\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=alain121004";
+			String^ connectionString = "Data Source=DESKTOP-7R4GRV2\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=12345";
 			String^ query = "SELECT * FROM Users";
 			try {
 				SqlConnection^ con = gcnew SqlConnection(connectionString);
@@ -184,6 +185,16 @@ private: System::Void bttnMinimize_Click(System::Object^ sender, System::EventAr
 	System::Windows::Forms::Form^ parentForm = this->FindForm(); // Get the parent form
 	if (parentForm != nullptr) {
 		parentForm->WindowState = System::Windows::Forms::FormWindowState::Minimized;
+	}
+}
+private: System::Void txtSearch_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	String^ searchText = txtSearch->Text;
+	if (dataTable == nullptr) return;
+	if (String::IsNullOrEmpty(searchText)) {
+		dataTable->DefaultView->RowFilter = "";
+	}
+	else {
+		dataTable->DefaultView->RowFilter = String::Format("Username LIKE '%{0}%'", searchText->Replace("'", "''"));
 	}
 }
 };

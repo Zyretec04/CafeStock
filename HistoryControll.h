@@ -83,22 +83,23 @@ namespace CafeStock {
 			// 
 			// dataGridView1
 			// 
+			this->dataGridView1->AllowUserToAddRows = false;
+			this->dataGridView1->AllowUserToDeleteRows = false;
+			this->dataGridView1->AllowUserToResizeColumns = false;
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(90, 130);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(4);
+			this->dataGridView1->Location = System::Drawing::Point(68, 106);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersVisible = false;
 			this->dataGridView1->RowHeadersWidth = 51;
-			this->dataGridView1->Size = System::Drawing::Size(812, 480);
+			this->dataGridView1->Size = System::Drawing::Size(609, 390);
 			this->dataGridView1->TabIndex = 5;
 			// 
 			// txtSearch
 			// 
-			this->txtSearch->Location = System::Drawing::Point(151, 71);
-			this->txtSearch->Margin = System::Windows::Forms::Padding(4);
+			this->txtSearch->Location = System::Drawing::Point(113, 58);
 			this->txtSearch->Name = L"txtSearch";
-			this->txtSearch->Size = System::Drawing::Size(751, 22);
+			this->txtSearch->Size = System::Drawing::Size(564, 20);
 			this->txtSearch->TabIndex = 9;
 			this->txtSearch->TextChanged += gcnew System::EventHandler(this, &HistoryControll::txtSearch_TextChanged);
 			// 
@@ -107,9 +108,10 @@ namespace CafeStock {
 			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
 			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
-			this->pictureBox1->Location = System::Drawing::Point(90, 61);
+			this->pictureBox1->Location = System::Drawing::Point(68, 50);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(54, 44);
+			this->pictureBox1->Size = System::Drawing::Size(40, 36);
 			this->pictureBox1->TabIndex = 10;
 			this->pictureBox1->TabStop = false;
 			// 
@@ -122,10 +124,9 @@ namespace CafeStock {
 			this->bttnMinimize->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->bttnMinimize->ForeColor = System::Drawing::Color::Red;
-			this->bttnMinimize->Location = System::Drawing::Point(891, 0);
-			this->bttnMinimize->Margin = System::Windows::Forms::Padding(4);
+			this->bttnMinimize->Location = System::Drawing::Point(668, 0);
 			this->bttnMinimize->Name = L"bttnMinimize";
-			this->bttnMinimize->Size = System::Drawing::Size(47, 43);
+			this->bttnMinimize->Size = System::Drawing::Size(35, 35);
 			this->bttnMinimize->TabIndex = 17;
 			this->bttnMinimize->Text = L"—";
 			this->bttnMinimize->UseVisualStyleBackColor = false;
@@ -140,10 +141,9 @@ namespace CafeStock {
 			this->bttnExit->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->bttnExit->ForeColor = System::Drawing::Color::Red;
-			this->bttnExit->Location = System::Drawing::Point(946, 0);
-			this->bttnExit->Margin = System::Windows::Forms::Padding(4);
+			this->bttnExit->Location = System::Drawing::Point(710, 0);
 			this->bttnExit->Name = L"bttnExit";
-			this->bttnExit->Size = System::Drawing::Size(47, 43);
+			this->bttnExit->Size = System::Drawing::Size(35, 35);
 			this->bttnExit->TabIndex = 16;
 			this->bttnExit->Text = L"X";
 			this->bttnExit->UseVisualStyleBackColor = false;
@@ -151,7 +151,7 @@ namespace CafeStock {
 			// 
 			// HistoryControll
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::Control;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
@@ -161,9 +161,8 @@ namespace CafeStock {
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->txtSearch);
 			this->Controls->Add(this->dataGridView1);
-			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"HistoryControll";
-			this->Size = System::Drawing::Size(993, 670);
+			this->Size = System::Drawing::Size(745, 544);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
