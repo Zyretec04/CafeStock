@@ -31,6 +31,8 @@ namespace CafeStock {
 	protected:
 	private: System::Windows::Forms::Button^ bttnExit;
 	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
+
 	private: System::Windows::Forms::Button^ btnEdit;
 	private: System::Void btnEdit_Click(System::Object^ sender, System::EventArgs^ e);
 	protected:
@@ -58,42 +60,46 @@ namespace CafeStock {
 			   this->bttnMinimize = (gcnew System::Windows::Forms::Button());
 			   this->bttnExit = (gcnew System::Windows::Forms::Button());
 			   this->button2 = (gcnew System::Windows::Forms::Button());
+			   this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			   this->SuspendLayout();
 			   // 
 			   // btnEdit
 			   // 
-			   this->btnEdit->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(162)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
-				   static_cast<System::Int32>(static_cast<System::Byte>(23)));
+			   this->btnEdit->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			   this->btnEdit->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			   this->btnEdit->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			   this->btnEdit->FlatAppearance->BorderSize = 0;
+			   this->btnEdit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->btnEdit->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnEdit.Image")));
-			   this->btnEdit->Location = System::Drawing::Point(636, 49);
+			   this->btnEdit->Location = System::Drawing::Point(637, 45);
 			   this->btnEdit->Name = L"btnEdit";
-			   this->btnEdit->Size = System::Drawing::Size(41, 36);
+			   this->btnEdit->Size = System::Drawing::Size(40, 40);
 			   this->btnEdit->TabIndex = 7;
 			   this->btnEdit->UseVisualStyleBackColor = false;
 			   this->btnEdit->Click += gcnew System::EventHandler(this, &InventoryMenu::btnEdit_Click);
 			   // 
 			   // button1
 			   // 
-			   this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(162)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
-				   static_cast<System::Int32>(static_cast<System::Byte>(23)));
-			   this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			   this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			   this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			   this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			   this->button1->FlatAppearance->BorderSize = 0;
+			   this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
-			   this->button1->Location = System::Drawing::Point(562, 49);
+			   this->button1->Location = System::Drawing::Point(570, 45);
 			   this->button1->Name = L"button1";
-			   this->button1->Size = System::Drawing::Size(46, 36);
+			   this->button1->Size = System::Drawing::Size(40, 40);
 			   this->button1->TabIndex = 6;
 			   this->button1->UseVisualStyleBackColor = false;
 			   this->button1->Click += gcnew System::EventHandler(this, &InventoryMenu::button1_Click);
 			   // 
 			   // textBox1
 			   // 
-			   this->textBox1->Location = System::Drawing::Point(68, 58);
+			   this->textBox1->Location = System::Drawing::Point(113, 56);
 			   this->textBox1->Name = L"textBox1";
-			   this->textBox1->Size = System::Drawing::Size(398, 20);
+			   this->textBox1->Size = System::Drawing::Size(374, 20);
 			   this->textBox1->TabIndex = 5;
 			   this->textBox1->TextChanged += gcnew System::EventHandler(this, &InventoryMenu::textBox1_TextChanged);
 			   // 
@@ -104,9 +110,14 @@ namespace CafeStock {
 			   this->dataGridView1->AllowUserToResizeColumns = false;
 			   this->dataGridView1->AllowUserToResizeRows = false;
 			   this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+			   this->dataGridView1->BackgroundColor = System::Drawing::SystemColors::ControlLight;
+			   this->dataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			   this->dataGridView1->ClipboardCopyMode = System::Windows::Forms::DataGridViewClipboardCopyMode::EnableAlwaysIncludeHeaderText;
 			   this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			   this->dataGridView1->EditMode = System::Windows::Forms::DataGridViewEditMode::EditProgrammatically;
+			   this->dataGridView1->GridColor = System::Drawing::SystemColors::ControlLight;
 			   this->dataGridView1->Location = System::Drawing::Point(68, 106);
+			   this->dataGridView1->MultiSelect = false;
 			   this->dataGridView1->Name = L"dataGridView1";
 			   this->dataGridView1->RowHeadersVisible = false;
 			   this->dataGridView1->RowHeadersWidth = 51;
@@ -151,17 +162,30 @@ namespace CafeStock {
 			   // 
 			   // button2
 			   // 
-			   this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(162)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
-				   static_cast<System::Int32>(static_cast<System::Byte>(23)));
-			   this->button2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			   this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			   this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			   this->button2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			   this->button2->FlatAppearance->BorderSize = 0;
+			   this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->button2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button2.Image")));
-			   this->button2->Location = System::Drawing::Point(489, 49);
+			   this->button2->Location = System::Drawing::Point(504, 45);
 			   this->button2->Name = L"button2";
-			   this->button2->Size = System::Drawing::Size(46, 36);
+			   this->button2->Size = System::Drawing::Size(40, 40);
 			   this->button2->TabIndex = 18;
 			   this->button2->UseVisualStyleBackColor = false;
 			   this->button2->Click += gcnew System::EventHandler(this, &InventoryMenu::button2_Click);
+			   // 
+			   // pictureBox1
+			   // 
+			   this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
+			   this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
+			   this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			   this->pictureBox1->Location = System::Drawing::Point(68, 45);
+			   this->pictureBox1->Margin = System::Windows::Forms::Padding(2);
+			   this->pictureBox1->Name = L"pictureBox1";
+			   this->pictureBox1->Size = System::Drawing::Size(40, 40);
+			   this->pictureBox1->TabIndex = 19;
+			   this->pictureBox1->TabStop = false;
 			   // 
 			   // InventoryMenu
 			   // 
@@ -169,6 +193,7 @@ namespace CafeStock {
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			   this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			   this->Controls->Add(this->pictureBox1);
 			   this->Controls->Add(this->button2);
 			   this->Controls->Add(this->bttnMinimize);
 			   this->Controls->Add(this->bttnExit);
@@ -179,6 +204,7 @@ namespace CafeStock {
 			   this->Name = L"InventoryMenu";
 			   this->Size = System::Drawing::Size(745, 544);
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			   this->ResumeLayout(false);
 			   this->PerformLayout();
 
@@ -206,7 +232,7 @@ namespace CafeStock {
 			if (dialogResult == System::Windows::Forms::DialogResult::Yes) {
 				try {
 					// Supabase REST API URL (or SQL Server connection string if using local DB)
-					String^ connectionString = "Data Source=DESKTOP-7R4GRV2\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=12345";
+					String^ connectionString = "Data Source=LAPTOP-JM0T2KKH\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=123";
 
 					// Open connection
 					SqlConnection^ conn = gcnew SqlConnection(connectionString);
@@ -246,7 +272,7 @@ namespace CafeStock {
 	}
 	public:
 		void LoadDataFromDatabase() {
-			String^ connectionString = "Data Source=DESKTOP-7R4GRV2\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=12345";
+			String^ connectionString = "Data Source=LAPTOP-JM0T2KKH\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=123";
 			String^ query = "SELECT * FROM tblItems";
 			try {
 				SqlConnection^ con = gcnew SqlConnection(connectionString);
@@ -283,8 +309,6 @@ private: System::Void bttnExit_Click(System::Object^ sender, System::EventArgs^ 
 		System::Windows::Forms::Application::Exit(); // Exit the application
 	}
 }
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-
-}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

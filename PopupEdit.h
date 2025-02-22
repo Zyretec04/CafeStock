@@ -206,7 +206,7 @@ namespace CafeStock {
 			this->btnAdd->UseVisualStyleBackColor = false;
 			this->btnAdd->Click += gcnew System::EventHandler(this, &PopupEdit::btnAdd_Click);
 			// 
-			// PopupBack
+			// PopupBack 
 			// 
 			this->PopupBack->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
