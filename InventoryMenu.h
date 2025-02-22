@@ -247,7 +247,7 @@ namespace CafeStock {
 			if (dialogResult == System::Windows::Forms::DialogResult::Yes) {
 				try {
 					// Supabase REST API URL (or SQL Server connection string if using local DB)
-					String^ connectionString = "Data Source=ALAINSCOMPUTER\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=alain121004";
+					String^ connectionString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
 
 					// Open connection
 					SqlConnection^ conn = gcnew SqlConnection(connectionString);
@@ -287,7 +287,7 @@ namespace CafeStock {
 	}
 	public:
 		void LoadDataFromDatabase() {
-			String^ connectionString = "Data Source=ALAINSCOMPUTER\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=alain121004";
+			String^ connectionString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
 			String^ query = "SELECT * FROM tblItems";
 			try {
 				SqlConnection^ con = gcnew SqlConnection(connectionString);
@@ -298,6 +298,7 @@ namespace CafeStock {
 				dataTable = dt;
 				dataGridView1->DataSource = dataTable->DefaultView;
 				con->Close();
+				dataGridView1->Columns["Item_ID"]->Visible = false;
 			}
 			catch (Exception^ ex) {
 				MessageBox::Show("Error loading data: " + ex->Message);

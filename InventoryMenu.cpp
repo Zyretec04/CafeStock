@@ -24,14 +24,14 @@ System::Void CafeStock::InventoryMenu::button2_Click(System::Object^ sender, Sys
     {
         // Get selected row data
         int selectedIndex = dataGridView1->SelectedRows[0]->Index;
-        int itemID = Convert::ToInt32(dataGridView1->Rows[selectedIndex]->Cells["Item_ID"]->Value);
+        //int itemID = Convert::ToInt32(dataGridView1->Rows[selectedIndex]->Cells["Item_ID"]->Value);
         String^ itemName = dataGridView1->Rows[selectedIndex]->Cells["Item_Name"]->Value->ToString();
         String^ itemType = dataGridView1->Rows[selectedIndex]->Cells["Item_Category"]->Value->ToString();
         String^ itemQuantity = dataGridView1->Rows[selectedIndex]->Cells["Item_Quantity"]->Value->ToString();
 
         //this->Hide();
 
-        EditInventory^ editInventory = gcnew EditInventory(itemID, itemName, itemType, itemQuantity);
+        EditInventory^ editInventory = gcnew EditInventory(itemName, itemType, itemQuantity);
         editInventory->ShowDialog();
 
         this->Show();

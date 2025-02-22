@@ -18,7 +18,7 @@ namespace CafeStock {
 		int GetItemID(String^ itemName);
 
 	public:
-		EditInventory(int itemID, String^ itemName, String^ itemType, String^ itemQuantity)
+		EditInventory(String^ itemName, String^ itemType, String^ itemQuantity)
 		{
 			InitializeComponent();
 			//
@@ -28,7 +28,7 @@ namespace CafeStock {
 
 			// Store Item_ID for update query
 			// his->itemID = itemID;
-			this->itemID = itemID;
+			//this->itemID = itemID;
 			txtItemName->Text = itemName;
 			cmbType->Text = itemType;
 			txtQuantity->Text = itemQuantity;

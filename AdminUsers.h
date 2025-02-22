@@ -152,7 +152,7 @@ namespace CafeStock {
 #pragma endregion
 private:
 		void LoadDataFromDatabase() {
-			String^ connectionString = "Data Source=ALAINSCOMPUTER\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=alain121004";
+			String^ connectionString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
 			String^ query = "SELECT * FROM Users";
 			try {
 				SqlConnection^ con = gcnew SqlConnection(connectionString);

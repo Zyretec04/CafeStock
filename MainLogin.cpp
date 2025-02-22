@@ -47,7 +47,7 @@ System::Void CafeStock::MainLogin::bttnLogin_Click(System::Object^ sender, Syste
         return;
     }
 
-    System::String^ connString = "Data Source=ALAINSCOMPUTER\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=alain121004";
+    System::String^ connString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
 
     // // Define hardcoded credentials for simplicity (replace with database query in production)
     // System::String^ adminUsername = "admin";
@@ -57,7 +57,7 @@ System::Void CafeStock::MainLogin::bttnLogin_Click(System::Object^ sender, Syste
         SqlConnection^ connection = gcnew SqlConnection(connString);
         connection->Open();
 
-        SqlCommand^ command = gcnew SqlCommand("SELECT COUNT(*) FROM Users WHERE Username = @username AND Password = @password", connection);
+        SqlCommand^ command = gcnew SqlCommand("SELECT COUNT(*) FROM Users WHERE username = @username AND password = @password", connection);
         command->Parameters->AddWithValue("@username", username);
         command->Parameters->AddWithValue("@password", password);
         int userCount = safe_cast<int>(command->ExecuteScalar());

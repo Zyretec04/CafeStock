@@ -36,7 +36,7 @@ if (!Int32::TryParse(quantityText, quantity) || quantity <= 0) {
 }
 
 // Database Connection String
-String^ connectionString = "Data Source=ALAINSCOMPUTER\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=alain121004";
+String^ connectionString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
 
 try {
     SqlConnection^ con = gcnew SqlConnection(connectionString);
