@@ -1,4 +1,5 @@
 #pragma once
+#include "InventoryMenu.h"
 namespace CafeStock {
 
 	using namespace System;
@@ -16,22 +17,29 @@ namespace CafeStock {
 	private:
 		int itemID;
 		int GetItemID(String^ itemName);
+		void LoadItemDetails();
 
 	public:
-		EditInventory(String^ itemName, String^ itemType, String^ itemQuantity)
+		EditInventory(int passedItemID)
 		{
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
-			cmbType->Items->AddRange(gcnew cli::array<String^> { "Utensils", "Meat", "Drink", "Food"});
+			//cmbType->Items->AddRange(gcnew cli::array<String^> { "Utensils", "Meat", "Drink", "Food"});
+			//this->itemID = passedItemID;
 
-			// Store Item_ID for update query
-			// his->itemID = itemID;
-			//this->itemID = itemID;
-			txtItemName->Text = itemName;
-			cmbType->Text = itemType;
-			txtQuantity->Text = itemQuantity;
+			//// Store Item_ID for update query
+			//// his->itemID = itemID;
+			////this->itemID = itemID;
+			//txtItemName->Text = itemName;
+			//cmbType->Text = itemType;
+			//txtQuantity->Text = itemQuantity;
+
+			//LoadItemDetails();
+			cmbType->Items->AddRange(gcnew cli::array<String^> { "Utensils", "Meat", "Drink", "Food" });
+			this->itemID = passedItemID;
+			LoadItemDetails();
 		}
 
 	protected:
