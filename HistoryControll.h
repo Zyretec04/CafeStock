@@ -142,7 +142,7 @@ namespace CafeStock {
 			this->bttnMinimize->Name = L"bttnMinimize";
 			this->bttnMinimize->Size = System::Drawing::Size(47, 43);
 			this->bttnMinimize->TabIndex = 17;
-			this->bttnMinimize->Text = L"—";
+			this->bttnMinimize->Text = L"ï¿½";
 			this->bttnMinimize->UseVisualStyleBackColor = false;
 			this->bttnMinimize->Click += gcnew System::EventHandler(this, &HistoryControll::bttnMinimize_Click);
 			// 
@@ -206,7 +206,7 @@ namespace CafeStock {
 
 	private:
 		void LoadDataFromDatabase() {
-			String^ connectionString = "Data Source=LAPTOP-JM0T2KKH\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=123";
+			String^ connectionString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com,1433;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
 			String^ query = "SELECT * FROM tblItems";
 			try {
 				SqlConnection^ con = gcnew SqlConnection(connectionString);
