@@ -19,31 +19,22 @@ System::Void CafeStock::InventoryMenu::btnEdit_Click(System::Object^ sender, Sys
 }
 
 System::Void CafeStock::InventoryMenu::button2_Click(System::Object^ sender, System::EventArgs^ e) {
-    // Ensure that a row is selected before proceeding
-    if (dataGridView1->SelectedRows->Count > 0)
-    {
-        // Get selected row data
+    if (dataGridView1->SelectedRows->Count > 0) {
         int selectedIndex = dataGridView1->SelectedRows[0]->Index;
-        //int itemID = Convert::ToInt32(dataGridView1->Rows[selectedIndex]->Cells["Item_ID"]->Value);
-        String^ itemName = dataGridView1->Rows[selectedIndex]->Cells["Item_Name"]->Value->ToString();
-        String^ itemType = dataGridView1->Rows[selectedIndex]->Cells["Item_Category"]->Value->ToString();
-        String^ itemQuantity = dataGridView1->Rows[selectedIndex]->Cells["Item_Quantity"]->Value->ToString();
+        int selectedItemID = Convert::ToInt32(
+            dataGridView1->Rows[selectedIndex]->Cells["Item_ID"]->Value
+        );
 
-        //this->Hide();
-
-        EditInventory^ editInventory = gcnew EditInventory(itemName, itemType, itemQuantity);
+        // Call the new constructor that takes an int
+        EditInventory^ editInventory = gcnew EditInventory(selectedItemID);
         editInventory->ShowDialog();
-
-        this->Show();
-
-        // Refresh DGV
-        LoadDataFromDatabase();
     }
-    else
-    {
-        // Show a message if no row is selected
-        MessageBox::Show("Please select a row to edit.", "No Selection", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+    else {
+        MessageBox::Show("Please select a row to edit.");
     }
+
+    LoadDataFromDatabase();
 }
+
 
 

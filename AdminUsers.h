@@ -73,9 +73,10 @@ namespace CafeStock {
 			this->bttnMinimize->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->bttnMinimize->ForeColor = System::Drawing::Color::Red;
-			this->bttnMinimize->Location = System::Drawing::Point(668, 0);
+			this->bttnMinimize->Location = System::Drawing::Point(891, 0);
+			this->bttnMinimize->Margin = System::Windows::Forms::Padding(4);
 			this->bttnMinimize->Name = L"bttnMinimize";
-			this->bttnMinimize->Size = System::Drawing::Size(35, 35);
+			this->bttnMinimize->Size = System::Drawing::Size(47, 43);
 			this->bttnMinimize->TabIndex = 22;
 			this->bttnMinimize->Text = L"—";
 			this->bttnMinimize->UseVisualStyleBackColor = false;
@@ -90,9 +91,10 @@ namespace CafeStock {
 			this->bttnExit->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->bttnExit->ForeColor = System::Drawing::Color::Red;
-			this->bttnExit->Location = System::Drawing::Point(710, 0);
+			this->bttnExit->Location = System::Drawing::Point(947, 0);
+			this->bttnExit->Margin = System::Windows::Forms::Padding(4);
 			this->bttnExit->Name = L"bttnExit";
-			this->bttnExit->Size = System::Drawing::Size(35, 35);
+			this->bttnExit->Size = System::Drawing::Size(47, 43);
 			this->bttnExit->TabIndex = 21;
 			this->bttnExit->Text = L"X";
 			this->bttnExit->UseVisualStyleBackColor = false;
@@ -103,36 +105,47 @@ namespace CafeStock {
 			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
 			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
-			this->pictureBox1->Location = System::Drawing::Point(68, 49);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(2);
+			this->pictureBox1->Location = System::Drawing::Point(91, 60);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(40, 36);
+			this->pictureBox1->Size = System::Drawing::Size(53, 44);
 			this->pictureBox1->TabIndex = 20;
 			this->pictureBox1->TabStop = false;
 			// 
 			// txtSearch
 			// 
-			this->txtSearch->Location = System::Drawing::Point(113, 57);
+			this->txtSearch->Location = System::Drawing::Point(151, 70);
+			this->txtSearch->Margin = System::Windows::Forms::Padding(4);
 			this->txtSearch->Name = L"txtSearch";
-			this->txtSearch->Size = System::Drawing::Size(564, 20);
+			this->txtSearch->Size = System::Drawing::Size(751, 22);
 			this->txtSearch->TabIndex = 19;
 			this->txtSearch->TextChanged += gcnew System::EventHandler(this, &AdminUsers::txtSearch_TextChanged);
 			// 
 			// dataGridView1
 			// 
+			this->dataGridView1->AllowUserToAddRows = false;
+			this->dataGridView1->AllowUserToDeleteRows = false;
+			this->dataGridView1->AllowUserToResizeColumns = false;
+			this->dataGridView1->AllowUserToResizeRows = false;
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+			this->dataGridView1->BackgroundColor = System::Drawing::Color::White;
+			this->dataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(68, 105);
+			this->dataGridView1->EditMode = System::Windows::Forms::DataGridViewEditMode::EditProgrammatically;
+			this->dataGridView1->GridColor = System::Drawing::SystemColors::ControlLight;
+			this->dataGridView1->Location = System::Drawing::Point(91, 129);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(4);
+			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersVisible = false;
 			this->dataGridView1->RowHeadersWidth = 51;
-			this->dataGridView1->Size = System::Drawing::Size(609, 390);
+			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
+			this->dataGridView1->Size = System::Drawing::Size(812, 480);
 			this->dataGridView1->TabIndex = 18;
 			// 
 			// AdminUsers
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
-			
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
@@ -141,8 +154,11 @@ namespace CafeStock {
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->txtSearch);
 			this->Controls->Add(this->dataGridView1);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"AdminUsers";
-			this->Size = System::Drawing::Size(745, 544);
+			this->Size = System::Drawing::Size(993, 670);
+			this->Load += gcnew System::EventHandler(this, &AdminUsers::AdminUsers_Load);
+			this->Click += gcnew System::EventHandler(this, &AdminUsers::AdminUsers_Click);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
@@ -197,6 +213,27 @@ private: System::Void txtSearch_TextChanged(System::Object^ sender, System::Even
 	else {
 		dataTable->DefaultView->RowFilter = String::Format("Username LIKE '%{0}%'", searchText->Replace("'", "''"));
 	}
+}
+private: System::Void AdminUsers_Load(System::Object^ sender, System::EventArgs^ e) {
+	dataGridView1->ClearSelection();
+	dataGridView1->CurrentCell = nullptr;
+
+	CustomizeDataGridView();
+}
+
+private: System::Void CustomizeDataGridView() {
+	// Change background color when row is selected
+	dataGridView1->DefaultCellStyle->SelectionBackColor = System::Drawing::Color::DarkRed; // Background color
+	dataGridView1->DefaultCellStyle->SelectionForeColor = System::Drawing::Color::White;   // Text color
+}
+
+private: System::Void InventoryMenu_Click(System::Object^ sender, System::EventArgs^ e) {
+	dataGridView1->ClearSelection();
+	dataGridView1->CurrentCell = nullptr;
+}
+private: System::Void AdminUsers_Click(System::Object^ sender, System::EventArgs^ e) {
+	dataGridView1->ClearSelection();
+	dataGridView1->CurrentCell = nullptr;
 }
 };
 }
