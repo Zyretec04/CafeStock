@@ -132,6 +132,7 @@ namespace CafeStock {
 			// AdminUsers
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
@@ -151,7 +152,7 @@ namespace CafeStock {
 #pragma endregion
 private:
 		void LoadDataFromDatabase() {
-			String^ connectionString = "Data Source=DESKTOP-7R4GRV2\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=12345";
+			String^ connectionString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
 			String^ query = "SELECT * FROM Users";
 			try {
 				SqlConnection^ con = gcnew SqlConnection(connectionString);

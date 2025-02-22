@@ -6,7 +6,7 @@ using namespace System::Data::SqlClient;
 
 int CafeStock::EditInventory::GetItemID(String^ itemName) {
 	int itemID = -1; // Default value if not found
-	String^ connectionString = "Data Source=LAPTOP-JM0T2KKH\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=123";
+	String^ connectionString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
 	String^ query = "SELECT Item_ID FROM tblItems WHERE Item_Name = @ItemName";
 
 	try {
@@ -67,7 +67,7 @@ System::Void CafeStock::EditInventory::btnSave_Click(System::Object^ sender, Sys
 	}
 
 	// Database connection string
-	String^ connectionString = "Data Source=LAPTOP-JM0T2KKH\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=123";
+	String^ connectionString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
 
 	try {
 

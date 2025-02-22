@@ -206,7 +206,7 @@ namespace CafeStock {
 
 	private:
 		void LoadDataFromDatabase() {
-			String^ connectionString = "Data Source=LAPTOP-JM0T2KKH\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=123";
+			String^ connectionString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
 			String^ query = "SELECT * FROM tblItems";
 			try {
 				SqlConnection^ con = gcnew SqlConnection(connectionString);
@@ -217,6 +217,7 @@ namespace CafeStock {
 				dataTable = dt;
 				dataGridView1->DataSource = dataTable->DefaultView;
 				con->Close();
+				dataGridView1->Columns["Item_ID"]->Visible = false;
 			}
 			catch (Exception^ ex) {
 				MessageBox::Show("Error loading data: " + ex->Message);
