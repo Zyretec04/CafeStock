@@ -16,7 +16,7 @@ System::Void CafeStock::Register::lblRegis_Click(System::Object^ sender, System:
 // Database Connection String
 
 System::Void CafeStock::Register::button1_Click(System::Object^ sender, System::EventArgs^ e) {
-    System::String^ connString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com,1433;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
+    System::String^ connString = "Data Source=ALAINSCOMPUTER\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=alain121004";
     // Get user input from form fields
     System::String^ username = txtUsername->Text;
     System::String^ password = txtPassword->Text;
@@ -48,7 +48,7 @@ System::Void CafeStock::Register::button1_Click(System::Object^ sender, System::
         connection->Open();
 
         // Check if the username already exists
-        SqlCommand^ checkUserCmd = gcnew SqlCommand("SELECT COUNT(*) FROM Users WHERE username = @username", connection);
+        SqlCommand^ checkUserCmd = gcnew SqlCommand("SELECT COUNT(*) FROM Users WHERE Username = @username", connection);
         checkUserCmd->Parameters->AddWithValue("@username", username);
         int userCount = safe_cast<int>(checkUserCmd->ExecuteScalar());
 
@@ -59,7 +59,7 @@ System::Void CafeStock::Register::button1_Click(System::Object^ sender, System::
         }
 
         // Insert new user into database
-        SqlCommand^ command = gcnew SqlCommand("INSERT INTO Users (username, password) VALUES (@username, @password)", connection);
+        SqlCommand^ command = gcnew SqlCommand("INSERT INTO Users (Username, Password) VALUES (@username, @password)", connection);
         command->Parameters->AddWithValue("@username", username);
         command->Parameters->AddWithValue("@password", hashedPassword);
         command->ExecuteNonQuery();

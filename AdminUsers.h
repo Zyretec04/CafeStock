@@ -77,7 +77,7 @@ namespace CafeStock {
 			this->bttnMinimize->Name = L"bttnMinimize";
 			this->bttnMinimize->Size = System::Drawing::Size(35, 35);
 			this->bttnMinimize->TabIndex = 22;
-			this->bttnMinimize->Text = L"ï¿½";
+			this->bttnMinimize->Text = L"—";
 			this->bttnMinimize->UseVisualStyleBackColor = false;
 			this->bttnMinimize->Click += gcnew System::EventHandler(this, &AdminUsers::bttnMinimize_Click);
 			// 
@@ -151,7 +151,7 @@ namespace CafeStock {
 #pragma endregion
 private:
 		void LoadDataFromDatabase() {
-			String^ connectionString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com,1433;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
+			String^ connectionString = "Data Source=ALAINSCOMPUTER\\SQLEXPRESS;Initial Catalog=dboInventory;User ID=sa;Password=alain121004";
 			String^ query = "SELECT * FROM Users";
 			try {
 				SqlConnection^ con = gcnew SqlConnection(connectionString);
@@ -194,7 +194,7 @@ private: System::Void txtSearch_TextChanged(System::Object^ sender, System::Even
 		dataTable->DefaultView->RowFilter = "";
 	}
 	else {
-		dataTable->DefaultView->RowFilter = String::Format("username LIKE '%{0}%'", searchText->Replace("'", "''"));
+		dataTable->DefaultView->RowFilter = String::Format("Username LIKE '%{0}%'", searchText->Replace("'", "''"));
 	}
 }
 };
