@@ -20,15 +20,9 @@ namespace CafeStock {
 		{
 			InitializeComponent();
 			LoadDataFromDatabase();
-			//
-			//TODO: Add the constructor code here
-			//
 		}
 
 	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
 		~HistoryControll()
 		{
 			if (components)
@@ -88,20 +82,21 @@ namespace CafeStock {
 			this->dataGridView1->AllowUserToResizeColumns = false;
 			this->dataGridView1->AllowUserToResizeRows = false;
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
-			this->dataGridView1->BackgroundColor = System::Drawing::Color::White;
-			this->dataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->dataGridView1->BackgroundColor = System::Drawing::Color::WhiteSmoke;
+			this->dataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->dataGridView1->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->EditMode = System::Windows::Forms::DataGridViewEditMode::EditProgrammatically;
 			this->dataGridView1->GridColor = System::Drawing::SystemColors::ControlLight;
-			this->dataGridView1->Location = System::Drawing::Point(91, 130);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(4);
+			this->dataGridView1->Location = System::Drawing::Point(68, 106);
 			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
+			this->dataGridView1->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
 			this->dataGridView1->RowHeadersVisible = false;
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(812, 480);
+			this->dataGridView1->Size = System::Drawing::Size(609, 390);
 			this->dataGridView1->TabIndex = 5;
 			this->dataGridView1->CellFormatting += gcnew System::Windows::Forms::DataGridViewCellFormattingEventHandler(this, &HistoryControll::dataGridView1_CellFormatting);
 			// 
@@ -111,10 +106,9 @@ namespace CafeStock {
 				static_cast<System::Byte>(0)));
 			this->txtSearch->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->txtSearch->Location = System::Drawing::Point(151, 72);
-			this->txtSearch->Margin = System::Windows::Forms::Padding(4);
+			this->txtSearch->Location = System::Drawing::Point(113, 58);
 			this->txtSearch->Name = L"txtSearch";
-			this->txtSearch->Size = System::Drawing::Size(752, 24);
+			this->txtSearch->Size = System::Drawing::Size(565, 24);
 			this->txtSearch->TabIndex = 9;
 			this->txtSearch->TextChanged += gcnew System::EventHandler(this, &HistoryControll::txtSearch_TextChanged);
 			// 
@@ -123,10 +117,10 @@ namespace CafeStock {
 			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
 			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
-			this->pictureBox1->Location = System::Drawing::Point(91, 62);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pictureBox1->Location = System::Drawing::Point(68, 50);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(53, 44);
+			this->pictureBox1->Size = System::Drawing::Size(40, 36);
 			this->pictureBox1->TabIndex = 10;
 			this->pictureBox1->TabStop = false;
 			// 
@@ -139,10 +133,9 @@ namespace CafeStock {
 			this->bttnMinimize->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->bttnMinimize->ForeColor = System::Drawing::Color::Red;
-			this->bttnMinimize->Location = System::Drawing::Point(891, 0);
-			this->bttnMinimize->Margin = System::Windows::Forms::Padding(4);
+			this->bttnMinimize->Location = System::Drawing::Point(668, 0);
 			this->bttnMinimize->Name = L"bttnMinimize";
-			this->bttnMinimize->Size = System::Drawing::Size(47, 43);
+			this->bttnMinimize->Size = System::Drawing::Size(35, 35);
 			this->bttnMinimize->TabIndex = 17;
 			this->bttnMinimize->Text = L"—";
 			this->bttnMinimize->UseVisualStyleBackColor = false;
@@ -157,10 +150,9 @@ namespace CafeStock {
 			this->bttnExit->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->bttnExit->ForeColor = System::Drawing::Color::Red;
-			this->bttnExit->Location = System::Drawing::Point(947, 0);
-			this->bttnExit->Margin = System::Windows::Forms::Padding(4);
+			this->bttnExit->Location = System::Drawing::Point(710, 0);
 			this->bttnExit->Name = L"bttnExit";
-			this->bttnExit->Size = System::Drawing::Size(47, 43);
+			this->bttnExit->Size = System::Drawing::Size(35, 35);
 			this->bttnExit->TabIndex = 16;
 			this->bttnExit->Text = L"X";
 			this->bttnExit->UseVisualStyleBackColor = false;
@@ -168,7 +160,7 @@ namespace CafeStock {
 			// 
 			// HistoryControll
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::Control;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
@@ -178,9 +170,8 @@ namespace CafeStock {
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->txtSearch);
 			this->Controls->Add(this->dataGridView1);
-			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"HistoryControll";
-			this->Size = System::Drawing::Size(993, 670);
+			this->Size = System::Drawing::Size(745, 544);
 			this->Load += gcnew System::EventHandler(this, &HistoryControll::HistoryControll_Load);
 			this->Click += gcnew System::EventHandler(this, &HistoryControll::HistoryControll_Click);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
@@ -207,24 +198,58 @@ namespace CafeStock {
 	}
 
 	private:
-		void LoadDataFromDatabase() {
-			String^ connectionString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
-			String^ query = "SELECT * FROM tblItems";
-			try {
-				SqlConnection^ con = gcnew SqlConnection(connectionString);
-				con->Open();
-				SqlDataAdapter^ adapter = gcnew SqlDataAdapter(query, con);
-				DataTable^ dt = gcnew DataTable();
-				adapter->Fill(dt);
-				dataTable = dt;
-				dataGridView1->DataSource = dataTable->DefaultView;
-				con->Close();
-				dataGridView1->Columns["Item_ID"]->Visible = false;
+		public:
+			void LoadDataFromDatabase() {
+				String^ connectionString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
+				String^ query = "SELECT * FROM tblItems";
+
+				try {
+					// Ensure DataGridView is initialized
+					if (dataGridView1 == nullptr) {
+						MessageBox::Show("DataGridView is not initialized.");
+						return;
+					}
+
+					// Connect to the database
+					SqlConnection^ con = gcnew SqlConnection(connectionString);
+					con->Open();
+					SqlDataAdapter^ adapter = gcnew SqlDataAdapter(query, con);
+					DataTable^ dt = gcnew DataTable();
+					adapter->Fill(dt);
+					dataTable = dt;
+					dataGridView1->DataSource = dataTable->DefaultView;
+					con->Close();
+
+					if (dataGridView1->Columns->Contains("Item_Name")) {
+						dataGridView1->Columns["Item_Name"]->HeaderText = "Item Name";
+					}
+					if (dataGridView1->Columns->Contains("Item_Category")) {
+						dataGridView1->Columns["Item_Category"]->HeaderText = "Item Type";
+					}
+					if (dataGridView1->Columns->Contains("Item_Quantity")) {
+						dataGridView1->Columns["Item_Quantity"]->HeaderText = "Quantity";
+					}
+					if (dataGridView1->Columns->Contains("Date_Modified")) {
+						dataGridView1->Columns["Date_Modified"]->HeaderText = "Date Created/Modified";
+					}
+
+					dataGridView1->Columns["Item_ID"]->Visible = false;
+					dataGridView1->EnableHeadersVisualStyles = false;
+					dataGridView1->ColumnHeadersDefaultCellStyle->BackColor = System::Drawing::Color::Silver;
+					dataGridView1->ColumnHeadersDefaultCellStyle->ForeColor = System::Drawing::Color::Black;
+					dataGridView1->ColumnHeadersDefaultCellStyle->Font = gcnew System::Drawing::Font("Arial", 8, System::Drawing::FontStyle::Bold);
+					dataGridView1->ColumnHeadersDefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+					dataGridView1->ColumnHeadersDefaultCellStyle->SelectionBackColor = System::Drawing::Color::Silver;
+					dataGridView1->ColumnHeadersDefaultCellStyle->SelectionForeColor = System::Drawing::Color::Black;
+
+				}
+				catch (SqlException^ ex) {
+					MessageBox::Show("Database error: " + ex->Message);
+				}
+				catch (Exception^ ex) {
+					MessageBox::Show("Error loading data: " + ex->Message);
+				}
 			}
-			catch (Exception^ ex) {
-				MessageBox::Show("Error loading data: " + ex->Message);
-			}
-		};
 private: System::Void txtSearch_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	String^ searchText = txtSearch->Text;
 	if (dataTable == nullptr) return;
@@ -264,9 +289,13 @@ private: System::Void dataGridView1_CellFormatting(System::Object^ sender, Syste
 
 		int quantity;
 		// Check if quantity is zero
-		if (!String::IsNullOrEmpty(value) && Int32::TryParse(value, quantity) && quantity <= 10) {
-			dataGridView1->Rows[e->RowIndex]->DefaultCellStyle->BackColor = System::Drawing::Color::Red;
-			dataGridView1->Rows[e->RowIndex]->DefaultCellStyle->ForeColor = System::Drawing::Color::White; // Optional: Change text color
+		if (!String::IsNullOrEmpty(value) && Int32::TryParse(value, quantity) && quantity <= 1500) {
+			dataGridView1->Rows[e->RowIndex]->DefaultCellStyle->BackColor = System::Drawing::Color::FromArgb(198, 12, 48);
+			dataGridView1->Rows[e->RowIndex]->DefaultCellStyle->ForeColor = System::Drawing::Color::White; 
+		}
+		else if (!String::IsNullOrEmpty(value) && Int32::TryParse(value, quantity) && quantity <= 2500) {
+			dataGridView1->Rows[e->RowIndex]->DefaultCellStyle->BackColor = System::Drawing::Color::Orange;
+			dataGridView1->Rows[e->RowIndex]->DefaultCellStyle->ForeColor = System::Drawing::Color::White;
 		}
 		else {
 			// Reset style if not zero
@@ -281,11 +310,10 @@ private: System::Void HistoryControll_Load(System::Object^ sender, System::Event
 
 	CustomizeDataGridView();
 }
-
 private: System::Void CustomizeDataGridView() {
 	// Change background color when row is selected
-	dataGridView1->DefaultCellStyle->SelectionBackColor = System::Drawing::Color::DarkRed; // Background color
-	dataGridView1->DefaultCellStyle->SelectionForeColor = System::Drawing::Color::White;   // Text color
+	dataGridView1->DefaultCellStyle->SelectionBackColor = System::Drawing::Color::LightGray; 
+	dataGridView1->DefaultCellStyle->SelectionForeColor = System::Drawing::Color::White;   
 }
 private: System::Void HistoryControll_Click(System::Object^ sender, System::EventArgs^ e) {
 	dataGridView1->ClearSelection();

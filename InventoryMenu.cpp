@@ -5,8 +5,6 @@
 using namespace System::Data::SqlClient;
 
 System::Void CafeStock::InventoryMenu::btnEdit_Click(System::Object^ sender, System::EventArgs^ e) {
-    //this->Hide();  // Hide the current InventoryMenu
-
     // Open PopupEdit
     PopupEdit^ editPopup = gcnew PopupEdit();
     editPopup->ShowDialog();
@@ -35,6 +33,7 @@ System::Void CafeStock::InventoryMenu::button2_Click(System::Object^ sender, Sys
 
     LoadDataFromDatabase();
 }
+
 
 
 

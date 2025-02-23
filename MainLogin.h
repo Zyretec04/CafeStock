@@ -105,6 +105,7 @@ namespace CafeStock {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainLogin::typeid));
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->chkbxShowPass = (gcnew System::Windows::Forms::CheckBox());
 			this->bttnMinimize = (gcnew System::Windows::Forms::Button());
@@ -120,13 +121,12 @@ namespace CafeStock {
 			this->lblAdmin = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->picMCM = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->panel1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->panel2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBoxPassword))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBoxUsername))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picMCM))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// panel1
@@ -137,9 +137,22 @@ namespace CafeStock {
 			this->panel1->Controls->Add(this->panel2);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel1->Location = System::Drawing::Point(0, 0);
+			this->panel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(975, 582);
+			this->panel1->Size = System::Drawing::Size(1300, 716);
 			this->panel1->TabIndex = 1;
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
+			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
+			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
+			this->pictureBox1->Location = System::Drawing::Point(101, 101);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(397, 516);
+			this->pictureBox1->TabIndex = 5;
+			this->pictureBox1->TabStop = false;
 			// 
 			// panel2
 			// 
@@ -160,9 +173,10 @@ namespace CafeStock {
 			this->panel2->Controls->Add(this->label3);
 			this->panel2->Controls->Add(this->picMCM);
 			this->panel2->Dock = System::Windows::Forms::DockStyle::Right;
-			this->panel2->Location = System::Drawing::Point(451, 0);
+			this->panel2->Location = System::Drawing::Point(601, 0);
+			this->panel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(524, 582);
+			this->panel2->Size = System::Drawing::Size(699, 716);
 			this->panel2->TabIndex = 3;
 			// 
 			// chkbxShowPass
@@ -171,9 +185,10 @@ namespace CafeStock {
 			this->chkbxShowPass->BackColor = System::Drawing::Color::Transparent;
 			this->chkbxShowPass->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->chkbxShowPass->Location = System::Drawing::Point(311, 388);
+			this->chkbxShowPass->Location = System::Drawing::Point(415, 478);
+			this->chkbxShowPass->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->chkbxShowPass->Name = L"chkbxShowPass";
-			this->chkbxShowPass->Size = System::Drawing::Size(101, 17);
+			this->chkbxShowPass->Size = System::Drawing::Size(128, 21);
 			this->chkbxShowPass->TabIndex = 18;
 			this->chkbxShowPass->Text = L"Show password";
 			this->chkbxShowPass->UseVisualStyleBackColor = false;
@@ -188,9 +203,10 @@ namespace CafeStock {
 			this->bttnMinimize->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->bttnMinimize->ForeColor = System::Drawing::Color::Red;
-			this->bttnMinimize->Location = System::Drawing::Point(448, 0);
+			this->bttnMinimize->Location = System::Drawing::Point(597, 0);
+			this->bttnMinimize->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->bttnMinimize->Name = L"bttnMinimize";
-			this->bttnMinimize->Size = System::Drawing::Size(35, 35);
+			this->bttnMinimize->Size = System::Drawing::Size(47, 43);
 			this->bttnMinimize->TabIndex = 12;
 			this->bttnMinimize->Text = L"—";
 			this->bttnMinimize->UseVisualStyleBackColor = false;
@@ -205,9 +221,10 @@ namespace CafeStock {
 			this->bttnExit->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->bttnExit->ForeColor = System::Drawing::Color::Red;
-			this->bttnExit->Location = System::Drawing::Point(489, 0);
+			this->bttnExit->Location = System::Drawing::Point(652, 0);
+			this->bttnExit->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->bttnExit->Name = L"bttnExit";
-			this->bttnExit->Size = System::Drawing::Size(35, 35);
+			this->bttnExit->Size = System::Drawing::Size(47, 43);
 			this->bttnExit->TabIndex = 11;
 			this->bttnExit->Text = L"X";
 			this->bttnExit->UseVisualStyleBackColor = false;
@@ -221,9 +238,10 @@ namespace CafeStock {
 			this->lblRegister->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 10.5F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Underline)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->lblRegister->ForeColor = System::Drawing::Color::Firebrick;
-			this->lblRegister->Location = System::Drawing::Point(182, 501);
+			this->lblRegister->Location = System::Drawing::Point(243, 617);
+			this->lblRegister->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblRegister->Name = L"lblRegister";
-			this->lblRegister->Size = System::Drawing::Size(155, 19);
+			this->lblRegister->Size = System::Drawing::Size(203, 25);
 			this->lblRegister->TabIndex = 10;
 			this->lblRegister->Text = L"Don\'t have an account\?";
 			this->lblRegister->Click += gcnew System::EventHandler(this, &MainLogin::label7_Click);
@@ -232,9 +250,10 @@ namespace CafeStock {
 			// 
 			this->picBoxPassword->BackColor = System::Drawing::Color::Transparent;
 			this->picBoxPassword->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picBoxPassword.Image")));
-			this->picBoxPassword->Location = System::Drawing::Point(61, 347);
+			this->picBoxPassword->Location = System::Drawing::Point(81, 427);
+			this->picBoxPassword->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->picBoxPassword->Name = L"picBoxPassword";
-			this->picBoxPassword->Size = System::Drawing::Size(38, 39);
+			this->picBoxPassword->Size = System::Drawing::Size(51, 48);
 			this->picBoxPassword->TabIndex = 9;
 			this->picBoxPassword->TabStop = false;
 			// 
@@ -242,9 +261,10 @@ namespace CafeStock {
 			// 
 			this->picBoxUsername->BackColor = System::Drawing::Color::Transparent;
 			this->picBoxUsername->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picBoxUsername.Image")));
-			this->picBoxUsername->Location = System::Drawing::Point(61, 265);
+			this->picBoxUsername->Location = System::Drawing::Point(81, 326);
+			this->picBoxUsername->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->picBoxUsername->Name = L"picBoxUsername";
-			this->picBoxUsername->Size = System::Drawing::Size(38, 39);
+			this->picBoxUsername->Size = System::Drawing::Size(51, 48);
 			this->picBoxUsername->TabIndex = 8;
 			this->picBoxUsername->TabStop = false;
 			// 
@@ -257,9 +277,10 @@ namespace CafeStock {
 			this->bttnLogin->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->bttnLogin->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->bttnLogin->Location = System::Drawing::Point(172, 420);
+			this->bttnLogin->Location = System::Drawing::Point(229, 517);
+			this->bttnLogin->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->bttnLogin->Name = L"bttnLogin";
-			this->bttnLogin->Size = System::Drawing::Size(180, 45);
+			this->bttnLogin->Size = System::Drawing::Size(240, 55);
 			this->bttnLogin->TabIndex = 6;
 			this->bttnLogin->Text = L"Login";
 			this->bttnLogin->UseVisualStyleBackColor = false;
@@ -271,11 +292,13 @@ namespace CafeStock {
 				static_cast<System::Byte>(0)));
 			this->txtPassword->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->txtPassword->Location = System::Drawing::Point(118, 357);
+			this->txtPassword->Location = System::Drawing::Point(157, 439);
+			this->txtPassword->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtPassword->Name = L"txtPassword";
-			this->txtPassword->Size = System::Drawing::Size(294, 29);
+			this->txtPassword->Size = System::Drawing::Size(391, 34);
 			this->txtPassword->TabIndex = 5;
 			this->txtPassword->UseSystemPasswordChar = true;
+			this->txtPassword->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MainLogin::txtPassword_KeyDown);
 			// 
 			// txtUsername
 			// 
@@ -283,10 +306,12 @@ namespace CafeStock {
 				static_cast<System::Byte>(0)));
 			this->txtUsername->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->txtUsername->Location = System::Drawing::Point(118, 275);
+			this->txtUsername->Location = System::Drawing::Point(157, 338);
+			this->txtUsername->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtUsername->Name = L"txtUsername";
-			this->txtUsername->Size = System::Drawing::Size(294, 29);
+			this->txtUsername->Size = System::Drawing::Size(391, 34);
 			this->txtUsername->TabIndex = 4;
+			this->txtUsername->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MainLogin::txtUsername_KeyDown);
 			// 
 			// lblPassword
 			// 
@@ -294,9 +319,10 @@ namespace CafeStock {
 			this->lblPassword->BackColor = System::Drawing::Color::Transparent;
 			this->lblPassword->Font = (gcnew System::Drawing::Font(L"Segoe MDL2 Assets", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblPassword->Location = System::Drawing::Point(114, 330);
+			this->lblPassword->Location = System::Drawing::Point(152, 406);
+			this->lblPassword->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblPassword->Name = L"lblPassword";
-			this->lblPassword->Size = System::Drawing::Size(85, 21);
+			this->lblPassword->Size = System::Drawing::Size(106, 27);
 			this->lblPassword->TabIndex = 3;
 			this->lblPassword->Text = L"Password";
 			// 
@@ -306,9 +332,10 @@ namespace CafeStock {
 			this->lblUsername->BackColor = System::Drawing::Color::Transparent;
 			this->lblUsername->Font = (gcnew System::Drawing::Font(L"Segoe MDL2 Assets", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblUsername->Location = System::Drawing::Point(114, 248);
+			this->lblUsername->Location = System::Drawing::Point(152, 305);
+			this->lblUsername->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblUsername->Name = L"lblUsername";
-			this->lblUsername->Size = System::Drawing::Size(87, 21);
+			this->lblUsername->Size = System::Drawing::Size(110, 27);
 			this->lblUsername->TabIndex = 2;
 			this->lblUsername->Text = L"Username";
 			// 
@@ -317,9 +344,10 @@ namespace CafeStock {
 			this->lblAdmin->AutoSize = true;
 			this->lblAdmin->BackColor = System::Drawing::Color::Transparent;
 			this->lblAdmin->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 14, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic))));
-			this->lblAdmin->Location = System::Drawing::Point(113, 216);
+			this->lblAdmin->Location = System::Drawing::Point(151, 266);
+			this->lblAdmin->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblAdmin->Name = L"lblAdmin";
-			this->lblAdmin->Size = System::Drawing::Size(59, 25);
+			this->lblAdmin->Size = System::Drawing::Size(74, 32);
 			this->lblAdmin->TabIndex = 1;
 			this->lblAdmin->Text = L"Login\r\n";
 			// 
@@ -328,9 +356,10 @@ namespace CafeStock {
 			this->label3->BackColor = System::Drawing::Color::Transparent;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Segoe MDL2 Assets", 27.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(-390, 227);
+			this->label3->Location = System::Drawing::Point(-520, 279);
+			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(362, 39);
+			this->label3->Size = System::Drawing::Size(483, 48);
 			this->label3->TabIndex = 0;
 			this->label3->Text = L"Login";
 			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -340,42 +369,33 @@ namespace CafeStock {
 			this->picMCM->BackColor = System::Drawing::Color::Transparent;
 			this->picMCM->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->picMCM->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picMCM.Image")));
-			this->picMCM->Location = System::Drawing::Point(186, 63);
+			this->picMCM->Location = System::Drawing::Point(248, 78);
+			this->picMCM->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->picMCM->Name = L"picMCM";
-			this->picMCM->Size = System::Drawing::Size(150, 137);
+			this->picMCM->Size = System::Drawing::Size(200, 169);
 			this->picMCM->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->picMCM->TabIndex = 0;
 			this->picMCM->TabStop = false;
 			// 
-			// pictureBox1
-			// 
-			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
-			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
-			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
-			this->pictureBox1->Location = System::Drawing::Point(76, 82);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(298, 419);
-			this->pictureBox1->TabIndex = 5;
-			this->pictureBox1->TabStop = false;
-			// 
 			// MainLogin
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(975, 582);
+			this->ClientSize = System::Drawing::Size(1300, 716);
 			this->Controls->Add(this->panel1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->MaximizeBox = false;
 			this->Name = L"MainLogin";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"MainLogin";
 			this->panel1->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->panel2->ResumeLayout(false);
 			this->panel2->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBoxPassword))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picBoxUsername))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picMCM))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -403,6 +423,18 @@ private: System::Void chkbxShowPass_CheckedChanged(System::Object^ sender, Syste
 	}
 	else {
 		txtPassword->UseSystemPasswordChar = true;  
+	}
+}
+private: System::Void txtUsername_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	if (e->KeyCode == System::Windows::Forms::Keys::Enter)
+	{
+		bttnLogin->PerformClick();
+	}
+}
+private: System::Void txtPassword_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	if (e->KeyCode == System::Windows::Forms::Keys::Enter)
+	{
+		bttnLogin->PerformClick();
 	}
 }
 };
