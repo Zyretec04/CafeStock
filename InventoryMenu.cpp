@@ -38,3 +38,4 @@ System::Void CafeStock::InventoryMenu::button2_Click(System::Object^ sender, Sys
 
 
 
+
