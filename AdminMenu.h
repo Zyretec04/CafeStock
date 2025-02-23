@@ -34,6 +34,8 @@ namespace CafeStock {
 			this->btnAdHistory->MouseLeave += gcnew System::EventHandler(this, &AdminMenu::btnAdHistory_MouseLeave);
 			this->btnAdLogout->MouseEnter += gcnew System::EventHandler(this, &AdminMenu::btnAdLogout_MouseEnter);
 			this->btnAdLogout->MouseLeave += gcnew System::EventHandler(this, &AdminMenu::btnAdLogout_MouseLeave);
+			this->btnUsers->MouseEnter += gcnew System::EventHandler(this, &AdminMenu::btnUsers_MouseEnter);
+			this->btnUsers->MouseLeave += gcnew System::EventHandler(this, &AdminMenu::btnUsers_MouseLeave);
 			this->AllowDrop = false;
 		}
 
@@ -362,6 +364,12 @@ private: System::Void btnAdLogout_MouseEnter(System::Object^ sender, System::Eve
 }
 private: System::Void btnAdLogout_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
 	btnAdLogout->BackColor = System::Drawing::Color::FromArgb(162, 0, 23);
+}
+private: System::Void btnUsers_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
+	btnUsers->BackColor = System::Drawing::Color::Black;
+}
+private: System::Void btnUsers_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
+	btnUsers->BackColor = System::Drawing::Color::FromArgb(162, 0, 23);
 }
 };
 }

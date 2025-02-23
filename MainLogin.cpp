@@ -24,7 +24,7 @@ System::Void CafeStock::MainLogin::bttnLogin_Click(System::Object^ sender, Syste
     System::String^ password = this->txtPassword->Text;
 
     
-    // 🔹 Input validation: Check if username or password is empty
+    // Input validation: Check if username or password is empty
     if (System::String::IsNullOrWhiteSpace(username)) {
         System::Windows::Forms::MessageBox::Show("Username cannot be empty.", "Validation Error",
             System::Windows::Forms::MessageBoxButtons::OK,
@@ -48,10 +48,6 @@ System::Void CafeStock::MainLogin::bttnLogin_Click(System::Object^ sender, Syste
     }
 
     System::String^ connString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
-
-    // // Define hardcoded credentials for simplicity (replace with database query in production)
-    // System::String^ adminUsername = "admin";
-    // System::String^ adminPassword = "12345";
 
     try {
         SqlConnection^ connection = gcnew SqlConnection(connString);
@@ -88,27 +84,3 @@ System::Void CafeStock::MainLogin::label7_Click(System::Object^ sender, System::
     regForm->ShowDialog();
     this->Close();
 }
-
-//     // Authentication logic
-//     if (username == adminUsername && password == adminPassword) {
-//         // Display success message and proceed
-//         System::Windows::Forms::MessageBox::Show("Login successful!", "Success",
-//             System::Windows::Forms::MessageBoxButtons::OK,
-//             System::Windows::Forms::MessageBoxIcon::Information);
-
-//         // Hide current form
-//         this->Hide();
-
-//         // Create an instance of Menumain and show it
-//         Menumain^ newForm = gcnew Menumain();
-//         newForm->ShowDialog();
-
-//         this->Close();
-//     }
-//     else {
-//         // Invalid credentials
-//         System::Windows::Forms::MessageBox::Show("Invalid username or password.", "Login Failed",
-//             System::Windows::Forms::MessageBoxButtons::OK,
-//             System::Windows::Forms::MessageBoxIcon::Error);
-//     }
-// }
