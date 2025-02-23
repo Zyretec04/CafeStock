@@ -17,6 +17,7 @@
 			{
 				InitializeComponent();
 				LoadDataFromDatabase();
+				UpdateInventoryCapacity();
 			}
 
 		protected:
@@ -32,6 +33,7 @@
 		private: System::Windows::Forms::Button^ bttnExit;
 		private: System::Windows::Forms::Button^ button2;
 		private: System::Windows::Forms::PictureBox^ pictureBox1;
+		private: System::Windows::Forms::Label^ lblInvCapacity;
 
 		private: System::Windows::Forms::Button^ btnEdit;
 		private: System::Void btnEdit_Click(System::Object^ sender, System::EventArgs^ e);
@@ -61,6 +63,7 @@
 				   this->bttnExit = (gcnew System::Windows::Forms::Button());
 				   this->button2 = (gcnew System::Windows::Forms::Button());
 				   this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+				   this->lblInvCapacity = (gcnew System::Windows::Forms::Label());
 				   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 				   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 				   this->SuspendLayout();
@@ -73,10 +76,9 @@
 				   this->btnEdit->FlatAppearance->BorderSize = 0;
 				   this->btnEdit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 				   this->btnEdit->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnEdit.Image")));
-				   this->btnEdit->Location = System::Drawing::Point(849, 55);
-				   this->btnEdit->Margin = System::Windows::Forms::Padding(4);
+				   this->btnEdit->Location = System::Drawing::Point(637, 45);
 				   this->btnEdit->Name = L"btnEdit";
-				   this->btnEdit->Size = System::Drawing::Size(53, 49);
+				   this->btnEdit->Size = System::Drawing::Size(40, 40);
 				   this->btnEdit->TabIndex = 7;
 				   this->btnEdit->UseVisualStyleBackColor = false;
 				   this->btnEdit->Click += gcnew System::EventHandler(this, &InventoryMenu::btnEdit_Click);
@@ -89,10 +91,9 @@
 				   this->button1->FlatAppearance->BorderSize = 0;
 				   this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 				   this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
-				   this->button1->Location = System::Drawing::Point(760, 55);
-				   this->button1->Margin = System::Windows::Forms::Padding(4);
+				   this->button1->Location = System::Drawing::Point(570, 45);
 				   this->button1->Name = L"button1";
-				   this->button1->Size = System::Drawing::Size(53, 49);
+				   this->button1->Size = System::Drawing::Size(40, 40);
 				   this->button1->TabIndex = 6;
 				   this->button1->UseVisualStyleBackColor = false;
 				   this->button1->Click += gcnew System::EventHandler(this, &InventoryMenu::button1_Click);
@@ -103,10 +104,9 @@
 					   static_cast<System::Byte>(0)));
 				   this->textBox1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 					   static_cast<System::Int32>(static_cast<System::Byte>(0)));
-				   this->textBox1->Location = System::Drawing::Point(151, 66);
-				   this->textBox1->Margin = System::Windows::Forms::Padding(4);
+				   this->textBox1->Location = System::Drawing::Point(113, 54);
 				   this->textBox1->Name = L"textBox1";
-				   this->textBox1->Size = System::Drawing::Size(497, 24);
+				   this->textBox1->Size = System::Drawing::Size(374, 24);
 				   this->textBox1->TabIndex = 5;
 				   this->textBox1->TextChanged += gcnew System::EventHandler(this, &InventoryMenu::textBox1_TextChanged);
 				   // 
@@ -117,20 +117,21 @@
 				   this->dataGridView1->AllowUserToResizeColumns = false;
 				   this->dataGridView1->AllowUserToResizeRows = false;
 				   this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
-				   this->dataGridView1->BackgroundColor = System::Drawing::Color::White;
-				   this->dataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::None;
+				   this->dataGridView1->BackgroundColor = System::Drawing::Color::WhiteSmoke;
+				   this->dataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 				   this->dataGridView1->ClipboardCopyMode = System::Windows::Forms::DataGridViewClipboardCopyMode::EnableAlwaysIncludeHeaderText;
+				   this->dataGridView1->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
 				   this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 				   this->dataGridView1->EditMode = System::Windows::Forms::DataGridViewEditMode::EditProgrammatically;
 				   this->dataGridView1->GridColor = System::Drawing::SystemColors::ControlLight;
-				   this->dataGridView1->Location = System::Drawing::Point(91, 130);
-				   this->dataGridView1->Margin = System::Windows::Forms::Padding(4);
+				   this->dataGridView1->Location = System::Drawing::Point(68, 136);
 				   this->dataGridView1->MultiSelect = false;
 				   this->dataGridView1->Name = L"dataGridView1";
+				   this->dataGridView1->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
 				   this->dataGridView1->RowHeadersVisible = false;
 				   this->dataGridView1->RowHeadersWidth = 51;
 				   this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-				   this->dataGridView1->Size = System::Drawing::Size(812, 480);
+				   this->dataGridView1->Size = System::Drawing::Size(609, 390);
 				   this->dataGridView1->TabIndex = 4;
 				   this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &InventoryMenu::dataGridView1_CellContentClick);
 				   this->dataGridView1->CellFormatting += gcnew System::Windows::Forms::DataGridViewCellFormattingEventHandler(this, &InventoryMenu::dataGridView1_CellFormatting);
@@ -144,10 +145,9 @@
 				   this->bttnMinimize->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					   static_cast<System::Byte>(0)));
 				   this->bttnMinimize->ForeColor = System::Drawing::Color::Red;
-				   this->bttnMinimize->Location = System::Drawing::Point(891, 0);
-				   this->bttnMinimize->Margin = System::Windows::Forms::Padding(4);
+				   this->bttnMinimize->Location = System::Drawing::Point(668, 0);
 				   this->bttnMinimize->Name = L"bttnMinimize";
-				   this->bttnMinimize->Size = System::Drawing::Size(47, 43);
+				   this->bttnMinimize->Size = System::Drawing::Size(35, 35);
 				   this->bttnMinimize->TabIndex = 17;
 				   this->bttnMinimize->Text = L"—";
 				   this->bttnMinimize->UseVisualStyleBackColor = false;
@@ -162,10 +162,9 @@
 				   this->bttnExit->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					   static_cast<System::Byte>(0)));
 				   this->bttnExit->ForeColor = System::Drawing::Color::Red;
-				   this->bttnExit->Location = System::Drawing::Point(947, 0);
-				   this->bttnExit->Margin = System::Windows::Forms::Padding(4);
+				   this->bttnExit->Location = System::Drawing::Point(710, 0);
 				   this->bttnExit->Name = L"bttnExit";
-				   this->bttnExit->Size = System::Drawing::Size(47, 43);
+				   this->bttnExit->Size = System::Drawing::Size(35, 35);
 				   this->bttnExit->TabIndex = 16;
 				   this->bttnExit->Text = L"X";
 				   this->bttnExit->UseVisualStyleBackColor = false;
@@ -179,10 +178,9 @@
 				   this->button2->FlatAppearance->BorderSize = 0;
 				   this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 				   this->button2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button2.Image")));
-				   this->button2->Location = System::Drawing::Point(672, 55);
-				   this->button2->Margin = System::Windows::Forms::Padding(4);
+				   this->button2->Location = System::Drawing::Point(504, 45);
 				   this->button2->Name = L"button2";
-				   this->button2->Size = System::Drawing::Size(53, 49);
+				   this->button2->Size = System::Drawing::Size(40, 40);
 				   this->button2->TabIndex = 18;
 				   this->button2->UseVisualStyleBackColor = false;
 				   this->button2->Click += gcnew System::EventHandler(this, &InventoryMenu::button2_Click);
@@ -192,19 +190,32 @@
 				   this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
 				   this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
 				   this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-				   this->pictureBox1->Location = System::Drawing::Point(91, 55);
-				   this->pictureBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+				   this->pictureBox1->Location = System::Drawing::Point(68, 45);
+				   this->pictureBox1->Margin = System::Windows::Forms::Padding(2);
 				   this->pictureBox1->Name = L"pictureBox1";
-				   this->pictureBox1->Size = System::Drawing::Size(53, 49);
+				   this->pictureBox1->Size = System::Drawing::Size(40, 40);
 				   this->pictureBox1->TabIndex = 19;
 				   this->pictureBox1->TabStop = false;
 				   // 
+				   // lblInvCapacity
+				   // 
+				   this->lblInvCapacity->AutoSize = true;
+				   this->lblInvCapacity->BackColor = System::Drawing::Color::Transparent;
+				   this->lblInvCapacity->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+					   static_cast<System::Byte>(0)));
+				   this->lblInvCapacity->Location = System::Drawing::Point(63, 87);
+				   this->lblInvCapacity->Name = L"lblInvCapacity";
+				   this->lblInvCapacity->Size = System::Drawing::Size(204, 30);
+				   this->lblInvCapacity->TabIndex = 20;
+				   this->lblInvCapacity->Text = L"Inventory Capacity:";
+				   // 
 				   // InventoryMenu
 				   // 
-				   this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+				   this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 				   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 				   this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 				   this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+				   this->Controls->Add(this->lblInvCapacity);
 				   this->Controls->Add(this->pictureBox1);
 				   this->Controls->Add(this->button2);
 				   this->Controls->Add(this->bttnMinimize);
@@ -213,9 +224,8 @@
 				   this->Controls->Add(this->button1);
 				   this->Controls->Add(this->textBox1);
 				   this->Controls->Add(this->dataGridView1);
-				   this->Margin = System::Windows::Forms::Padding(4);
 				   this->Name = L"InventoryMenu";
-				   this->Size = System::Drawing::Size(993, 670);
+				   this->Size = System::Drawing::Size(745, 544);
 				   this->Load += gcnew System::EventHandler(this, &InventoryMenu::InventoryMenu_Load);
 				   this->Click += gcnew System::EventHandler(this, &InventoryMenu::InventoryMenu_Click);
 				   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
@@ -269,7 +279,7 @@
 
 					// Remove row from DataGridView
 					dataGridView1->Rows->RemoveAt(selectedIndex);
-
+					UpdateInventoryCapacity();
 					// Display success message
 					MessageBox::Show("Record deleted successfully.", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				}
@@ -296,13 +306,11 @@
 				String^ query = "SELECT * FROM tblItems";
 
 				try {
-					// Ensure DataGridView is initialized
 					if (dataGridView1 == nullptr) {
 						MessageBox::Show("DataGridView is not initialized.");
 						return;
 					}
 
-					// Connect to the database
 					SqlConnection^ con = gcnew SqlConnection(connectionString);
 					con->Open();
 					SqlDataAdapter^ adapter = gcnew SqlDataAdapter(query, con);
@@ -325,13 +333,15 @@
 					dataGridView1->Columns["Item_ID"]->Visible = false;
 					dataGridView1->Columns["Date_Modified"]->Visible = false;
 					dataGridView1->EnableHeadersVisualStyles = false;
-					dataGridView1->ColumnHeadersDefaultCellStyle->BackColor = System::Drawing::Color::DarkRed;
-					dataGridView1->ColumnHeadersDefaultCellStyle->ForeColor = System::Drawing::Color::White;
-					dataGridView1->ColumnHeadersDefaultCellStyle->Font = gcnew System::Drawing::Font("Arial", 10, System::Drawing::FontStyle::Bold);
+					dataGridView1->ColumnHeadersDefaultCellStyle->BackColor = System::Drawing::Color::Silver;
+					dataGridView1->ColumnHeadersDefaultCellStyle->ForeColor = System::Drawing::Color::Black;
+					dataGridView1->ColumnHeadersDefaultCellStyle->Font = gcnew System::Drawing::Font("Arial", 8, System::Drawing::FontStyle::Bold);
 					dataGridView1->ColumnHeadersDefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-					dataGridView1->ColumnHeadersDefaultCellStyle->SelectionBackColor = System::Drawing::Color::DarkRed;
-					dataGridView1->ColumnHeadersDefaultCellStyle->SelectionForeColor = System::Drawing::Color::White;
+					dataGridView1->ColumnHeadersDefaultCellStyle->SelectionBackColor = System::Drawing::Color::Silver;
+					dataGridView1->ColumnHeadersDefaultCellStyle->SelectionForeColor = System::Drawing::Color::Black;
 
+					// ✅ Call UpdateInventoryCapacity after loading data
+					UpdateInventoryCapacity();
 				}
 				catch (SqlException^ ex) {
 					MessageBox::Show("Database error: " + ex->Message);
@@ -375,8 +385,8 @@
 				: "";
 			int quantity;
 			if (!String::IsNullOrEmpty(value) && Int32::TryParse(value, quantity) && quantity <= 10) {
-				dataGridView1->Rows[e->RowIndex]->DefaultCellStyle->BackColor = System::Drawing::Color::FromArgb(198, 12, 48);
-				dataGridView1->Rows[e->RowIndex]->DefaultCellStyle->ForeColor = System::Drawing::Color::White;
+				dataGridView1->Rows[e->RowIndex]->DefaultCellStyle->BackColor = System::Drawing::Color::White;
+				dataGridView1->Rows[e->RowIndex]->DefaultCellStyle->ForeColor = System::Drawing::Color::Black;
 			}
 			else {
 				dataGridView1->Rows[e->RowIndex]->DefaultCellStyle->BackColor = System::Drawing::Color::White;
@@ -384,6 +394,31 @@
 			}
 		}
 	}
+		public: System::Void CafeStock::InventoryMenu::UpdateInventoryCapacity() {
+			   int totalQuantity = 0;
+			   int maxCapacity = 10000;
+
+			   for each (DataGridViewRow ^ row in dataGridView1->Rows) {
+				   if (row->Cells["Item_Quantity"]->Value != nullptr) {
+					   int quantity = Convert::ToInt32(row->Cells["Item_Quantity"]->Value);
+					   totalQuantity += quantity;
+				   }
+			   }
+
+			   lblInvCapacity->Text = "Inventory Capacity: " + totalQuantity.ToString() + "/" + maxCapacity.ToString();
+
+			   // Apply color coding based on usage
+			   double percentage = (double)totalQuantity / maxCapacity * 100;
+			   if (percentage >= 90) {
+				   lblInvCapacity->ForeColor = System::Drawing::Color::Red;  // Over 90% capacity
+			   }
+			   else if (percentage >= 75) {
+				   lblInvCapacity->ForeColor = System::Drawing::Color::Orange;  // Over 75% capacity
+			   }
+			   else {
+				   lblInvCapacity->ForeColor = System::Drawing::Color::Black;
+			   }
+		   }
 	private: System::Void InventoryMenu_Load(System::Object^ sender, System::EventArgs^ e) {
 		dataGridView1->ClearSelection();
 		dataGridView1->CurrentCell = nullptr;

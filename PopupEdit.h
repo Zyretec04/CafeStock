@@ -1,3 +1,4 @@
+#include "InventoryMenu.h"
 #pragma once
 
 namespace CafeStock {
@@ -18,7 +19,6 @@ namespace CafeStock {
 		PopupEdit(void)
 		{
 			InitializeComponent();
-
 			// Populate the ComboBox with predefined values
 			this->editCombo->Items->Add("Utensils");
 			this->editCombo->Items->Add("Meat");
@@ -40,6 +40,7 @@ namespace CafeStock {
 				delete components;
 			}
 		}
+	public: void UpdateInventoryCapacity();
 	private: System::Windows::Forms::Button^ PopupBack;
 	private: System::Windows::Forms::Button^ bttnMinimize;
 	private: System::Windows::Forms::Button^ bttnExit;

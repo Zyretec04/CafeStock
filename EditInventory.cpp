@@ -1,4 +1,4 @@
-    #include "EditInventory.h"
+﻿    #include "EditInventory.h"
     #include "InventoryMenu.h"
     #include "Menumain.h"
 
@@ -50,14 +50,16 @@
 	    }
     }
 
+    // EditInventory.h
+
     System::Void CafeStock::EditInventory::btnSave_Click(System::Object^ sender, System::EventArgs^ e) {
         String^ itemName = txtItemName->Text;
 
-        // Check if an item type is selected
         if (cmbType->SelectedItem == nullptr) {
             MessageBox::Show("Please select an item type.", "Validation Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
             return;
         }
+
         String^ itemType = cmbType->SelectedItem->ToString();
         String^ itemQuantityStr = txtQuantity->Text;
 
@@ -72,66 +74,73 @@
             return;
         }
 
-        // Ensure the itemID is valid
         if (this->itemID <= 0) {
             MessageBox::Show("Invalid item ID. Cannot update record.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
             return;
         }
 
-        // Database connection string
         String^ connectionString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
 
         try {
-            // Open connection
             SqlConnection^ conn = gcnew SqlConnection(connectionString);
             conn->Open();
 
-            // SQL update query
-            String^ query = "UPDATE tblItems SET Item_Name = @ItemName, Item_Category = @ItemType, Item_Quantity = @ItemQuantity WHERE Item_ID = @ItemID";
+            // ✅ Calculate the current total quantity excluding the quantity of the item being updated
+            String^ totalQuery = "SELECT SUM(Item_Quantity) FROM tblItems WHERE Item_ID != @ItemID";
+            SqlCommand^ totalCmd = gcnew SqlCommand(totalQuery, conn);
+            totalCmd->Parameters->AddWithValue("@ItemID", this->itemID);
 
-            // Prepare SQL command
+            Object^ result = totalCmd->ExecuteScalar();
+            int currentTotal = (result != nullptr && result != DBNull::Value) ? Convert::ToInt32(result) : 0;
+            int maxCapacity = 10000;
+
+            // ✅ Check if the updated quantity exceeds the maximum capacity
+            if (currentTotal + quantity > maxCapacity) {
+                MessageBox::Show("Updating this item would exceed the inventory capacity of 10,000.", "Capacity Exceeded", MessageBoxButtons::OK, MessageBoxIcon::Error);
+                conn->Close();
+                return;
+            }
+
+            // ✅ Proceed with the update if within capacity
+            String^ query = "UPDATE tblItems SET Item_Name = @ItemName, Item_Category = @ItemType, Item_Quantity = @ItemQuantity WHERE Item_ID = @ItemID";
             SqlCommand^ cmd = gcnew SqlCommand(query, conn);
             cmd->Parameters->AddWithValue("@ItemName", itemName);
             cmd->Parameters->AddWithValue("@ItemType", itemType);
             cmd->Parameters->AddWithValue("@ItemQuantity", quantity);
             cmd->Parameters->AddWithValue("@ItemID", this->itemID);
 
-            // Execute query and check rows affected
             int rowsAffected = cmd->ExecuteNonQuery();
             conn->Close();
 
             if (rowsAffected > 0) {
                 MessageBox::Show("Item updated successfully.", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+                Form^ mainForm = Application::OpenForms["Menumain"];
+                if (mainForm != nullptr) {
+                    Menumain^ menu = dynamic_cast<Menumain^>(mainForm);
+                    if (menu != nullptr) {
+                        for each (Control ^ ctrl in menu->Controls) {
+                            InventoryMenu^ inventory = dynamic_cast<InventoryMenu^>(ctrl);
+                            if (inventory != nullptr) {
+                                inventory->LoadDataFromDatabase();
+                                inventory->UpdateInventoryCapacity();  // <-- Update capacity
+                                menu->BringToFront();
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                this->Close();
             }
             else {
                 MessageBox::Show("No record was updated. Please check the item ID.", "Update Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
             }
-
-            // Refresh the DataGridView on the main form if it is open.
-            Form^ mainForm = Application::OpenForms["Menumain"];
-            if (mainForm != nullptr) {
-                Menumain^ menu = dynamic_cast<Menumain^>(mainForm);
-                if (menu != nullptr) {
-                    // Assuming your InventoryMenu control is a direct child of Menumain
-                    for each (Control ^ ctrl in menu->Controls) {
-                        InventoryMenu^ inventory = dynamic_cast<InventoryMenu^>(ctrl);
-                        if (inventory != nullptr) {
-                            inventory->LoadDataFromDatabase();  // Refresh data
-                            menu->BringToFront();               // Bring main form to front, if needed
-                            break;
-                        }
-                    }
-                }
-            }
-
-            // Close the edit form
-            this->Close();
         }
         catch (Exception^ ex) {
             MessageBox::Show("Error updating item: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
     }
-
     void CafeStock::EditInventory::LoadItemDetails() {
         String^ connectionString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
 

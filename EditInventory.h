@@ -1,5 +1,6 @@
 #pragma once
 #include "InventoryMenu.h"
+#include "Menumain.h"
 namespace CafeStock {
 
 	using namespace System;
@@ -246,5 +247,7 @@ namespace CafeStock {
 #pragma endregion
 private: System::Void btnSave_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void btnBack_Click(System::Object^ sender, System::EventArgs^ e);
+
 };
+
 }
