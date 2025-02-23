@@ -55,11 +55,11 @@
     System::Void CafeStock::EditInventory::btnSave_Click(System::Object^ sender, System::EventArgs^ e) {
         String^ itemName = txtItemName->Text;
 
+        // Check if an item type is selected
         if (cmbType->SelectedItem == nullptr) {
             MessageBox::Show("Please select an item type.", "Validation Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
             return;
         }
-
         String^ itemType = cmbType->SelectedItem->ToString();
         String^ itemQuantityStr = txtQuantity->Text;
 
@@ -156,7 +156,7 @@
 
             if (reader->Read()) {
                 txtItemName->Text = reader["Item_Name"]->ToString();
-                cmbType->Text = reader["Item_Category"]->ToString();
+                cmbItemType->Text = reader["Item_Category"]->ToString();
                 txtQuantity->Text = reader["Item_Quantity"]->ToString();
             }
 

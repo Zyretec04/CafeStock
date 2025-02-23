@@ -28,10 +28,11 @@ System::Void CafeStock::PopupEdit::PopupBack_Click(System::Object^ sender, Syste
 }
 System::Void CafeStock::PopupEdit::editCombo_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
     // Implementation for when the combo box selection changes
-    String^ selectedType = editCombo->SelectedItem->ToString();
-
+    String^ selectedType = cmbItemType->SelectedItem->ToString();
+    // You can add logic here if needed
 }
 System::Void CafeStock::PopupEdit::btnAdd_Click(System::Object^ sender, System::EventArgs^ e) {
+    // Get values from input fields
     String^ itemName = txtItemName->Text;
     String^ itemType = editCombo->SelectedItem->ToString();
     String^ quantityText = txtQuant->Text;
