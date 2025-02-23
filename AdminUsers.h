@@ -34,12 +34,14 @@ namespace CafeStock {
 			}
 		}
 	private: System::Windows::Forms::Button^ bttnMinimize;
+
 	private: DataTable^ dataTable;
 	protected:
 	private: System::Windows::Forms::Button^ bttnExit;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Windows::Forms::TextBox^ txtSearch;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::Label^ lblUserCount;
 
 	private:
 		/// <summary>
@@ -60,6 +62,7 @@ namespace CafeStock {
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->txtSearch = (gcnew System::Windows::Forms::TextBox());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->lblUserCount = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
@@ -103,8 +106,8 @@ namespace CafeStock {
 			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
 			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
-			this->pictureBox1->Location = System::Drawing::Point(68, 49);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pictureBox1->Location = System::Drawing::Point(68, 42);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(40, 36);
 			this->pictureBox1->TabIndex = 20;
@@ -112,7 +115,7 @@ namespace CafeStock {
 			// 
 			// txtSearch
 			// 
-			this->txtSearch->Location = System::Drawing::Point(113, 57);
+			this->txtSearch->Location = System::Drawing::Point(113, 50);
 			this->txtSearch->Name = L"txtSearch";
 			this->txtSearch->Size = System::Drawing::Size(564, 20);
 			this->txtSearch->TabIndex = 19;
@@ -131,7 +134,7 @@ namespace CafeStock {
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->EditMode = System::Windows::Forms::DataGridViewEditMode::EditProgrammatically;
 			this->dataGridView1->GridColor = System::Drawing::SystemColors::ControlLight;
-			this->dataGridView1->Location = System::Drawing::Point(68, 105);
+			this->dataGridView1->Location = System::Drawing::Point(68, 122);
 			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
@@ -141,12 +144,25 @@ namespace CafeStock {
 			this->dataGridView1->Size = System::Drawing::Size(609, 390);
 			this->dataGridView1->TabIndex = 18;
 			// 
+			// lblUserCount
+			// 
+			this->lblUserCount->AutoSize = true;
+			this->lblUserCount->BackColor = System::Drawing::Color::Transparent;
+			this->lblUserCount->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblUserCount->Location = System::Drawing::Point(73, 80);
+			this->lblUserCount->Name = L"lblUserCount";
+			this->lblUserCount->Size = System::Drawing::Size(148, 32);
+			this->lblUserCount->TabIndex = 23;
+			this->lblUserCount->Text = L"User Count:";
+			// 
 			// AdminUsers
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->Controls->Add(this->lblUserCount);
 			this->Controls->Add(this->bttnMinimize);
 			this->Controls->Add(this->bttnExit);
 			this->Controls->Add(this->pictureBox1);
@@ -167,24 +183,33 @@ private:
 	void LoadDataFromDatabase() {
 		String^ connectionString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
 		String^ query = "SELECT * FROM Users";
+		String^ countQuery = "SELECT COUNT(*) FROM Users";
 
 		try {
 			SqlConnection^ con = gcnew SqlConnection(connectionString);
 			con->Open();
+
+			// ✅ Count Users
+			SqlCommand^ countCmd = gcnew SqlCommand(countQuery, con);
+			int userCount = Convert::ToInt32(countCmd->ExecuteScalar());
+			lblUserCount->Text = "User Count: " + userCount.ToString();  // ✅ Set User Count in Label
+
+			// ✅ Load User Data
 			SqlDataAdapter^ adapter = gcnew SqlDataAdapter(query, con);
 			DataTable^ dt = gcnew DataTable();
 			adapter->Fill(dt);
 			dataTable = dt;
 			dataGridView1->DataSource = dataTable->DefaultView;
+
 			con->Close();
 
-			// ✅ Move this block AFTER data binding
+			// ✅ Set Column Headers
 			dataGridView1->Columns["Id"]->HeaderText = "User ID";
 			dataGridView1->Columns["username"]->HeaderText = "User Name";
 			dataGridView1->Columns["password"]->HeaderText = "Password";
 			dataGridView1->Columns["datecreated"]->HeaderText = "Date Created";
 
-			// Set header styles
+			// ✅ Set Header Styles
 			dataGridView1->ColumnHeadersDefaultCellStyle->BackColor = System::Drawing::Color::Silver;
 			dataGridView1->ColumnHeadersDefaultCellStyle->ForeColor = System::Drawing::Color::Black;
 			dataGridView1->ColumnHeadersDefaultCellStyle->Font = gcnew System::Drawing::Font("Arial", 8, System::Drawing::FontStyle::Bold);

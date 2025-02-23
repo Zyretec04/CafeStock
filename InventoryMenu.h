@@ -396,7 +396,7 @@
 	}
 		public: System::Void CafeStock::InventoryMenu::UpdateInventoryCapacity() {
 			   int totalQuantity = 0;
-			   int maxCapacity = 10000;
+			   int maxCapacity = 50000;
 
 			   for each (DataGridViewRow ^ row in dataGridView1->Rows) {
 				   if (row->Cells["Item_Quantity"]->Value != nullptr) {

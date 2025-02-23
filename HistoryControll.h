@@ -20,15 +20,9 @@ namespace CafeStock {
 		{
 			InitializeComponent();
 			LoadDataFromDatabase();
-			//
-			//TODO: Add the constructor code here
-			//
 		}
 
 	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
 		~HistoryControll()
 		{
 			if (components)
@@ -295,9 +289,13 @@ private: System::Void dataGridView1_CellFormatting(System::Object^ sender, Syste
 
 		int quantity;
 		// Check if quantity is zero
-		if (!String::IsNullOrEmpty(value) && Int32::TryParse(value, quantity) && quantity <= 10) {
+		if (!String::IsNullOrEmpty(value) && Int32::TryParse(value, quantity) && quantity <= 1500) {
 			dataGridView1->Rows[e->RowIndex]->DefaultCellStyle->BackColor = System::Drawing::Color::FromArgb(198, 12, 48);
-			dataGridView1->Rows[e->RowIndex]->DefaultCellStyle->ForeColor = System::Drawing::Color::White; // Optional: Change text color
+			dataGridView1->Rows[e->RowIndex]->DefaultCellStyle->ForeColor = System::Drawing::Color::White; 
+		}
+		else if (!String::IsNullOrEmpty(value) && Int32::TryParse(value, quantity) && quantity <= 2500) {
+			dataGridView1->Rows[e->RowIndex]->DefaultCellStyle->BackColor = System::Drawing::Color::Orange;
+			dataGridView1->Rows[e->RowIndex]->DefaultCellStyle->ForeColor = System::Drawing::Color::White;
 		}
 		else {
 			// Reset style if not zero
@@ -312,11 +310,10 @@ private: System::Void HistoryControll_Load(System::Object^ sender, System::Event
 
 	CustomizeDataGridView();
 }
-
 private: System::Void CustomizeDataGridView() {
 	// Change background color when row is selected
-	dataGridView1->DefaultCellStyle->SelectionBackColor = System::Drawing::Color::LightGray; // Background color
-	dataGridView1->DefaultCellStyle->SelectionForeColor = System::Drawing::Color::White;   // Text color
+	dataGridView1->DefaultCellStyle->SelectionBackColor = System::Drawing::Color::LightGray; 
+	dataGridView1->DefaultCellStyle->SelectionForeColor = System::Drawing::Color::White;   
 }
 private: System::Void HistoryControll_Click(System::Object^ sender, System::EventArgs^ e) {
 	dataGridView1->ClearSelection();

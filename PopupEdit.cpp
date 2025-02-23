@@ -3,6 +3,7 @@
 #include "Menumain.h"
 
 using namespace System::Data::SqlClient;
+
 void CafeStock::PopupEdit::UpdateInventoryCapacity() {
     Form^ mainForm = Application::OpenForms["Menumain"];
     if (mainForm != nullptr) {
@@ -18,30 +19,39 @@ void CafeStock::PopupEdit::UpdateInventoryCapacity() {
         }
     }
 }
-System::Void CafeStock::PopupEdit::PopupBack_Click(System::Object^ sender, System::EventArgs^ e) {
-    Form^ mainForm = Application::OpenForms["Menumain"];  // Get the existing form
-    if (mainForm != nullptr) {
-        mainForm->Show();  // Show it again
-    }
 
-    this->Close();  // Close EditPopup1
+System::Void CafeStock::PopupEdit::PopupBack_Click(System::Object^ sender, System::EventArgs^ e) {
+    Form^ mainForm = Application::OpenForms["Menumain"];
+    if (mainForm != nullptr) {
+        mainForm->Show();
+    }
+    this->Close();
 }
+
 System::Void CafeStock::PopupEdit::editCombo_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
     // Implementation for when the combo box selection changes
-    String^ selectedType = cmbItemType->SelectedItem->ToString();
-    // You can add logic here if needed
+    if (cmbItemType->SelectedItem != nullptr) {
+        String^ selectedType = cmbItemType->SelectedItem->ToString();
+        
+    }
 }
-System::Void CafeStock::PopupEdit::btnAdd_Click(System::Object^ sender, System::EventArgs^ e) {
-    // Get values from input fields
+
+System::Void CafeStock::PopupEdit::bttnAdd_Click(System::Object^ sender, System::EventArgs^ e) {
+    // ✅ Get values from input fields
     String^ itemName = txtItemName->Text;
-    String^ itemType = editCombo->SelectedItem->ToString();
-    String^ quantityText = txtQuant->Text;
+    String^ quantityText = txtQuantity->Text;
 
     if (String::IsNullOrWhiteSpace(itemName) || String::IsNullOrWhiteSpace(quantityText)) {
         MessageBox::Show("Please fill in all fields.", "Input Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         return;
     }
 
+    if (cmbItemType->SelectedItem == nullptr) {
+        MessageBox::Show("Please select an item type.", "Input Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+        return;
+    }
+
+    String^ itemType = cmbItemType->SelectedItem->ToString();
     int quantity;
     if (!Int32::TryParse(quantityText, quantity) || quantity <= 0) {
         MessageBox::Show("Please enter a valid quantity.", "Input Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -59,7 +69,7 @@ System::Void CafeStock::PopupEdit::btnAdd_Click(System::Object^ sender, System::
         SqlCommand^ capacityCmd = gcnew SqlCommand(capacityQuery, con);
         Object^ result = capacityCmd->ExecuteScalar();
         int currentTotal = (result != nullptr && result != DBNull::Value) ? Convert::ToInt32(result) : 0;
-        int maxCapacity = 10000;
+        int maxCapacity = 50000;
 
         // ✅ Prevent adding items if capacity is exceeded
         if (currentTotal + quantity > maxCapacity) {
@@ -90,7 +100,7 @@ System::Void CafeStock::PopupEdit::btnAdd_Click(System::Object^ sender, System::
                         InventoryMenu^ inventory = dynamic_cast<InventoryMenu^>(ctrl);
                         if (inventory != nullptr) {
                             inventory->LoadDataFromDatabase();
-                            inventory->UpdateInventoryCapacity();  // <-- Update capacity
+                            inventory->UpdateInventoryCapacity();  // ✅ Refresh capacity
                             menu->BringToFront();
                             break;
                         }

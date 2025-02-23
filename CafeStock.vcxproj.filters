@@ -28,38 +28,26 @@
     <ClCompile Include="AdminUsers.cpp">
       <Filter>AdminMenu</Filter>
     </ClCompile>
+    <ClCompile Include="EditInventory.cpp">
+      <Filter>Methods</Filter>
+    </ClCompile>
   </ItemGroup>
-
   <ItemGroup>
-    <ClInclude Include="MainLogin.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Menumain.h">
-      <Filter>Resource Files\MainMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="Dashboard.h">
-      <Filter>Resource Files\MenuGUI</Filter>
-    </ClInclude>
-    <ClInclude Include="InventoryMenu.h">
-      <Filter>Resource Files\MenuGUI</Filter>
-    </ClInclude>
-    <ClInclude Include="HistoryControll.h">
-      <Filter>Resource Files\MenuGUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Register.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PopupEdit.h">
-      <Filter>Resource Files\MenuGUI</Filter>
-    </ClInclude>
     <ClInclude Include="AdminMenu.h">
       <Filter>AdminMenu</Filter>
     </ClInclude>
     <ClInclude Include="AdminUsers.h">
       <Filter>AdminMenu</Filter>
     </ClInclude>
+    <ClInclude Include="Dashboard.h" />
+    <ClInclude Include="EditInventory.h" />
+    <ClInclude Include="HistoryControll.h" />
+    <ClInclude Include="InventoryMenu.h" />
+    <ClInclude Include="MainLogin.h" />
+    <ClInclude Include="Menumain.h" />
+    <ClInclude Include="PopupEdit.h" />
+    <ClInclude Include="Register.h" />
   </ItemGroup>
-
   <ItemGroup>
     <Filter Include="Methods">
       <UniqueIdentifier>{cae60aa4-76d6-4fca-9c94-a08449068cf9}</UniqueIdentifier>

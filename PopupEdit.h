@@ -1,8 +1,7 @@
-#include "InventoryMenu.h"
+﻿#include "InventoryMenu.h"
 #pragma once
 
 namespace CafeStock {
-
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -10,15 +9,13 @@ namespace CafeStock {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// Summary for PopupEdit
-	/// </summary>
 	public ref class PopupEdit : public System::Windows::Forms::Form
 	{
 	public:
 		PopupEdit(void)
 		{
 			InitializeComponent();
+			
 			// Populate the ComboBox with predefined values
 			this->cmbItemType->Items->Add("Utensils");
 			this->cmbItemType->Items->Add("Meat");
@@ -30,9 +27,7 @@ namespace CafeStock {
 		}
 
 	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
+
 		~PopupEdit()
 		{
 			if (components)
@@ -40,6 +35,8 @@ namespace CafeStock {
 				delete components;
 			}
 		}
+	public:
+		System::Void UpdateInventoryCapacity();
 	private: System::Windows::Forms::Button^ PopupBack;
 	private: System::Windows::Forms::Button^ bttnMinimize;
 	private: System::Windows::Forms::Button^ bttnExit;
@@ -59,59 +56,18 @@ namespace CafeStock {
 	private: System::Windows::Forms::Label^ lblType;
 
 	protected:
-
-
-
-
-
-
-
-
-
-
-
-
 	protected:
-
-
-
-
-
-
-
-
-	private: System::Windows::Forms::Button^ PopupBack;
-
-
-
-
 	protected:
 	public: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Void PopupBack_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void bttnAdd_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void editCombo_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
 	protected:
-
-
-
-
-
-
-
-
-
-
 	private:
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
+	
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(PopupEdit::typeid));
