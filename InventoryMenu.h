@@ -1,4 +1,4 @@
-	#pragma once
+﻿	#pragma once
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -44,12 +44,12 @@
 
 		private: System::Windows::Forms::Button^ button1;
 		private: System::Windows::Forms::TextBox^ textBox1;
-		private: System::Windows::Forms::DataGridView^ dataGridView1;
+		public: System::Windows::Forms::DataGridView^ dataGridView1;
 
 		private: DataTable^ dataTable;
 		private: System::ComponentModel::Container^ components;
 
-	#pragma region Windows Form Designer generated code
+#pragma region Windows Form Designer generated code
 			   void InitializeComponent(void)
 			   {
 				   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(InventoryMenu::typeid));
@@ -149,7 +149,7 @@
 				   this->bttnMinimize->Name = L"bttnMinimize";
 				   this->bttnMinimize->Size = System::Drawing::Size(47, 43);
 				   this->bttnMinimize->TabIndex = 17;
-				   this->bttnMinimize->Text = L"�";
+				   this->bttnMinimize->Text = L"—";
 				   this->bttnMinimize->UseVisualStyleBackColor = false;
 				   this->bttnMinimize->Click += gcnew System::EventHandler(this, &InventoryMenu::bttnMinimize_Click);
 				   // 
@@ -224,7 +224,7 @@
 				   this->PerformLayout();
 
 			   }
-	#pragma endregion
+#pragma endregion
 		private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 		}
 		private: System::Void InventExit_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -234,47 +234,52 @@
 			}
 		}
 		private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-			if (dataGridView1->SelectedRows->Count > 0) {
-				// Get selected row ID
-				int selectedIndex = dataGridView1->SelectedRows[0]->Index;
-				int itemID = Convert::ToInt32(dataGridView1->Rows[selectedIndex]->Cells["Item_ID"]->Value);
+			if (dataGridView1->SelectedRows->Count == 0) {
+				// Show a message if no row is selected
+				MessageBox::Show("Please select a row to delete.", "No Selection", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				return; // Exit the method early if no row is selected
+			}
 
-				// Confirm deletion using a MessageBox
-				System::Windows::Forms::DialogResult dialogResult = MessageBox::Show(
-					"Are you sure you want to delete this record?", "Confirm Deletion",
-					MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+			// Proceed with deletion if a row is selected
+			int selectedIndex = dataGridView1->SelectedRows[0]->Index;
+			int itemID = Convert::ToInt32(dataGridView1->Rows[selectedIndex]->Cells["Item_ID"]->Value);
 
-				if (dialogResult == System::Windows::Forms::DialogResult::Yes) {
-					try {
-						// Supabase REST API URL (or SQL Server connection string if using local DB)
-						String^ connectionString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
+			// Confirm deletion using a MessageBox
+			System::Windows::Forms::DialogResult dialogResult = MessageBox::Show(
+				"Are you sure you want to delete this record?", "Confirm Deletion",
+				MessageBoxButtons::YesNo, MessageBoxIcon::Question);
 
-						// Open connection
-						SqlConnection^ conn = gcnew SqlConnection(connectionString);
-						conn->Open();
+			if (dialogResult == System::Windows::Forms::DialogResult::Yes) {
+				try {
+					// Supabase REST API URL (or SQL Server connection string if using local DB)
+					String^ connectionString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
 
-						// SQL delete command
-						String^ deleteQuery = "DELETE FROM tblItems WHERE Item_ID = @ItemID";
-						SqlCommand^ cmd = gcnew SqlCommand(deleteQuery, conn);
-						cmd->Parameters->AddWithValue("@ItemID", itemID);
+					// Open connection
+					SqlConnection^ conn = gcnew SqlConnection(connectionString);
+					conn->Open();
 
-						// Execute command
-						cmd->ExecuteNonQuery();
-						conn->Close();
+					// SQL delete command
+					String^ deleteQuery = "DELETE FROM tblItems WHERE Item_ID = @ItemID";
+					SqlCommand^ cmd = gcnew SqlCommand(deleteQuery, conn);
+					cmd->Parameters->AddWithValue("@ItemID", itemID);
 
-						// Remove row from DataGridView
-						dataGridView1->Rows->RemoveAt(selectedIndex);
+					// Execute command
+					cmd->ExecuteNonQuery();
+					conn->Close();
 
-						// Display success message
-						MessageBox::Show("Record deleted successfully.", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
-					}
-					catch (Exception^ ex) {
-						// Display error message
-						MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-					}
+					// Remove row from DataGridView
+					dataGridView1->Rows->RemoveAt(selectedIndex);
+
+					// Display success message
+					MessageBox::Show("Record deleted successfully.", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				}
+				catch (Exception^ ex) {
+					// Display error message
+					MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 				}
 			}
 		}
+
 		private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 			String^ searchText = textBox1->Text;
 			if (dataTable == nullptr) return;
@@ -289,7 +294,15 @@
 			void LoadDataFromDatabase() {
 				String^ connectionString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
 				String^ query = "SELECT * FROM tblItems";
+
 				try {
+					// Ensure DataGridView is initialized
+					if (dataGridView1 == nullptr) {
+						MessageBox::Show("DataGridView is not initialized.");
+						return;
+					}
+
+					// Connect to the database
 					SqlConnection^ con = gcnew SqlConnection(connectionString);
 					con->Open();
 					SqlDataAdapter^ adapter = gcnew SqlDataAdapter(query, con);
@@ -298,13 +311,35 @@
 					dataTable = dt;
 					dataGridView1->DataSource = dataTable->DefaultView;
 					con->Close();
+
+					if (dataGridView1->Columns->Contains("Item_Name")) {
+						dataGridView1->Columns["Item_Name"]->HeaderText = "Item Name";
+					}
+					if (dataGridView1->Columns->Contains("Item_Category")) {
+						dataGridView1->Columns["Item_Category"]->HeaderText = "Item Type";
+					}
+					if (dataGridView1->Columns->Contains("Item_Quantity")) {
+						dataGridView1->Columns["Item_Quantity"]->HeaderText = "Quantity";
+					}
+
 					dataGridView1->Columns["Item_ID"]->Visible = false;
+					dataGridView1->Columns["Date_Modified"]->Visible = false;
+					dataGridView1->EnableHeadersVisualStyles = false;
+					dataGridView1->ColumnHeadersDefaultCellStyle->BackColor = System::Drawing::Color::DarkRed;
+					dataGridView1->ColumnHeadersDefaultCellStyle->ForeColor = System::Drawing::Color::White;
+					dataGridView1->ColumnHeadersDefaultCellStyle->Font = gcnew System::Drawing::Font("Arial", 10, System::Drawing::FontStyle::Bold);
+					dataGridView1->ColumnHeadersDefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+					dataGridView1->ColumnHeadersDefaultCellStyle->SelectionBackColor = System::Drawing::Color::DarkRed;
+					dataGridView1->ColumnHeadersDefaultCellStyle->SelectionForeColor = System::Drawing::Color::White;
+
+				}
+				catch (SqlException^ ex) {
+					MessageBox::Show("Database error: " + ex->Message);
 				}
 				catch (Exception^ ex) {
 					MessageBox::Show("Error loading data: " + ex->Message);
 				}
-			};
-	 
+			}
 	private: System::Void bttnMinimize_Click(System::Object^ sender, System::EventArgs^ e) {
 		System::Windows::Forms::Form^ parentForm = this->FindForm(); // Get the parent form
 		if (parentForm != nullptr) {
@@ -327,20 +362,23 @@
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void dataGridView1_CellFormatting(System::Object^ sender, System::Windows::Forms::DataGridViewCellFormattingEventArgs^ e) {
-		// Ensure it's not a header row and within the "Item_Quantity" column
+		// Skip formatting if the row is flagged as highlighted.
+		if (dataGridView1->Rows[e->RowIndex]->Tag != nullptr &&
+			dataGridView1->Rows[e->RowIndex]->Tag->ToString() == "highlighted") {
+			return;
+		}
+
+		// Ensure it's a valid row and we're formatting the "Item_Quantity" column.
 		if (e->RowIndex >= 0 && dataGridView1->Columns[e->ColumnIndex]->Name == "Item_Quantity") {
 			System::String^ value = dataGridView1->Rows[e->RowIndex]->Cells["Item_Quantity"]->Value != nullptr
 				? dataGridView1->Rows[e->RowIndex]->Cells["Item_Quantity"]->Value->ToString()
 				: "";
-
 			int quantity;
-			// Check if quantity is zero
 			if (!String::IsNullOrEmpty(value) && Int32::TryParse(value, quantity) && quantity <= 10) {
-				dataGridView1->Rows[e->RowIndex]->DefaultCellStyle->BackColor = System::Drawing::Color::Red;
-				dataGridView1->Rows[e->RowIndex]->DefaultCellStyle->ForeColor = System::Drawing::Color::White; // Optional: Change text color
+				dataGridView1->Rows[e->RowIndex]->DefaultCellStyle->BackColor = System::Drawing::Color::FromArgb(198, 12, 48);
+				dataGridView1->Rows[e->RowIndex]->DefaultCellStyle->ForeColor = System::Drawing::Color::White;
 			}
 			else {
-				// Reset style if not zero
 				dataGridView1->Rows[e->RowIndex]->DefaultCellStyle->BackColor = System::Drawing::Color::White;
 				dataGridView1->Rows[e->RowIndex]->DefaultCellStyle->ForeColor = System::Drawing::Color::Black;
 			}
@@ -355,8 +393,8 @@
 
 	private: System::Void CustomizeDataGridView() {
 		// Change background color when row is selected
-		dataGridView1->DefaultCellStyle->SelectionBackColor = System::Drawing::Color::DarkRed; // Background color
-		dataGridView1->DefaultCellStyle->SelectionForeColor = System::Drawing::Color::White;   // Text color
+		dataGridView1->DefaultCellStyle->SelectionBackColor = System::Drawing::Color::LightGray; // Background color
+		dataGridView1->DefaultCellStyle->SelectionForeColor = System::Drawing::Color::Black;   // Text color
 	}
 
 	private: System::Void InventoryMenu_Click(System::Object^ sender, System::EventArgs^ e) {

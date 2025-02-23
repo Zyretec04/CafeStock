@@ -46,7 +46,7 @@ namespace CafeStock {
 	private: System::Windows::Forms::Label^ label1;
 
 	protected:
-
+	public: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Void PopupBack_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void editCombo_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);

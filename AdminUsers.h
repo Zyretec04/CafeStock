@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -78,7 +78,7 @@ namespace CafeStock {
 			this->bttnMinimize->Name = L"bttnMinimize";
 			this->bttnMinimize->Size = System::Drawing::Size(47, 43);
 			this->bttnMinimize->TabIndex = 22;
-			this->bttnMinimize->Text = L"�";
+			this->bttnMinimize->Text = L"—";
 			this->bttnMinimize->UseVisualStyleBackColor = false;
 			this->bttnMinimize->Click += gcnew System::EventHandler(this, &AdminUsers::bttnMinimize_Click);
 			// 
@@ -167,23 +167,39 @@ namespace CafeStock {
 		}
 #pragma endregion
 private:
-		void LoadDataFromDatabase() {
-			String^ connectionString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
-			String^ query = "SELECT * FROM Users";
-			try {
-				SqlConnection^ con = gcnew SqlConnection(connectionString);
-				con->Open();
-				SqlDataAdapter^ adapter = gcnew SqlDataAdapter(query, con);
-				DataTable^ dt = gcnew DataTable();
-				adapter->Fill(dt);
-				dataTable = dt;
-				dataGridView1->DataSource = dataTable->DefaultView;
-				con->Close();
-			}
-			catch (Exception^ ex) {
-				MessageBox::Show("Error loading data: " + ex->Message);
-			}
-		};
+	void LoadDataFromDatabase() {
+		String^ connectionString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
+		String^ query = "SELECT * FROM Users";
+
+		try {
+			SqlConnection^ con = gcnew SqlConnection(connectionString);
+			con->Open();
+			SqlDataAdapter^ adapter = gcnew SqlDataAdapter(query, con);
+			DataTable^ dt = gcnew DataTable();
+			adapter->Fill(dt);
+			dataTable = dt;
+			dataGridView1->DataSource = dataTable->DefaultView;
+			con->Close();
+
+			// ✅ Move this block AFTER data binding
+			dataGridView1->Columns["Id"]->HeaderText = "User ID";
+			dataGridView1->Columns["username"]->HeaderText = "User Name";
+			dataGridView1->Columns["password"]->HeaderText = "Password";
+			dataGridView1->Columns["datecreated"]->HeaderText = "Date Created";
+
+			// Set header styles
+			dataGridView1->ColumnHeadersDefaultCellStyle->BackColor = System::Drawing::Color::DarkRed;
+			dataGridView1->ColumnHeadersDefaultCellStyle->ForeColor = System::Drawing::Color::White;
+			dataGridView1->ColumnHeadersDefaultCellStyle->Font = gcnew System::Drawing::Font("Arial", 10, System::Drawing::FontStyle::Bold);
+			dataGridView1->ColumnHeadersDefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridView1->ColumnHeadersDefaultCellStyle->SelectionBackColor = System::Drawing::Color::DarkRed;
+			dataGridView1->ColumnHeadersDefaultCellStyle->SelectionForeColor = System::Drawing::Color::White;
+			dataGridView1->EnableHeadersVisualStyles = false;
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Error loading data: " + ex->Message);
+		}
+	}
 private: System::Void bttnExit_Click(System::Object^ sender, System::EventArgs^ e) {
 	System::Windows::Forms::DialogResult result =
 		System::Windows::Forms::MessageBox::Show(
@@ -223,8 +239,8 @@ private: System::Void AdminUsers_Load(System::Object^ sender, System::EventArgs^
 
 private: System::Void CustomizeDataGridView() {
 	// Change background color when row is selected
-	dataGridView1->DefaultCellStyle->SelectionBackColor = System::Drawing::Color::DarkRed; // Background color
-	dataGridView1->DefaultCellStyle->SelectionForeColor = System::Drawing::Color::White;   // Text color
+	dataGridView1->DefaultCellStyle->SelectionBackColor = System::Drawing::Color::LightGray; // Background color
+	dataGridView1->DefaultCellStyle->SelectionForeColor = System::Drawing::Color::Black;   // Text color
 }
 
 private: System::Void InventoryMenu_Click(System::Object^ sender, System::EventArgs^ e) {
