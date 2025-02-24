@@ -24,7 +24,7 @@ namespace CafeStock {
 		AdminMenu(void)
 		{
 			InitializeComponent();
-			LoadUserControl(gcnew Dashboard());
+			LoadUserControl(gcnew Dashboard("admin", true));
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->btnAdDash->MouseEnter += gcnew System::EventHandler(this, &AdminMenu::btnAdDash_MouseEnter);
 			this->btnAdDash->MouseLeave += gcnew System::EventHandler(this, &AdminMenu::btnAdDash_MouseLeave);
@@ -61,7 +61,7 @@ namespace CafeStock {
 	private: System::Windows::Forms::Button^ btnAdInventory;
 
 	private: System::Windows::Forms::Panel^ panel7;
-	private: System::Windows::Forms::Button^ button7;
+
 	private: System::Windows::Forms::Panel^ panel8;
 	private: System::Windows::Forms::Button^ btnAdHistory;
 
@@ -72,6 +72,7 @@ namespace CafeStock {
 
 
 	private: System::Windows::Forms::Panel^ mainPanel;
+
 
 
 	private:
@@ -92,22 +93,21 @@ namespace CafeStock {
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->panel5 = (gcnew System::Windows::Forms::Panel());
 			this->btnAdDash = (gcnew System::Windows::Forms::Button());
+			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->btnUsers = (gcnew System::Windows::Forms::Button());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->btnAdInventory = (gcnew System::Windows::Forms::Button());
 			this->panel7 = (gcnew System::Windows::Forms::Panel());
 			this->btnAdHistory = (gcnew System::Windows::Forms::Button());
-			this->button7 = (gcnew System::Windows::Forms::Button());
-			this->panel2 = (gcnew System::Windows::Forms::Panel());
-			this->btnUsers = (gcnew System::Windows::Forms::Button());
 			this->panel8 = (gcnew System::Windows::Forms::Panel());
 			this->btnAdLogout = (gcnew System::Windows::Forms::Button());
 			this->mainPanel = (gcnew System::Windows::Forms::Panel());
 			this->flowLayoutPanel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->panel5->SuspendLayout();
+			this->panel2->SuspendLayout();
 			this->panel1->SuspendLayout();
 			this->panel7->SuspendLayout();
-			this->panel2->SuspendLayout();
 			this->panel8->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -154,7 +154,8 @@ namespace CafeStock {
 			// 
 			this->btnAdDash->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(162)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(23)));
-			this->btnAdDash->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->btnAdDash->FlatAppearance->BorderColor = System::Drawing::Color::Black;
+			this->btnAdDash->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnAdDash->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnAdDash->ForeColor = System::Drawing::Color::White;
@@ -167,6 +168,34 @@ namespace CafeStock {
 			this->btnAdDash->Text = L"Dashboard";
 			this->btnAdDash->UseVisualStyleBackColor = false;
 			this->btnAdDash->Click += gcnew System::EventHandler(this, &AdminMenu::btnAdDash_Click);
+			// 
+			// panel2
+			// 
+			this->panel2->BackColor = System::Drawing::Color::Transparent;
+			this->panel2->Controls->Add(this->btnUsers);
+			this->panel2->Location = System::Drawing::Point(3, 163);
+			this->panel2->Name = L"panel2";
+			this->panel2->Size = System::Drawing::Size(214, 50);
+			this->panel2->TabIndex = 9;
+			// 
+			// btnUsers
+			// 
+			this->btnUsers->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(162)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(23)));
+			this->btnUsers->FlatAppearance->BorderColor = System::Drawing::Color::Black;
+			this->btnUsers->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnUsers->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnUsers->ForeColor = System::Drawing::Color::White;
+			this->btnUsers->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnUsers.Image")));
+			this->btnUsers->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->btnUsers->Location = System::Drawing::Point(0, 4);
+			this->btnUsers->Name = L"btnUsers";
+			this->btnUsers->Size = System::Drawing::Size(214, 43);
+			this->btnUsers->TabIndex = 2;
+			this->btnUsers->Text = L"Users";
+			this->btnUsers->UseVisualStyleBackColor = false;
+			this->btnUsers->Click += gcnew System::EventHandler(this, &AdminMenu::btnUsers_Click);
 			// 
 			// panel1
 			// 
@@ -181,7 +210,8 @@ namespace CafeStock {
 			// 
 			this->btnAdInventory->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(162)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(23)));
-			this->btnAdInventory->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->btnAdInventory->FlatAppearance->BorderColor = System::Drawing::Color::Black;
+			this->btnAdInventory->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnAdInventory->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnAdInventory->ForeColor = System::Drawing::Color::White;
@@ -199,7 +229,6 @@ namespace CafeStock {
 			// 
 			this->panel7->BackColor = System::Drawing::Color::Transparent;
 			this->panel7->Controls->Add(this->btnAdHistory);
-			this->panel7->Controls->Add(this->button7);
 			this->panel7->Location = System::Drawing::Point(3, 275);
 			this->panel7->Name = L"panel7";
 			this->panel7->Size = System::Drawing::Size(214, 50);
@@ -209,63 +238,20 @@ namespace CafeStock {
 			// 
 			this->btnAdHistory->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(162)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(23)));
-			this->btnAdHistory->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->btnAdHistory->FlatAppearance->BorderColor = System::Drawing::Color::Black;
+			this->btnAdHistory->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnAdHistory->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnAdHistory->ForeColor = System::Drawing::Color::White;
 			this->btnAdHistory->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnAdHistory.Image")));
 			this->btnAdHistory->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->btnAdHistory->Location = System::Drawing::Point(-1, 4);
+			this->btnAdHistory->Location = System::Drawing::Point(0, 4);
 			this->btnAdHistory->Name = L"btnAdHistory";
-			this->btnAdHistory->Size = System::Drawing::Size(217, 43);
+			this->btnAdHistory->Size = System::Drawing::Size(214, 43);
 			this->btnAdHistory->TabIndex = 3;
 			this->btnAdHistory->Text = L"History";
 			this->btnAdHistory->UseVisualStyleBackColor = false;
 			this->btnAdHistory->Click += gcnew System::EventHandler(this, &AdminMenu::btnAdHistory_Click);
-			// 
-			// button7
-			// 
-			this->button7->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(162)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
-				static_cast<System::Int32>(static_cast<System::Byte>(23)));
-			this->button7->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->button7->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button7->ForeColor = System::Drawing::Color::White;
-			this->button7->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button7.Image")));
-			this->button7->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->button7->Location = System::Drawing::Point(-3, 4);
-			this->button7->Name = L"button7";
-			this->button7->Size = System::Drawing::Size(217, 43);
-			this->button7->TabIndex = 2;
-			this->button7->Text = L"History";
-			this->button7->UseVisualStyleBackColor = false;
-			// 
-			// panel2
-			// 
-			this->panel2->BackColor = System::Drawing::Color::Transparent;
-			this->panel2->Controls->Add(this->btnUsers);
-			this->panel2->Location = System::Drawing::Point(3, 163);
-			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(214, 50);
-			this->panel2->TabIndex = 9;
-			// 
-			// btnUsers
-			// 
-			this->btnUsers->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(162)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
-				static_cast<System::Int32>(static_cast<System::Byte>(23)));
-			this->btnUsers->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->btnUsers->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btnUsers->ForeColor = System::Drawing::Color::White;
-			this->btnUsers->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnUsers.Image")));
-			this->btnUsers->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->btnUsers->Location = System::Drawing::Point(-3, 4);
-			this->btnUsers->Name = L"btnUsers";
-			this->btnUsers->Size = System::Drawing::Size(217, 43);
-			this->btnUsers->TabIndex = 2;
-			this->btnUsers->Text = L"Users";
-			this->btnUsers->UseVisualStyleBackColor = false;
-			this->btnUsers->Click += gcnew System::EventHandler(this, &AdminMenu::btnUsers_Click);
 			// 
 			// panel8
 			// 
@@ -280,15 +266,16 @@ namespace CafeStock {
 			// 
 			this->btnAdLogout->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(162)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(23)));
-			this->btnAdLogout->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->btnAdLogout->FlatAppearance->BorderColor = System::Drawing::Color::Black;
+			this->btnAdLogout->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnAdLogout->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnAdLogout->ForeColor = System::Drawing::Color::White;
 			this->btnAdLogout->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnAdLogout.Image")));
 			this->btnAdLogout->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->btnAdLogout->Location = System::Drawing::Point(-3, 4);
+			this->btnAdLogout->Location = System::Drawing::Point(0, 3);
 			this->btnAdLogout->Name = L"btnAdLogout";
-			this->btnAdLogout->Size = System::Drawing::Size(217, 43);
+			this->btnAdLogout->Size = System::Drawing::Size(214, 43);
 			this->btnAdLogout->TabIndex = 2;
 			this->btnAdLogout->Text = L"Logout";
 			this->btnAdLogout->UseVisualStyleBackColor = false;
@@ -315,9 +302,9 @@ namespace CafeStock {
 			this->flowLayoutPanel1->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->panel5->ResumeLayout(false);
+			this->panel2->ResumeLayout(false);
 			this->panel1->ResumeLayout(false);
 			this->panel7->ResumeLayout(false);
-			this->panel2->ResumeLayout(false);
 			this->panel8->ResumeLayout(false);
 			this->ResumeLayout(false);
 
@@ -330,7 +317,7 @@ private:
 		mainPanel->Controls->Add(control); // Add the new control
 	}
 private: System::Void btnAdDash_Click(System::Object^ sender, System::EventArgs^ e) {
-	LoadUserControl(gcnew Dashboard());
+	LoadUserControl(gcnew Dashboard("admin", true));
 }
 private: System::Void btnAdInventory_Click(System::Object^ sender, System::EventArgs^ e) {
 	LoadUserControl(gcnew InventoryMenu());

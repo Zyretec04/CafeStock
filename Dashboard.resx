@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblText.Text" xml:space="preserve">
-    <value>CafeStock is an inventory management system specifically designed for the cafeteria of Mapua Malayan Colleges Mindanao. Built using Windows Forms in C++/CLI, it features a secure login system for administrators, a user-friendly dashboard, tools for tracking and updating inventory, historical data viewing, and a logout function. This system aims to streamline cafeteria operations, ensuring efficient stock management and improved service delivery for the college community.</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>CafeStock is an inventory management system specifically designed for the
+cafeteria of Mapua Malayan Colleges Mindanao. Built using Windows Forms
+in C++/CLI, it features a secure login system for administrators, a user-friendly
+dashboard, tools for tracking and updating inventory, historical data viewing,
+and a logout function. This system aims to streamline cafeteria operations,
+ensuring efficient stock management and improved service delivery for the
+college community.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

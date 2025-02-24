@@ -62,7 +62,7 @@ System::Void CafeStock::MainLogin::bttnLogin_Click(System::Object^ sender, Syste
                 MessageBoxButtons::OK, MessageBoxIcon::Information);
 
             this->Hide();
-            Menumain^ newForm = gcnew Menumain();
+            Menumain^ newForm = gcnew Menumain(username);
             newForm->ShowDialog();
             this->Close();
         }

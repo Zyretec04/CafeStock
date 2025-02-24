@@ -121,6 +121,7 @@ namespace CafeStock {
 			this->txtQuantity->Name = L"txtQuantity";
 			this->txtQuantity->Size = System::Drawing::Size(104, 29);
 			this->txtQuantity->TabIndex = 14;
+			this->txtQuantity->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &EditInventory::txtQuantity_KeyPress);
 			// 
 			// lblQuant
 			// 
@@ -248,6 +249,11 @@ namespace CafeStock {
 private: System::Void btnSave_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void btnBack_Click(System::Object^ sender, System::EventArgs^ e);
 
+private: System::Void txtQuantity_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+	if (!Char::IsDigit(e->KeyChar) && e->KeyChar != '\b') {
+		e->Handled = true; // Suppress the key
+	}
+}
 };
 
 }
