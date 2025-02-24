@@ -18,14 +18,16 @@ System::Void CafeStock::Register::button1_Click(System::Object^ sender, System::
     System::String^ password = txtPassword->Text;
     System::String^ confirmPassword = txtConfirmPass->Text;
 
-  
     if (username->Trim() == "" || password->Trim() == "" || confirmPassword->Trim() == "") {
         MessageBox::Show("All fields are required!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         return;
     }
-
     if (username->Trim() == "admin") {
         MessageBox::Show("Please choose a different username!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+        return;
+    }
+    if (username->Trim()->Length > 15) {
+        MessageBox::Show("Username is too long! Please keep it under 15 characters.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         return;
     }
     if (password->Length < 8) {
@@ -48,7 +50,7 @@ System::Void CafeStock::Register::button1_Click(System::Object^ sender, System::
         int userCount = safe_cast<int>(checkUserCmd->ExecuteScalar());
 
         if (userCount > 0) {
-            MessageBox::Show("Username already exists. Choose another.", "Registration Failed", MessageBoxButtons::OK, MessageBoxIcon::Error);
+            MessageBox::Show("Username already exists. Please choose another.", "Registration Failed", MessageBoxButtons::OK, MessageBoxIcon::Error);
             connection->Close();
             return;
         }
