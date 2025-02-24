@@ -34,6 +34,7 @@ namespace CafeStock {
 			else {
 				lblNumUsers->Visible = false; // Hide the label for regular users
 				lblUsers->Visible = false;
+				picUser->Visible = false;
 			}
 
 			DisplayWelcomeMessage(username, isAdmin);
@@ -67,6 +68,11 @@ namespace CafeStock {
 	private: System::Windows::Forms::Label^ lblCapacity;
 	private: System::Windows::Forms::Label^ lblUsers;
 	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::PictureBox^ picUser;
+	private: System::Windows::Forms::PictureBox^ picStore;
+
+
 
 
 
@@ -94,6 +100,11 @@ namespace CafeStock {
 			this->lblCapacity = (gcnew System::Windows::Forms::Label());
 			this->lblUsers = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->picUser = (gcnew System::Windows::Forms::PictureBox());
+			this->picStore = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picUser))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picStore))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// lblTitle
@@ -114,13 +125,13 @@ namespace CafeStock {
 			// 
 			this->lblHeader->AutoSize = true;
 			this->lblHeader->BackColor = System::Drawing::Color::Transparent;
-			this->lblHeader->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lblHeader->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblHeader->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->lblHeader->Location = System::Drawing::Point(102, 343);
+			this->lblHeader->Location = System::Drawing::Point(113, 390);
 			this->lblHeader->Name = L"lblHeader";
-			this->lblHeader->Size = System::Drawing::Size(239, 31);
+			this->lblHeader->Size = System::Drawing::Size(212, 29);
 			this->lblHeader->TabIndex = 3;
 			this->lblHeader->Text = L"Storage Capacity";
 			// 
@@ -166,7 +177,7 @@ namespace CafeStock {
 				static_cast<System::Byte>(0)));
 			this->lblNumUsers->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->lblNumUsers->Location = System::Drawing::Point(413, 387);
+			this->lblNumUsers->Location = System::Drawing::Point(411, 434);
 			this->lblNumUsers->Name = L"lblNumUsers";
 			this->lblNumUsers->Size = System::Drawing::Size(93, 29);
 			this->lblNumUsers->TabIndex = 10;
@@ -180,7 +191,7 @@ namespace CafeStock {
 				static_cast<System::Byte>(0)));
 			this->lblCapacity->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->lblCapacity->Location = System::Drawing::Point(114, 387);
+			this->lblCapacity->Location = System::Drawing::Point(113, 434);
 			this->lblCapacity->Name = L"lblCapacity";
 			this->lblCapacity->Size = System::Drawing::Size(124, 29);
 			this->lblCapacity->TabIndex = 11;
@@ -190,13 +201,13 @@ namespace CafeStock {
 			// 
 			this->lblUsers->AutoSize = true;
 			this->lblUsers->BackColor = System::Drawing::Color::Transparent;
-			this->lblUsers->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lblUsers->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblUsers->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->lblUsers->Location = System::Drawing::Point(401, 343);
+			this->lblUsers->Location = System::Drawing::Point(411, 390);
 			this->lblUsers->Name = L"lblUsers";
-			this->lblUsers->Size = System::Drawing::Size(241, 31);
+			this->lblUsers->Size = System::Drawing::Size(217, 29);
 			this->lblUsers->TabIndex = 12;
 			this->lblUsers->Text = L"Registered Users";
 			// 
@@ -214,12 +225,51 @@ namespace CafeStock {
 			this->label1->TabIndex = 13;
 			this->label1->Text = resources->GetString(L"label1.Text");
 			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->BackColor = System::Drawing::Color::Transparent;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->label2->Location = System::Drawing::Point(56, 331);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(204, 29);
+			this->label2->TabIndex = 14;
+			this->label2->Text = L"Inventory Status:";
+			// 
+			// picUser
+			// 
+			this->picUser->BackColor = System::Drawing::Color::Transparent;
+			this->picUser->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picUser.Image")));
+			this->picUser->Location = System::Drawing::Point(358, 390);
+			this->picUser->Name = L"picUser";
+			this->picUser->Size = System::Drawing::Size(47, 38);
+			this->picUser->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->picUser->TabIndex = 15;
+			this->picUser->TabStop = false;
+			// 
+			// picStore
+			// 
+			this->picStore->BackColor = System::Drawing::Color::Transparent;
+			this->picStore->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picStore.Image")));
+			this->picStore->Location = System::Drawing::Point(61, 381);
+			this->picStore->Name = L"picStore";
+			this->picStore->Size = System::Drawing::Size(47, 38);
+			this->picStore->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->picStore->TabIndex = 16;
+			this->picStore->TabStop = false;
+			// 
 			// Dashboard
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->Controls->Add(this->picStore);
+			this->Controls->Add(this->picUser);
+			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->lblUsers);
 			this->Controls->Add(this->lblCapacity);
@@ -230,6 +280,8 @@ namespace CafeStock {
 			this->Controls->Add(this->lblHeader);
 			this->Name = L"Dashboard";
 			this->Size = System::Drawing::Size(745, 544);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picUser))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picStore))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
