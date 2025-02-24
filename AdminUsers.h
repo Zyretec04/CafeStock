@@ -20,6 +20,7 @@ namespace CafeStock {
 		{
 			InitializeComponent();
 			LoadDataFromDatabase();
+			UpdateUserCount();
 		}
 
 	protected:
@@ -42,6 +43,9 @@ namespace CafeStock {
 	private: System::Windows::Forms::TextBox^ txtSearch;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::Label^ lblUserCount;
+	private: System::Windows::Forms::Button^ txtRemoveUsers;
+
+
 
 	private:
 		/// <summary>
@@ -63,6 +67,7 @@ namespace CafeStock {
 			this->txtSearch = (gcnew System::Windows::Forms::TextBox());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->lblUserCount = (gcnew System::Windows::Forms::Label());
+			this->txtRemoveUsers = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
@@ -117,7 +122,7 @@ namespace CafeStock {
 			// 
 			this->txtSearch->Location = System::Drawing::Point(113, 50);
 			this->txtSearch->Name = L"txtSearch";
-			this->txtSearch->Size = System::Drawing::Size(564, 20);
+			this->txtSearch->Size = System::Drawing::Size(509, 20);
 			this->txtSearch->TabIndex = 19;
 			this->txtSearch->TextChanged += gcnew System::EventHandler(this, &AdminUsers::txtSearch_TextChanged);
 			// 
@@ -156,12 +161,28 @@ namespace CafeStock {
 			this->lblUserCount->TabIndex = 23;
 			this->lblUserCount->Text = L"User Count:";
 			// 
+			// txtRemoveUsers
+			// 
+			this->txtRemoveUsers->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->txtRemoveUsers->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->txtRemoveUsers->FlatAppearance->BorderSize = 0;
+			this->txtRemoveUsers->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->txtRemoveUsers->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"txtRemoveUsers.Image")));
+			this->txtRemoveUsers->Location = System::Drawing::Point(637, 42);
+			this->txtRemoveUsers->Name = L"txtRemoveUsers";
+			this->txtRemoveUsers->Size = System::Drawing::Size(40, 40);
+			this->txtRemoveUsers->TabIndex = 24;
+			this->txtRemoveUsers->UseVisualStyleBackColor = false;
+			this->txtRemoveUsers->Click += gcnew System::EventHandler(this, &AdminUsers::txtRemoveUsers_Click);
+			// 
 			// AdminUsers
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->Controls->Add(this->txtRemoveUsers);
 			this->Controls->Add(this->lblUserCount);
 			this->Controls->Add(this->bttnMinimize);
 			this->Controls->Add(this->bttnExit);
@@ -189,12 +210,12 @@ private:
 			SqlConnection^ con = gcnew SqlConnection(connectionString);
 			con->Open();
 
-			// ✅ Count Users
+			
 			SqlCommand^ countCmd = gcnew SqlCommand(countQuery, con);
 			int userCount = Convert::ToInt32(countCmd->ExecuteScalar());
-			lblUserCount->Text = "User Count: " + userCount.ToString();  // ✅ Set User Count in Label
+			lblUserCount->Text = "User Count: " + userCount.ToString();  
 
-			// ✅ Load User Data
+			
 			SqlDataAdapter^ adapter = gcnew SqlDataAdapter(query, con);
 			DataTable^ dt = gcnew DataTable();
 			adapter->Fill(dt);
@@ -203,13 +224,12 @@ private:
 
 			con->Close();
 
-			// ✅ Set Column Headers
 			dataGridView1->Columns["Id"]->HeaderText = "User ID";
 			dataGridView1->Columns["username"]->HeaderText = "User Name";
 			dataGridView1->Columns["password"]->HeaderText = "Password";
 			dataGridView1->Columns["datecreated"]->HeaderText = "Date Created";
 
-			// ✅ Set Header Styles
+
 			dataGridView1->ColumnHeadersDefaultCellStyle->BackColor = System::Drawing::Color::Silver;
 			dataGridView1->ColumnHeadersDefaultCellStyle->ForeColor = System::Drawing::Color::Black;
 			dataGridView1->ColumnHeadersDefaultCellStyle->Font = gcnew System::Drawing::Font("Arial", 8, System::Drawing::FontStyle::Bold);
@@ -225,8 +245,8 @@ private:
 private: System::Void bttnExit_Click(System::Object^ sender, System::EventArgs^ e) {
 	System::Windows::Forms::DialogResult result =
 		System::Windows::Forms::MessageBox::Show(
-			"Are you sure you want to exit?", // Message
-			"Exit Application",              // Title
+			"Are you sure you want to exit?", 
+			"Exit Application",             
 			System::Windows::Forms::MessageBoxButtons::YesNo,
 			System::Windows::Forms::MessageBoxIcon::Question
 		);
@@ -258,11 +278,14 @@ private: System::Void AdminUsers_Load(System::Object^ sender, System::EventArgs^
 
 	CustomizeDataGridView();
 }
+private: System::Void UpdateUserCount() {
+	lblUserCount->Text = "User Count: " + dataGridView1->Rows->Count.ToString();
+}
 
 private: System::Void CustomizeDataGridView() {
 	// Change background color when row is selected
-	dataGridView1->DefaultCellStyle->SelectionBackColor = System::Drawing::Color::LightGray; // Background color
-	dataGridView1->DefaultCellStyle->SelectionForeColor = System::Drawing::Color::Black;   // Text color
+	dataGridView1->DefaultCellStyle->SelectionBackColor = System::Drawing::Color::LightGray; 
+	dataGridView1->DefaultCellStyle->SelectionForeColor = System::Drawing::Color::Black;  
 }
 
 private: System::Void InventoryMenu_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -272,6 +295,55 @@ private: System::Void InventoryMenu_Click(System::Object^ sender, System::EventA
 private: System::Void AdminUsers_Click(System::Object^ sender, System::EventArgs^ e) {
 	dataGridView1->ClearSelection();
 	dataGridView1->CurrentCell = nullptr;
+}
+private: System::Void txtRemoveUsers_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (dataGridView1->SelectedRows->Count == 0) {
+		MessageBox::Show("Please select a user to delete.", "No Selection", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		return;
+	}
+
+	// Get the selected row
+	int selectedIndex = dataGridView1->SelectedRows[0]->Index;
+	int userID = Convert::ToInt32(dataGridView1->Rows[selectedIndex]->Cells["Id"]->Value);
+
+	// Confirmation dialog
+	System::Windows::Forms::DialogResult dialogResult = MessageBox::Show(
+		"Are you sure you want to delete this user?",
+		"Confirm Deletion",
+		MessageBoxButtons::YesNo,
+		MessageBoxIcon::Question
+	);
+
+	if (dialogResult == System::Windows::Forms::DialogResult::Yes) {
+		try {
+			// Database connection
+			String^ connectionString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
+			SqlConnection^ conn = gcnew SqlConnection(connectionString);
+			conn->Open();
+
+			// Delete query
+			String^ deleteQuery = "DELETE FROM Users WHERE Id = @UserID";
+			SqlCommand^ cmd = gcnew SqlCommand(deleteQuery, conn);
+			cmd->Parameters->AddWithValue("@UserID", userID);
+			int rowsAffected = cmd->ExecuteNonQuery();
+			conn->Close();
+
+			// ✅ Remove from DataGridView
+			if (rowsAffected > 0) {
+				dataGridView1->Rows->RemoveAt(selectedIndex);
+				MessageBox::Show("User deleted successfully.", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+				// ✅ Update user count after deletion
+				UpdateUserCount();
+			}
+			else {
+				MessageBox::Show("User not found or already deleted.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Error deleting user: " + ex->Message, "Database Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+	}
 }
 };
 }

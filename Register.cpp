@@ -12,42 +12,37 @@ System::Void CafeStock::Register::lblRegis_Click(System::Object^ sender, System:
     this->Close();
 }
 
-
-// Database Connection String
-
 System::Void CafeStock::Register::button1_Click(System::Object^ sender, System::EventArgs^ e) {
     System::String^ connString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
-    // Get user input from form fields
     System::String^ username = txtUsername->Text;
     System::String^ password = txtPassword->Text;
     System::String^ confirmPassword = txtConfirmPass->Text;
 
-    // Check if fields are empty
+  
     if (username->Trim() == "" || password->Trim() == "" || confirmPassword->Trim() == "") {
         MessageBox::Show("All fields are required!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         return;
     }
+
     if (username->Trim() == "admin") {
         MessageBox::Show("Please choose a different username!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         return;
-
     }
-
-    // Check if passwords match
+    if (password->Length < 8) {
+        MessageBox::Show("Password must be at least 8 characters long!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+        return;
+    }
     if (password != confirmPassword) {
         MessageBox::Show("Passwords do not match!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         return;
     }
 
-    // Hash the password using a simple hashing method (MD5 or SHA-256 recommended)
-    System::String^ hashedPassword = password; // Ideally, you should use a proper hashing function
+    System::String^ hashedPassword = password;
 
     try {
-        // Establish database connection
         SqlConnection^ connection = gcnew SqlConnection(connString);
         connection->Open();
 
-        // Check if the username already exists
         SqlCommand^ checkUserCmd = gcnew SqlCommand("SELECT COUNT(*) FROM Users WHERE username = @username", connection);
         checkUserCmd->Parameters->AddWithValue("@username", username);
         int userCount = safe_cast<int>(checkUserCmd->ExecuteScalar());
@@ -58,17 +53,14 @@ System::Void CafeStock::Register::button1_Click(System::Object^ sender, System::
             return;
         }
 
-        // Insert new user into database
         SqlCommand^ command = gcnew SqlCommand("INSERT INTO Users (username, password) VALUES (@username, @password)", connection);
         command->Parameters->AddWithValue("@username", username);
         command->Parameters->AddWithValue("@password", hashedPassword);
         command->ExecuteNonQuery();
 
         MessageBox::Show("Registration successful!", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
-
         connection->Close();
 
-        // Redirect to Login Form
         this->Hide();
         MainLogin^ loginForm = gcnew MainLogin();
         loginForm->ShowDialog();
