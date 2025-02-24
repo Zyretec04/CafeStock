@@ -120,6 +120,7 @@ namespace CafeStock {
 			this->txtQuantity->Name = L"txtQuantity";
 			this->txtQuantity->Size = System::Drawing::Size(104, 29);
 			this->txtQuantity->TabIndex = 22;
+			this->txtQuantity->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &PopupEdit::txtQuantity_KeyPress);
 			// 
 			// lblQuant
 			// 
@@ -253,6 +254,11 @@ private: System::Void lblName_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void txtItemName_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void lblType_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void txtQuantity_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+	if (!Char::IsDigit(e->KeyChar) && e->KeyChar != '\b') {
+		e->Handled = true; // Suppress the key
+	}
 }
 };
 }

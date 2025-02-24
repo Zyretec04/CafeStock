@@ -17,11 +17,18 @@ namespace CafeStock {
 	/// </summary>
 	public ref class Menumain : public System::Windows::Forms::Form
 	{
+	private:
+		String^ loggedInUsername;
+
 	public:
-		Menumain(void)
+		Menumain(String^ username)
 		{
 			InitializeComponent();
-			LoadUserControl(gcnew Dashboard()); // Load Dashboard by default
+			// Store username and role
+			this->loggedInUsername = username;
+
+			// Load Dashboard and pass username and role
+			LoadUserControl(gcnew Dashboard(username, false));
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->button5->MouseEnter += gcnew System::EventHandler(this, &Menumain::button5_MouseEnter);
 			this->button5->MouseLeave += gcnew System::EventHandler(this, &Menumain::button5_MouseLeave);
@@ -376,7 +383,7 @@ namespace CafeStock {
 	private: System::Void panel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
 	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
-		LoadUserControl(gcnew Dashboard()); // Replace 'Dashboard' with your control's class
+		LoadUserControl(gcnew Dashboard(this->loggedInUsername, false));
 	}
 	private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
 		LoadUserControl(gcnew HistoryControll());

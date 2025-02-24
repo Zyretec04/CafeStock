@@ -6,6 +6,7 @@ using namespace System::Collections;
 using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
+using namespace System::Data::SqlClient;
 
 
 namespace CafeStock {
@@ -15,14 +16,31 @@ namespace CafeStock {
 	/// </summary>
 	public ref class Dashboard : public System::Windows::Forms::UserControl
 	{
+	private:
+		String^ connString = "Data Source=cafestock.c5cmiu400v99.ap-northeast-2.rds.amazonaws.com;Initial Catalog=dboInventory;User ID=sa;Password=CafeStock1234";
+
 	public:
-		Dashboard(void)
+		Dashboard(String^ username, bool isAdmin)
 		{
 			InitializeComponent();
+			LoadCapacity();
+			LoadUserCount();
+
+			if (isAdmin) {
+				LoadUserCount(); // Show number of users for admin
+				lblNumUsers->Visible = true;
+				lblUsers->Visible = true;
+			}
+			else {
+				lblNumUsers->Visible = false; // Hide the label for regular users
+				lblUsers->Visible = false;
+			}
+
+			DisplayWelcomeMessage(username, isAdmin);
 			//
 			//TODO: Add the constructor code here
 			//
-			this->lblText->BackColor = System::Drawing::Color::Transparent;
+			//this->lblText->BackColor = System::Drawing::Color::Transparent;
 		}
 
 	protected:
@@ -37,13 +55,20 @@ namespace CafeStock {
 			}
 		}
 	private: System::Windows::Forms::Label^ lblTitle;
-	private: System::Windows::Forms::Label^ lblText;
+
 	protected:
 	protected:
 	private: System::Windows::Forms::Label^ lblHeader;
 	private: System::Windows::Forms::Button^ bttnExit;
 
 	private: System::Windows::Forms::Button^ bttnMinimize;
+	private: System::Windows::Forms::Label^ lblNumUsers;
+
+	private: System::Windows::Forms::Label^ lblCapacity;
+	private: System::Windows::Forms::Label^ lblUsers;
+	private: System::Windows::Forms::Label^ label1;
+
+
 
 	protected:
 
@@ -62,50 +87,42 @@ namespace CafeStock {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Dashboard::typeid));
 			this->lblTitle = (gcnew System::Windows::Forms::Label());
-			this->lblText = (gcnew System::Windows::Forms::Label());
 			this->lblHeader = (gcnew System::Windows::Forms::Label());
 			this->bttnExit = (gcnew System::Windows::Forms::Button());
 			this->bttnMinimize = (gcnew System::Windows::Forms::Button());
+			this->lblNumUsers = (gcnew System::Windows::Forms::Label());
+			this->lblCapacity = (gcnew System::Windows::Forms::Label());
+			this->lblUsers = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// lblTitle
 			// 
 			this->lblTitle->AutoSize = true;
 			this->lblTitle->BackColor = System::Drawing::Color::Transparent;
-			this->lblTitle->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lblTitle->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblTitle->ForeColor = System::Drawing::Color::Firebrick;
-			this->lblTitle->Location = System::Drawing::Point(245, 124);
+			this->lblTitle->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->lblTitle->Location = System::Drawing::Point(54, 101);
 			this->lblTitle->Name = L"lblTitle";
-			this->lblTitle->Size = System::Drawing::Size(228, 33);
+			this->lblTitle->Size = System::Drawing::Size(248, 37);
 			this->lblTitle->TabIndex = 5;
 			this->lblTitle->Text = L"Welcome User!";
-			// 
-			// lblText
-			// 
-			this->lblText->BackColor = System::Drawing::Color::Transparent;
-			this->lblText->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->lblText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lblText->ForeColor = System::Drawing::Color::Firebrick;
-			this->lblText->Location = System::Drawing::Point(83, 252);
-			this->lblText->Name = L"lblText";
-			this->lblText->Size = System::Drawing::Size(579, 156);
-			this->lblText->TabIndex = 4;
-			this->lblText->Text = resources->GetString(L"lblText.Text");
 			// 
 			// lblHeader
 			// 
 			this->lblHeader->AutoSize = true;
 			this->lblHeader->BackColor = System::Drawing::Color::Transparent;
-			this->lblHeader->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lblHeader->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblHeader->ForeColor = System::Drawing::Color::Firebrick;
-			this->lblHeader->Location = System::Drawing::Point(82, 198);
+			this->lblHeader->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->lblHeader->Location = System::Drawing::Point(102, 343);
 			this->lblHeader->Name = L"lblHeader";
-			this->lblHeader->Size = System::Drawing::Size(80, 29);
+			this->lblHeader->Size = System::Drawing::Size(239, 31);
 			this->lblHeader->TabIndex = 3;
-			this->lblHeader->Text = L"About";
+			this->lblHeader->Text = L"Storage Capacity";
 			// 
 			// bttnExit
 			// 
@@ -141,16 +158,75 @@ namespace CafeStock {
 			this->bttnMinimize->UseVisualStyleBackColor = false;
 			this->bttnMinimize->Click += gcnew System::EventHandler(this, &Dashboard::bttnMinimize_Click);
 			// 
+			// lblNumUsers
+			// 
+			this->lblNumUsers->AutoSize = true;
+			this->lblNumUsers->BackColor = System::Drawing::Color::Transparent;
+			this->lblNumUsers->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblNumUsers->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->lblNumUsers->Location = System::Drawing::Point(413, 387);
+			this->lblNumUsers->Name = L"lblNumUsers";
+			this->lblNumUsers->Size = System::Drawing::Size(93, 29);
+			this->lblNumUsers->TabIndex = 10;
+			this->lblNumUsers->Text = L"[users]";
+			// 
+			// lblCapacity
+			// 
+			this->lblCapacity->AutoSize = true;
+			this->lblCapacity->BackColor = System::Drawing::Color::Transparent;
+			this->lblCapacity->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblCapacity->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->lblCapacity->Location = System::Drawing::Point(114, 387);
+			this->lblCapacity->Name = L"lblCapacity";
+			this->lblCapacity->Size = System::Drawing::Size(124, 29);
+			this->lblCapacity->TabIndex = 11;
+			this->lblCapacity->Text = L"[capacity]";
+			// 
+			// lblUsers
+			// 
+			this->lblUsers->AutoSize = true;
+			this->lblUsers->BackColor = System::Drawing::Color::Transparent;
+			this->lblUsers->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblUsers->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->lblUsers->Location = System::Drawing::Point(401, 343);
+			this->lblUsers->Name = L"lblUsers";
+			this->lblUsers->Size = System::Drawing::Size(241, 31);
+			this->lblUsers->TabIndex = 12;
+			this->lblUsers->Text = L"Registered Users";
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->BackColor = System::Drawing::Color::Transparent;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->label1->Location = System::Drawing::Point(57, 152);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(633, 140);
+			this->label1->TabIndex = 13;
+			this->label1->Text = resources->GetString(L"label1.Text");
+			// 
 			// Dashboard
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->lblUsers);
+			this->Controls->Add(this->lblCapacity);
+			this->Controls->Add(this->lblNumUsers);
 			this->Controls->Add(this->bttnMinimize);
 			this->Controls->Add(this->bttnExit);
 			this->Controls->Add(this->lblTitle);
-			this->Controls->Add(this->lblText);
 			this->Controls->Add(this->lblHeader);
 			this->Name = L"Dashboard";
 			this->Size = System::Drawing::Size(745, 544);
@@ -179,5 +255,115 @@ private: System::Void bttnMinimize_Click(System::Object^ sender, System::EventAr
 		parentForm->WindowState = System::Windows::Forms::FormWindowState::Minimized;
 	}
 }
+
+private:
+	void LoadCapacity()
+	{
+		int totalCapacity = 50000; // Maximum capacity
+		int usedCapacity = GetUsedCapacity();
+
+		if (totalCapacity > 0)
+		{
+			double percentage = (static_cast<double>(usedCapacity) / totalCapacity) * 100;
+
+			// Debug: Show the percentage in MessageBox for testing
+			// MessageBox::Show("Percentage: " + percentage.ToString());
+
+			if (percentage < 75)
+			{
+				lblCapacity->Text = "Optimum";
+				lblCapacity->ForeColor = Color::Green;
+			}
+			else if (percentage >= 75 && percentage < 90)
+			{
+				lblCapacity->Text = "Mid";
+				lblCapacity->ForeColor = Color::Orange;
+			}
+			else
+			{
+				lblCapacity->Text = "Full";
+				lblCapacity->ForeColor = Color::Red;
+			}
+		}
+		else
+		{
+			lblCapacity->Text = "No Data";
+			lblCapacity->ForeColor = Color::Gray;
+		}
+	}
+
+	int GetUsedCapacity()
+	{
+		int usedCapacity = 0;
+
+		SqlConnection^ conn = gcnew SqlConnection(connString);
+
+		try
+		{
+			conn->Open();
+			String^ query = "SELECT SUM(Item_Quantity) FROM tblItems";
+			SqlCommand^ cmd = gcnew SqlCommand(query, conn);
+
+			Object^ result = cmd->ExecuteScalar();
+			if (result != nullptr && result->ToString() != "")
+				usedCapacity = Convert::ToInt32(result);
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show("Error: " + ex->Message);
+		}
+		finally
+		{
+			conn->Close();
+		}
+
+		return usedCapacity;
+	}
+
+	void LoadUserCount()
+	{
+		int userCount = GetUserCount();
+		lblNumUsers->Text = userCount.ToString(); // Display user count in lblNumUsers
+	}
+
+	int GetUserCount()
+	{
+		int userCount = 0;
+
+		SqlConnection^ conn = gcnew SqlConnection(connString);
+
+		try
+		{
+			conn->Open();
+			String^ query = "SELECT COUNT(*) FROM Users"; // Replace with your actual user table name
+			SqlCommand^ cmd = gcnew SqlCommand(query, conn);
+
+			Object^ result = cmd->ExecuteScalar();
+			if (result != nullptr && result->ToString() != "")
+				userCount = Convert::ToInt32(result);
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show("Error: " + ex->Message);
+		}
+		finally
+		{
+			conn->Close();
+		}
+
+		return userCount;
+	}
+
+	void DisplayWelcomeMessage(String^ username, bool isAdmin)
+	{
+		if (isAdmin)
+		{
+			lblTitle->Text = "Welcome, Admin!";
+		}
+		else
+		{
+			lblTitle->Text = "Welcome, " + username + "!";
+		}
+	}
 };
 }
